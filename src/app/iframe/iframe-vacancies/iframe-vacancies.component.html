@@ -1,0 +1,183 @@
+<p-growl [(value)]="msgs" life="5000"></p-growl>
+
+<div class="container-fluid fondo">
+    <h2 class="title-left">Job Opportunities</h2>
+    <input type="text" #input (keyup.enter)="search(input.value)" class="form-control input-right">
+    <div class="clear-both"></div>
+    <table class="table iframe-table">
+        <thead class="thead">
+            <tr>
+                <td>Posting Title</td>
+                <td>City</td>
+                <td></td>
+            </tr>
+        </thead>
+        <tbody class="tbody">
+            <tr *ngFor="let vacancy of pagedItems | vacancyFilter: term">
+                <td><a (click)="openVacancyModal(vacancy.id)">{{vacancy.posting_title}}</a></td>
+                <td>{{vacancy.state}}</td>
+                <td><button (click)="applyNow(vacancy.id)">Apply Now</button></td>
+            </tr>
+        </tbody>
+    </table>
+    
+    
+    
+    <div class="row">
+        <vacancy-pagination-candidate
+            [pagination]="pagination"
+            [vacancies]="vacancies"
+            [pagedItems]="pagedItems"
+            (pagedItemsEmmiter)="getPagedItems($event)">
+        </vacancy-pagination-candidate>
+    </div>
+    
+    <div class="modal fade" id="iframeModal" tabindex="-1" role="dialog" aria-labelledby="iframeModal">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="resetForm()"><span aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body">
+                    <div class="modalTitle">
+                        <h4>{{vacancyDetail[0]?.posting_title}}</h4>
+                    </div>
+                    <form class="personal-form" [formGroup]="form">
+                        <p class="pTitle">Your Information</p>
+                        <div class="form-group email-group" [ngClass]="{'has-error': emailHasError, 'has-success': emailHasSuccess}">
+                            <label for="email" class="control-label">Email <span class="red-star">*</span></label>
+                            <input type="text" id="email" class="email-input form-control" formControlName='email' [formControl]="form.controls['email']" placeholder="Enter email">
+                            <div class="alert alert-success" role="alert" *ngIf="emailHasSuccess">Este correo ya habia sido utilizado, porfavor verifica que toda tu informacion este correcta.</div>
+                        </div>
+                        <div class="first-name-group form-group" [ngClass]="{'has-error': firstnameHasError}">
+                            <label for="first_name" class="control-label">First Name <span class="red-star">*</span></label>
+                            <input type="text" id="first_name" class="first-name-input form-control" formControlName='first_name' [formControl]="form.controls['first_name']" placeholder="Enter">
+                        </div>
+                        <div class="how-know-group form-group">
+                            <label for="how_know" class="control-label">How you know about us? </label>
+                            <!-- <input type="text" id="how_know" class="how-know-input form-control" formControlName='how_know' [formControl]="form.controls['how_know']" placeholder="Enter"> -->
+                            <select name="how_know" id="how_know" class="form-control how-know-input" formControlName='how_know' [formControl]="form.controls['how_know']">
+                                <option value="">Select an option</option>
+                                <option value="1">Facebook</option>
+                                <option value="2">Linkedin</option>
+                                <option value="3">Twitter</option>
+                                <option value="4">Instagram</option>
+                                <option value="5">Pagina de ScreenIT</option>
+                            </select>
+                        </div>
+                        <div class="last-name-group form-group" [ngClass]="{'has-error': lastnameHasError}">
+                            <label for="last_name" class="control-label">Last Name <span class="red-star">*</span></label>
+                            <input type="text" id="last_name" class="last-name-input form-control" formControlName='last_name' [formControl]="form.controls['last_name']" placeholder="Enter">
+                        </div>
+                        <div class="professional-title-group form-group" [ngClass]="{'has-error': titleHasError}">
+                            <label for="title" class="control-label">Title<span class="red-star">*</span></label>
+                            <input id="title" type="text" class="professional-title-input form-control" formControlName='title'  [formControl]="form.controls['title']" placeholder="Enter">
+                        </div>
+                        <div class="form-group phone-group" [ngClass]="{'has-error': phoneHasError}">
+                            <label for="phone" class="control-label">Phone <span class="red-star">*</span></label>
+                            <input type="text" id="phone" class="phone-input form-control" formControlName='phone' [formControl]="form.controls['phone']" placeholder="Enter phone">
+                        </div>
+                        <div class="form-group facebook-group">
+                            <label for="facebook" class="control-label">Facebook </label>
+                            <input type="text" id="facebook" class="form-control" formControlName='facebook' [formControl]="form.controls['facebook']" placeholder="Enter facebook">
+                        </div>
+                        <div class="form-group linkedin-group">
+                            <label for="linkedin" class="control-label">Linkedin </label>
+                            <input type="text" id="linkedin" class="form-control" formControlName='linkedin' [formControl]="form.controls['linkedin']" placeholder="Enter linkedin">
+                        </div>
+                        <div class="form-group skype-group">
+                            <label for="skype" class="control-label">Skype </label>
+                            <input type="text" id="skype" class="form-control" formControlName='skype' [formControl]="form.controls['skype']" placeholder="Enter skype">
+                        </div>
+                        <div class="form-group github-group">
+                            <label for="github" class="control-label">Github </label>
+                            <input type="text" id="github" class="form-control" formControlName='github' [formControl]="form.controls['github']" placeholder="Enter github">
+                        </div>
+                        <div class="form-group twitter-group">
+                            <label for="twitter" class="control-label">Twitter </label>
+                            <input type="text" id="twitter" class="form-control" formControlName='twitter' [formControl]="form.controls['twitter']" placeholder="Enter twitter">
+                        </div>
+                        <p class="pTitle">Knowledge Details</p>
+                        <div class="form-group">
+                            <label for="skill" class="control-label">Recent strongest Main skill set: </label>
+                            <input type="text" id="skill" class="form-control" formControlName='skill' [formControl]="form.controls['skill']">
+                        </div>
+                        <div class="form-group">
+                            <label for="experience" class="control-label">Total IT Experience in years: </label>
+                            <input type="text" id="experience" class="form-control" formControlName='experience' [formControl]="form.controls['experience']">
+                        </div>
+                        <p class="pTitle">Attachment Information</p>
+                        <div *ngIf="invalidFormat" class="form-group">
+                            <div class="alert alert-danger">Formato invalido, seleccionar otro archivo (pdf, zip, word o excel)</div>
+                        </div>
+                        <div class="form-group resume-group">
+                            <label for="experience" class="control-label">Drop your resume: </label>
+                            <input type="file" (change)="fileChange($event)" id="add_resume" name="add_resume" style="display:none;">
+                            <br>
+                            <button class="btn btn-info" onclick="document.getElementById('add_resume').click();">
+                                Browse
+                                <i class="fa fa-paperclip"></i>
+                            </button>
+                        </div>
+                        <div class="form-group information-group">
+                                We need to know your skills if you didn't write them in the Knowledge Details section
+                                then you should upload your resume (pdf, word, excel and basic linkedin information zip
+                                are accepted formats) for appliying this opening job.
+                        </div>
+                        <div class="clearfloats"></div>
+                        <div class="form-group">
+                            <button class="btn btn-primary" [disabled]="!form.valid" (click)="register()">Submit</button>
+                            <button class="btn btn-default" (click)="resetForm()">Reset</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="vacancyModal" tabindex="-1" role="dialog" aria-labelledby="vacancyModal">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="cleanVacancy()"><span aria-hidden="true">&times;</span></button>
+                    <div class="vacancy-title">
+                        <h3>{{vacancyDetail[0]?.posting_title}}</h3>
+                        <h5>SCREENIT</h5>
+                    </div>
+                </div>
+                <div class="modal-body">
+                    <div class="apply-div">
+                        <button class="btn apply-now-btn" (click)="applyNowFromVacancyModal(vacancyDetail[0]?.id)">APPLY NOW</button>
+                    </div>
+                    <div class="skill-set">
+                        <h4>Skill set years and knowledge</h4>
+                        <div>
+                            {{vacancyDetail[0]?.comments}}
+                        </div>
+                    </div>
+                    <div class="job-information">
+                        <h4>Job Information</h4>
+                        <div class="job-section">
+                            <p>City</p>
+                            <p>{{vacancyDetail[0]?.state}}</p>
+                        </div>
+                        <div class="job-section">
+                            <p>Country</p>
+                            <p>{{vacancyDetail[0]?.country}}</p>
+                        </div>
+                        <div class="job-section">
+                            <p>Job Opening ID</p>
+                            <p>{{vacancyDetail[0]?.id}}</p>
+                        </div>
+                    </div>
+                    <div class="clearfloats"></div>
+                    <div class="buttons-footer">
+                        <button class="btn apply-now-btn" (click)="applyNowFromVacancyModal(vacancyDetail[0]?.id)">APPLY NOW</button>
+                        <button class="btn cancel-btn" data-dismiss="modal" aria-label="Close" >CANCEL</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

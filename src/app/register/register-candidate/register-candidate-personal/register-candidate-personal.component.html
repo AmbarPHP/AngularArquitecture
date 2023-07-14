@@ -1,0 +1,85 @@
+<p-growl [(value)]="msgs" life="5000"></p-growl>
+<div class="col-xs-12 candidate-personal">
+    <div class="col-xs-12 candidate-personal-container">
+        <h4>{{ 'MENU.PROFILES.WIZARD.PERSONAL_INFORMATION' | translate }}</h4>
+        <form [formGroup]="personalForm" *ngIf="!loading">
+            <div class="first-name-group form-group" [ngClass]="{'has-error': firstNameHasError}">
+                <label class="control-label" for="firstname">{{ 'MENU.PROFILES.WIZARD.FIRST_NAME' | translate }}: <span class="red-star">*</span></label>
+                <input type="text" class="first-name-input form-control" (blur)="removeSpaces(personalForm.controls['first_name'], 'first_name')" formControlName="first_name">
+            </div>
+            <div class="last-name-group form-group" [ngClass]="{'has-error': lastNameHasError}">
+                <label class="control-label" for="lastname">{{ 'MENU.PROFILES.WIZARD.LAST_NAME' | translate }}: <span class="red-star">*</span></label>
+                <input type="text" class="last-name-input form-control" (blur)="removeSpaces(personalForm.controls['last_name'], 'last_name')" formControlName="last_name">
+            </div>
+            <div class="form-group" [ngClass]="{'has-error': countryHasError}">
+                <label class="control-label" for="country">{{ 'MENU.PROFILES.WIZARD.COUNTRY' | translate }}: <span class="red-star">*</span></label>
+                <select (change)="getStates($event.target.value)" class="form-control" formControlName="country">
+                        <option value="">Select a country</option>
+                        <option *ngFor="let country of countries" [value]="country.clave">{{country.name}}</option>
+                </select>
+            </div>
+            <div class="form-group" [ngClass]="{'has-error': stateHasError}">
+                <label class="control-label" for="state">{{ 'MENU.PROFILES.WIZARD.STATE' | translate }}: <span class="red-star">*</span></label>
+                <select (change)="getCities($event.target.value)" class="form-control" formControlName="state">
+                    <option value="">Select a state</option>
+                    <option *ngFor="let state of states" [value]="state.key">{{state.name}}</option>
+                </select>
+            </div>
+            <div class="form-group" [ngClass]="{'has-error': cityHasError}">
+                <label class="control-label" for="city">{{ 'MENU.PROFILES.WIZARD.CITY' | translate }}: <span class="red-star">*</span></label>
+                <select class="form-control" formControlName="city">
+                    <option value="">Select a city</option>
+                    <option *ngFor="let city of cities" [value]="city.clave">{{city.name}}</option>
+                </select>
+            </div>
+            <div class="professional-title-group form-group" [ngClass]="{'has-error': titleHasError}">
+                <label class="control-label" for="professional-title">{{ 'MENU.PROFILES.WIZARD.PROFESSIONAL_TITLE' | translate }}: <span class="red-star">*</span></label>
+                <p>{{ 'MENU.PROFILES.WIZARD.CHOOSE_TITLE' | translate }}</p>
+                <input type="text" class="professional-title-input form-control" (blur)="removeSpaces(personalForm.controls['title'], 'title')" formControlName="title">
+            </div>
+            <div class="candidate-picture-group form-group">
+                <label for="professional-title">{{ 'MENU.PROFILES.WIZARD.PLEASE_UPLOAD' | translate }}</label>
+                <div class="img-container">
+                    <img class="profile-img-size img-circle card-img" [src]="profile_image"
+            onError="this.src='assets/images/user.png';">
+                    <input type="file" (change)="fileChange($event)" id="add_photo" style="display:none;">
+                    <button class="btn btn-info" onclick="document.getElementById('add_photo').click();">
+                        {{ 'MENU.PROFILES.WIZARD.UPLOAD_PHOTO' | translate }}
+                        <i class="fa fa-paperclip"></i>
+                    </button>
+                </div>
+                
+            </div>
+            <div class="form-group resume-group">
+                <label for="resume">{{ 'MENU.PROFILES.WIZARD.UPLOAD_RESUME' | translate }}:</label>
+                <br>
+                <input type="file" (change)="resumeChange($event)" id="add_resume" style="display:none;">
+                <button type="button" class="btn btn-info" onclick="document.getElementById('add_resume').click();">
+                        {{ 'MENU.PROFILES.WIZARD.BROWSE' | translate }}
+                    <i class="fa fa-paperclip"></i>
+                </button>
+            </div>
+            <button [disabled]="!personalForm.valid || resumeLoading || pictureLoading" (click)="nextPage(personalForm.value)" type="submit" class="btn next-personal-btn">{{ 'MENU.PROFILES.WIZARD.NEXT' | translate }}</button>
+        </form>
+    </div>
+</div>
+
+<div class="modal fade" id="imageModal" tabindex="-1" role="dialog" aria-labelledby="imageModal">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-body">
+          Uploading image...
+        </div>
+      </div>
+    </div>
+</div>
+
+<div class="modal fade" id="resumeModal" tabindex="-1" role="dialog" aria-labelledby="resumeModal">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-body">
+          Uploading resume...
+        </div>
+      </div>
+    </div>
+</div>

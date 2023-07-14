@@ -1,0 +1,86 @@
+<div class="col-xs-12 my-account-education-container">
+    <div *ngIf="candidateEducation">
+        <div class="alert-container">
+            <alert></alert>
+        </div>
+        <div *ngFor="let education of candidateEducation; index as i" class="education">
+            <div *ngIf="education_displayed[i].editView === false">
+                <h4>Education</h4>
+                <h4>{{education.school}}</h4>
+                <p>{{education.name}}</p>
+                <p class="gray-text">{{education.degree}}</p>
+                <p class="gray-text">{{education.completition_year}}</p>
+                <a class="edit-link" (click)="education_displayed[i].editView = true"><i class="fa fa-pencil" aria-hidden="true"></i>{{ 'MENU.PROFILES.WIZARD.EDIT' | translate }}</a>
+                <a (click)="deleteEducation(education.id)"><i class="fa fa-trash-o" aria-hidden="true"></i>{{ 'MENU.PROFILES.WIZARD.DELETE' | translate }}</a>
+            </div>
+            <div *ngIf="education_displayed[i].editView === true">
+                <form #editEducationForm="ngForm">
+                    <h4 class="education-title-edit-view">{{ 'MENU.PROFILES.WIZARD.EDUCATION' | translate }}</h4>
+                    <div class="form-group">
+                        <input type="text" id="id" name="id" class="hide" [(ngModel)]="education.id">
+                        <label for="name">{{ 'MENU.PROFILES.WIZARD.CAREER' | translate }}</label>
+                        <input type="text" id="name" name="name" [(ngModel)]="education.name" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="school">{{ 'MENU.PROFILES.WIZARD.INSTITUTE' | translate }}</label>
+                        <input type="text" id="school" name="school" [(ngModel)]="education.school" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="degree">{{ 'MENU.PROFILES.WIZARD.TOD' | translate }}</label>
+                        <!-- <input type="text" id="degree" name="degree" [(ngModel)]="education.degree" class="form-control" required> -->
+                        <select id="degree" name="degree" [(ngModel)]="education.degree" class="form-control">
+                            <option value="0">Select</option>
+                            <option value="1">{{ 'MENU.PROFILES.WIZARD.UNDERGRADUATED' | translate }}</option>
+                            <option value="2">{{ 'MENU.PROFILES.WIZARD.GRADUATED' | translate }}</option>
+                            <option value="3">{{ 'MENU.PROFILES.WIZARD.BACHELOR' | translate }}</option>
+                            <option value="4">{{ 'MENU.PROFILES.WIZARD.MASTER' | translate }}</option>
+                            <option value="5">{{ 'MENU.PROFILES.WIZARD.PHD' | translate }}</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="completition_year">{{ 'MENU.PROFILES.WIZARD.YOC' | translate }}</label>
+                        <input type="number" id="completition_year" name="completition_year" [(ngModel)]="education.completition_year" class="form-control" required>
+                    </div>
+                    <button [disabled]="editEducationForm.invalid" class="btn education-save-button" (click)="editEducation(editEducationForm.value, i)" >Save</button>
+                </form>
+            </div>
+        </div>
+        <div *ngIf="education_infos.length > 0">
+            <form #form="ngForm">
+                <h4>{{ 'MENU.PROFILES.WIZARD.ADD_EDUCATION' | translate }}</h4>
+                <div class="add-education">
+                    <div *ngFor="let education_info of education_infos">
+                        <input type="text" name="id" id="id" ngModel class="hide">
+                        <div class="form-group education-name-group">
+                            <label for="name">{{ 'MENU.PROFILES.WIZARD.CAREER' | translate }}</label>
+                            <input type="text" id="name" name="name" [(ngModel)]="education_info.name" class="form-control">
+                        </div>
+                        <div class="form-group school-group">
+                            <label for="school">{{ 'MENU.PROFILES.WIZARD.SCHOOL' | translate }}</label>
+                            <input type="text" id="school" name="school" [(ngModel)]="education_info.school" class="form-control">
+                        </div>
+                        <div class="form-group degree-group">
+                            <label for="degree">{{ 'MENU.PROFILES.WIZARD.DEGREE' | translate }}</label>
+                            <select id="degree" name="degree" [(ngModel)]="education_info.degree" class="form-control">
+                                <option value="0">Select</option>
+                                <option value="1">{{ 'MENU.PROFILES.WIZARD.UNDERGRADUATED' | translate }}</option>
+                                <option value="2">{{ 'MENU.PROFILES.WIZARD.GRADUATED' | translate }}</option>
+                                <option value="3">{{ 'MENU.PROFILES.WIZARD.BACHELOR' | translate }}</option>
+                                <option value="4">{{ 'MENU.PROFILES.WIZARD.MASTER' | translate }}</option>
+                                <option value="5">{{ 'MENU.PROFILES.WIZARD.PHD' | translate }}</option>
+                            </select>
+                        </div>
+                        <div class="form-group year-of-completion-group">
+                            <label for="completition_year">{{ 'MENU.PROFILES.WIZARD.YOC' | translate }}</label>
+                            <input type="number" id="completition_year" name="completition_year" [(ngModel)]="education_info.completition_year" min="1950" class="form-control" placeholder="yyyy">
+                        </div>
+                    </div>
+                    <button [disabled]="candidateEducation.length >= educationsAllowed" (click)="addEducation()" class="btn add-button">{{ 'MENU.PROFILES.WIZARD.ADD' | translate }}</button>
+                </div>
+                <button type="submit" (click)="updateEducation(education_infos)" class="btn update-button">{{ 'MENU.PROFILES.WIZARD.UPDATE_BUTTON' | translate }}</button>
+                <!-- {{ education_infos | json }} -->
+            </form>
+        </div>
+
+    </div>
+</div>

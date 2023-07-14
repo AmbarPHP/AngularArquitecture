@@ -1,0 +1,137 @@
+.vacancy-card {
+    background-color: #fff;
+    border: 1px solid #eaeaea;
+    height: 420px;
+    padding: 5px;
+    margin-bottom: 15px;
+
+    .checkbox-container {
+        text-align: right;
+    }
+
+    .vacancy-share-container {
+        height: 60px;
+        text-align: center;
+
+        p {
+            margin: 0;
+        }
+
+        .share-twitter-btn {
+            background-color: #00ACEE;
+            color: #fff;
+            width: 32px;
+            height: 32px;
+            border: none;
+            border-radius: 2px;
+            outline: none;
+        }
+
+        .share-facebook-btn {
+            background-color: #3B5998;
+            color: #fff;
+            width: 32px;
+            height: 32px;
+            border: none;
+            border-radius: 2px;
+            outline: none;
+        }
+    }
+}
+
+.vacancy-card-details {
+    height: 210px;
+}
+
+.vacancy-status {
+    // height: 20px;
+    text-align: center;
+
+    p {
+        margin: 0;
+    }
+}
+
+.vacancy-card-details p {
+    margin-bottom: 0;
+}
+
+.vacancy-card-images {
+    border-bottom: 1px solid #eaeaea;
+    padding-bottom: 15px;
+    // margin-top: 155px;
+    height: 56px;
+
+    h4 {
+        margin: 0;
+        padding-top: 10px;
+    }
+}
+
+.vacancy-card-view-full {
+    margin-top: 10px;
+    text-align: center;
+}
+
+.remove-padding-left {
+    padding-left: 0;
+    margin-top: 15px;
+}
+
+.card-image-size {
+    width: 40px;
+    height: 40px;
+}
+
+.card-image-position {
+    margin-left: -20px;
+}
+
+.card-more-images {
+    background-color: #a0c0ff;
+    width: 40px;
+    height: 40px;
+    border: none;
+    color: #fff;
+}
+
+.vacancy-title {
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.vacancy-position, .vacancy-location {
+    color: #9f9e9e;
+}
+
+.img-position {
+    margin-left: -15px;
+}
+
+.img-container {
+    display: inline-block;
+}
+
+
+@media screen and (min-width: 768px) and (max-width: 851px) {
+    .card-more-images {
+        background-color: #a0c0ff;
+        width: 35px;
+        height: 35px;
+        border: none;
+        color: #fff;
+    }
+
+    .card-image-size {
+        width: 35px;
+        height: 35px;
+    }
+}
+
+@media screen and (max-width: 666px) {
+    .remove-padding-left {
+        padding-left: 0;
+        margin-top: 15px;
+        padding-right: 0;
+    }
+}

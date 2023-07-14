@@ -1,0 +1,14 @@
+
+<div class="container-fluid">
+    <div class="row">
+        <checkout-header></checkout-header>
+    </div>
+
+    <div class="text-center" *ngIf="loading == true"><img class="loading-spinner"
+        src="assets/images/ring.svg"></div>
+
+    <div class="row" *ngIf="loading == false">
+        <payment-information [items]="items" [total]="total" (sendPromocode)="getPromocode($event)" (sendPayEvent)="getPayEvent($event)" (sendItemsIdsEvent)="getItemsIDs($event)"></payment-information>
+        <checkout-profiles [items]="items" [total]="total" (sendRemoveFromCartEvent)="removeFromCart($event)"></checkout-profiles>
+    </div>
+</div>

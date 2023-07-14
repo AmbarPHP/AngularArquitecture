@@ -1,0 +1,48 @@
+<div class="profiles-header-container col-xs-12 col-sm-6 col-md-4">
+    <div class="profiles-header">
+        <h4>Profiles</h4>
+        <p>Total: ${{total}}</p>
+        <div class="clear-floats"></div>
+    </div>
+    <div class="profiles-card-container">
+        <div *ngFor="let item of items" class="profiles-card">
+
+            <!-- <div class="profiles-description">
+                <div class="col-md-5">
+                    <div class="profiles-image pull-left">
+                        <img class="profile-img-size img-circle card-img" [src]="item.profile.profile_picture" onError="this.src='assets/images/user.png';">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <p>{{item.profile.name}}</p>                        
+                    <p class="description-gray">{{item.profile.skills | slice:0:10}}</p>
+                    <p class="description-gray">{{item.profile.location}}</p>
+                    <p class="description-gray">${{item.unit_price}}</p>
+                </div>
+                <div class="col-md-1">
+                    <a (click)="removeFromCart(item)">
+                        <i class="fa fa-trash" aria-hidden="true"></i>    
+                    </a>
+                </div>
+            </div>
+            <div class="clear-pulls"></div> -->
+
+            <div class="profiles-description">
+                <div class="profiles-image">
+                    <img class="profile-img-size img-circle card-img" [src]="item.profile.profile_picture" onError="this.src='assets/images/user.png';">
+                </div>
+                <div class="profiles-name">
+                    <p>{{item.profile.name}}</p>                        
+                    <p class="description-gray">{{item.profile.skills | slice:0:10}}</p>
+                    <p class="description-gray">{{item.profile.location}}</p>
+                    <p class="description-gray">${{item.unit_price}}</p>
+                </div>
+                <div class="delete-buton">
+                    <a (click)="removeFromCart(item)">
+                        <i class="fa fa-trash" aria-hidden="true"></i>    
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

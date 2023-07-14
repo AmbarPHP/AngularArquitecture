@@ -1,0 +1,134 @@
+.team-details-row {
+    margin-top: 20px;
+
+    .bio-detail-card {
+        background-color: #fff;
+        border: 1px solid #eaeaea;
+        border-radius: 3px;
+        text-align: center;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        margin-bottom: 20px;
+
+        p {
+            margin: 0px;
+        }
+
+        .back-link {
+            text-align: left;
+        }
+
+        .bio-img-container {
+
+            .bio-img {
+                width: 60px;
+                height: 60px;
+                border-radius: 50%;
+            }
+        }
+
+        .website-container {
+
+            .website-btn {
+                width: 90%;
+                height: 35px;
+                margin-top: 20px;
+                color: #fff;
+                background-color: #58a8fc;
+                border-radius: 2px;
+            }
+        }
+
+        .social-container {
+            margin-top: 30px;
+
+            .social-list {
+                margin: 0;
+                padding: 0;
+                list-style: none;
+
+                .social-item {
+                    text-align: center;
+                    margin: 0;
+                    padding: 0;
+                    float: left;
+                    width: 20%;
+                    font-weight: 500;
+                    font-size: 24px;
+                    color: #ccc;
+
+                    .active-social {
+                        color: #a0c0ff;
+                    }
+                }
+            }
+
+            .clear-floats {
+                clear: both;
+            }
+        }
+    }
+
+    .bio-green-description {
+        p {
+            margin: 0;
+        }
+        padding: 10px 5px;
+        background-color: #58d490;
+        border: 1px solid #58d490;
+        color: #fff;
+        border-radius: 3px;
+    }
+
+    .bio-work-experience {
+
+        p {
+            margin: 0;
+        }
+
+        .work-experience {
+            margin-bottom: 10px;
+        }
+
+        margin-top: 10px;
+        padding: 10px 5px;
+        background-color: #fff;
+        border: 1px solid #eaeaea;
+        border-radius: 3px;
+    }
+
+    .zourcing-members-card {
+
+        p {
+            margin: 0px;
+        }
+
+        .members-title {
+
+            h4 { 
+                margin-top: 0px;
+            }
+
+            border-bottom: 1px solid #eaeaea;
+            margin-bottom: 10px;
+        }
+
+        .zourcing-member-container {
+            text-align: center;
+            margin-bottom: 10px;
+
+            .zourcing-member-image {
+                width: 50px;
+                height: 50px;
+                border-radius: 50%;
+            }
+        }
+    }
+}
+
+@media screen and(max-width: 666px) {
+    
+    .zourcing-members-card {
+        margin-top: 10px;
+    }
+}

@@ -1,0 +1,53 @@
+.my-applications-header-container {
+    margin-top: 20px;
+    margin-bottom: 20px;
+
+    .clear-floats {
+        clear: both;
+    }
+
+    .header-line {
+        border-bottom: 1px solid #eaeaea;
+        margin-top: 20px;
+    }
+
+    h1 {
+        margin: 0;
+        float: left;
+    }
+
+    .deselect-container {
+        float: right;
+
+        .deselect-all {
+            margin-right: 10px;
+        }
+
+        .btn-not-interested {
+            background-color: #f96a6e;
+            color: #fff;
+            width: 140px;
+            height: 40px;
+        }
+
+        .ic-arrangement-list {
+            width: 40px;
+            height: 45px;
+            object-fit: contain;
+            content: url("/assets/images/ic-arrangement-list.svg")
+        }
+    }
+}
+
+.btn-not-interested {
+    background-color: #f96a6e;
+    color: #fff;
+    border-radius: 2px;
+}
+
+@media screen and (max-width: 666px) {
+    
+    .deselect-container {
+        display: none;
+    }
+}

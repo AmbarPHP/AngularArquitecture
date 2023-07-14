@@ -1,0 +1,22 @@
+.vacancies-left-filters-container, .vacancies-card-view-container {
+    margin-top: 20px;
+}
+
+.vacancies-list-view-container {
+    margin-top: 20px;
+}
+
+@media screen and (min-width: 1024px) {
+    .mobile {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 1023px) {
+    .desktop {
+        display: none;
+    }
+    .left-filters-mobile {
+        padding-left: 0;
+    }
+}

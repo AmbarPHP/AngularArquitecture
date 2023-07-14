@@ -1,0 +1,145 @@
+.vacancy-detail-view-card {
+    background-color: #fff;
+    border: 1px solid #eaeaea;
+    border-radius: 3px;
+    margin-bottom: 30px;
+    
+    .go-back {
+        margin-top: 5px;
+    }
+
+    .vacancy-main-detail {
+        margin-top: 20px;
+        text-align: center;
+
+        h4 {
+            margin: 0;
+        }
+
+        p {
+            margin: 0;
+        }
+
+        .vacancy-description {
+            color: #9f9e9e;
+        }
+
+        .vacancy-date {
+            margin-top: 10px;
+        }
+    }
+
+    .vacancy-status {
+        margin-top: 70px;
+        text-align: center;
+
+        h4 {
+            margin: 0;
+        }
+
+        p {
+            margin: 0;
+        }
+    }
+
+    .vacancy-edit {
+        text-align: center;
+        margin-top: 30px;
+
+        p {
+            margin: 0;
+        }
+
+        .delete-btn {
+            background-color: #f96a6e;
+            color: #fff;
+            width: 140px;
+            border-radius: 2px;
+            margin-bottom: 15px;
+        }
+        
+        .edit-btn {
+            background-color: #58a8fc;
+            color: #fff;
+            width: 140px;
+            border-radius: 2px;
+        }
+    }
+
+    .vacancy-position-details {
+
+        margin-top: 30px;
+
+        h4 {
+            text-align: center;
+        }
+
+        p {
+            margin: 0;
+        }
+
+        .to-left {
+            float: left;
+        }
+
+        .to-right {
+            float: right;
+            color: #9f9e9e;
+        }
+
+        .clear-floats {
+            clear: both;
+        }
+
+    }
+    
+    .vacancy-skills {
+
+        margin-top: 30px;
+
+        h4 {
+            text-align: center;
+        }
+        
+        .skill-badge {
+            background-color: #eaeaea;
+            color: #000;
+            padding: 5px 15px;
+            margin-bottom: 10px;
+            margin-right: 10px;
+            font-weight: normal;
+
+            p {
+                display: inline-block;
+                margin: 0;
+            }
+
+            .skill-percent {
+                font-weight: bold;
+            }
+        }
+    }
+
+    .vacancy-comments {
+
+        margin-top: 30px;
+
+        h4 {
+            text-align: center;
+        }
+    }
+}
+
+.language-class {
+    // margin-right: 10px !important;
+}
+
+@media screen and (max-width: 666px) {
+    .vacancy-comments {
+
+        p {
+            text-align: center;
+        }
+    }
+}
+

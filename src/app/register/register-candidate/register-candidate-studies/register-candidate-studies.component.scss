@@ -1,0 +1,70 @@
+.candidate-education {
+    margin-top: 25px;
+}
+
+.candidate-education-container {
+    background-color: #fff;
+    border: 1px solid #eaeaea;
+    border-radius: 3px;
+    padding-top: 15px;
+    margin-bottom: 20px;
+
+    h4 {
+        margin: 0;
+    }
+}
+
+.education-name-group {
+    margin-top: 15px;
+}
+
+.add-button {
+    width: 140px;
+    height: 40px;
+    background-color: #58d490;
+    color: #fff;
+    border-radius: 2px;
+}
+
+.delete-button {
+    width: 140px;
+    height: 40px;
+    background-color: #f96a6e;
+    color: #fff;
+    border-radius: 2px;
+    margin-left: 10px;
+}
+
+.education-line {
+    height: 1px;
+    border-bottom: 1px solid #eaeaea;
+}
+
+.next-button-group {
+    margin-top: 20px;
+
+    .next-button {
+        width: 140px;
+        height: 40px;
+        color: #fff;
+        background-color: #58a8fc;
+        border-radius: 2px;
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+}
+
+.red-star {
+    color: red;
+}
+
+@media screen and (min-width: 667px) {
+    .education-name-group, .school-group, .degree-group, .year-completion-group {
+        display: inline-block;
+        width: 35%;
+    }
+
+    .school-group, .year-completion-group {
+        margin-left: 10px;
+    }
+}

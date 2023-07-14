@@ -1,0 +1,25 @@
+.signup-container {
+    padding-top: 20px;
+    
+    .signup-card {
+        background-color: #fff;
+        border: 1px solid #eaeaea;
+        border-radius: 2px;
+        width: 500px;
+        margin: 0 auto;
+        margin-bottom: 20px;
+        padding: 20px;
+
+        .form-container {
+
+            .signup-btn {
+                width: 140px;
+                height: 40px;
+                border-radius: 2px;
+                background-color: #58a8fc;
+                color: #fff;
+            }
+        }
+
+    }
+}

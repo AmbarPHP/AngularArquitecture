@@ -1,0 +1,19 @@
+<!-- <div class="row"> -->
+    <ul *ngIf="pagination?.pages && pagination?.pages.length" class="pagination">
+        <li [ngClass]="{disabled:pagination.currentPage === 1}">
+            <a (click)="setPage(1); getPagedItemsEmmiter()">{{ 'MENU.PROFILES.START' | translate }}</a>
+        </li>
+        <li [ngClass]="{disabled:pagination.currentPage === 1}">
+            <a (click)="setPage(pagination.currentPage - 1); getPagedItemsEmmiter()">{{ 'MENU.PROFILES.BACK' | translate }}</a>
+        </li>
+        <li *ngFor="let page of pagination.pages" [ngClass]="{active:pagination.currentPage === page}">
+            <a (click)="setPage(page); getPagedItemsEmmiter(); getPagedItemsEmmiter()">{{page}}</a>
+        </li>
+        <li [ngClass]="{disabled:pagination.currentPage === pagination.totalPages}">
+            <a (click)="setPage(pagination.currentPage + 1); getPagedItemsEmmiter()">{{ 'MENU.PROFILES.NEXT' | translate }}</a>
+        </li>
+        <li [ngClass]="{disabled:pagination.currentPage === pagination.totalPages}">
+            <a (click)="setPage(pagination.totalPages); getPagedItemsEmmiter()">{{ 'MENU.PROFILES.FINISH' | translate }}</a>
+        </li>
+    </ul>
+<!-- </div> -->

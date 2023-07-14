@@ -1,0 +1,10 @@
+<h3>Tus contactos SCAAPP</h3>
+
+<div class="col-md-12">
+    <div *ngFor='let friend of friends'>
+        <img [src]="friend.picture.data.url">
+
+        <h2>{{friend.name}} </h2>
+    </div>
+
+</div>

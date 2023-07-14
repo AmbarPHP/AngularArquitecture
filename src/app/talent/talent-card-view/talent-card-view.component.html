@@ -1,0 +1,26 @@
+<div class="col-xs-12 col-sm-4 col-md-3 col-lg-2 card-container">
+    <div class="profile-card-container">
+        <span *ngIf="items.new" class="badge last-bought-badge">{{ 'TALENT.LAST_BOUGHT_BADGE' | translate }}</span>
+        <profile-description
+            [profile]="items">
+        </profile-description>
+
+        <more-description-btn
+            [profile]="items">
+        </more-description-btn>
+
+        <contact-phone-email
+            [profile]="items">
+        </contact-phone-email>
+
+        <social-icons
+            [profileSource]="items.source"
+            [contactInformation]="items.contact_information"
+            [profile]="items">
+        </social-icons>
+        <div class="more-details-container">
+            <a *ngIf="items.source != null" (click)="sendInvite()">{{ 'TALENT.SEND_INVITATION_LINK' | translate }}</a>
+            <a *ngIf="items.source === null" [routerLink]="['/chat', items.id]">Chat</a>
+        </div>
+    </div>
+</div>

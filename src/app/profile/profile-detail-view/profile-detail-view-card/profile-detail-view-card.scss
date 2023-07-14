@@ -1,0 +1,144 @@
+.profile-detail-card {
+    background-color: #fff;
+    border: 1px solid #eaeaea;
+    border-radius: 3px;
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+}
+
+.go-back {
+    margin-top: 5px;
+}
+
+.image-container {
+    margin: 0 auto;
+    width: 50px;
+    
+    .profile-img-size {
+        margin-top: 20px;
+        width: 50px;
+        height: 50px;
+    }
+}
+
+
+.profile-description {
+    text-align: center;
+    margin-top: 20px;
+
+    p {
+        margin: 0;
+    }
+}
+
+.profile-button {
+    text-align: center;
+
+    .buy-button {
+        background-color: #ffb03e;
+        color: #fff;
+        border-radius: 2px;
+        width: 160px;
+        height: 40px;
+        margin-top: 20px;
+    }
+
+    .pipeline-button {
+        background-color: #58a8fc;
+        color: #fff;
+        border-radius: 2px;
+        width: 160px;
+        height: 40px;
+        margin-top: 20px;
+    }
+}
+
+.buy-profile-description {
+    margin-top: 50px;
+
+    p {
+        margin: 0;
+    }
+}
+
+.profile-contact-info {
+    text-align: center;
+    margin-top: 30px;
+    h4, p {
+        margin: 0;
+    }
+
+    .phone-icon {
+        margin-top: 10px;
+    }
+}
+
+.social-container {
+    margin-top: 20px;
+    font-size: 24px;
+    color: #bababa;
+    padding: 0;
+
+    .social-source {
+        color: #a0c0ff;
+    }
+}
+
+.profile-more-options {
+    text-align: center;
+    margin-top: 20px;
+    padding: 0;
+
+    h4, p {
+        margin: 0;
+    }
+
+    .emai-profile {
+        margin-top: 20px;
+        float: left;
+        cursor: pointer;
+    }
+
+    .save-profile {
+        margin-top: 20px;
+        float: right;
+        cursor: pointer;
+    }
+
+    .removeLeftFloat {
+        float: none;
+    }
+
+    .clear-floats {
+        clear: both;
+    }
+}
+
+.profile-vacancy {
+    padding: 0;
+    text-align: center;
+    margin-top: 20px;
+
+    h4 {
+        margin: 0;
+    }
+
+    .add-to-vacancy-select {
+        margin-top: 20px;
+    }
+}
+
+@media screen and (max-width: 950px) {
+    .emai-profile {
+        float: none !important;
+    }
+
+    .save-profile {
+        float: none !important;
+        margin-top: 10px !important;
+    }
+}
+
+.hide-back {
+    display: none;
+}

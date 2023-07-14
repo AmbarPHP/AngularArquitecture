@@ -1,0 +1,17 @@
+<div class="container-fluid">
+    <div class="row">
+        <register-recruiter-header
+            [recruiterFirstStep]="recruiterFirstStep">
+        </register-recruiter-header>
+        <register-recruiter-first
+            *ngIf="recruiterFirstStep"
+            [recruiterFirstStep]="recruiterFirstStep"
+            (sendRecruiterFirstStepEvent)="recruiterFirstStep = $event">
+        </register-recruiter-first>
+        <register-recruiter-second
+            *ngIf="!recruiterFirstStep"
+            [recruiterFirstStep]="recruiterFirstStep"
+            (sendRecruiterFirstStepEvent)="recruiterFirstStep = $event">
+        </register-recruiter-second>
+    </div>
+</div>

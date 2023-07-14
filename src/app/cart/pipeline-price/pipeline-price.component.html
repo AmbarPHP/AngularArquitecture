@@ -1,0 +1,12 @@
+<p-growl [(value)]="msgs" life="5000"></p-growl>
+<div class="col-xs-12 pipeline-price-container">
+    <div class="col-xs-12 pipeline-price">
+        <div class="pipeline-price-description pull-left">
+            <p class="profiles-count">{{profiles?.length}} Items</p>
+            <p>${{total}}</p>
+        </div>
+        <div class="class-pipeline-price-checkout pull-right">
+            <button class="btn btn-primary checkout-btn" (click)="checkout()">Check Out</button>
+        </div>
+    </div>
+</div>

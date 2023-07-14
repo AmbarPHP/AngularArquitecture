@@ -1,0 +1,32 @@
+<p-growl [(value)]="msgs" life="5000"></p-growl>
+
+<div class="container-fluid">
+    <my-applications-header
+        [applications]="applications"
+        [notInterested]="notInterested"
+        (deselectAllApplicationsEvent)="getDeselectAllApplications($event)"
+        (removeApplicantsEvent)="getRemoveApplicants($event)">
+        
+    </my-applications-header>
+
+    <my-applications-main-filter
+        [term]="term"
+        (sendTermEvent)="getTermString($event)">
+        
+    </my-applications-main-filter>
+
+    <div class="text-center" *ngIf="loading === true">
+        <img class="loading-spinner" src="assets/images/ring.svg">
+    </div>
+
+    <my-applications-card-view
+        [term]="term"
+        [applications]="applications"
+        [notInterested]="notInterested"
+        (sendEmail)="getEmail($event)"        
+        (sendNotInterestedEvent)="getNotInterested($event)"
+        (sendClearTermEvent)="getClearTerm($event)"
+        *ngIf="loading === false">
+        
+    </my-applications-card-view>
+</div>

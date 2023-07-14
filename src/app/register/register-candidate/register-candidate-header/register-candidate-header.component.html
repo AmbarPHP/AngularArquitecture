@@ -1,0 +1,19 @@
+<div class="col-xs-12">
+    <div class="header-title">
+        <h1>{{ 'MENU.PROFILES.WIZARD.COMPLETE_PROFILE' | translate }}</h1>
+    </div>
+</div>
+
+<div class="col-xs-12 candidate-progress-container">
+    <div class="col-xs-12 candidate-progress">
+        <ul class="progress-indicator">
+            <li [ngClass]="{bubble: activeStep === 1, completed: activeStep > 1}"> <span class="bubble"></span>{{ 'MENU.PROFILES.WIZARD.PERSONAL_INFORMATION' | translate }}</li>
+            <li [ngClass]="{bubble: activeStep === 2, completed: activeStep > 2}" class="bubble"> <span class="bubble"></span>{{ 'MENU.PROFILES.WIZARD.EDUCATION' | translate }}</li>
+            <li [ngClass]="{bubble: activeStep === 3, completed: activeStep > 3}" class="bubble"> <span class="bubble"></span>{{ 'MENU.PROFILES.WIZARD.WORK_EXPERIENCE' | translate }}</li>
+            <li [ngClass]="{bubble: activeStep === 4, completed: activeStep > 4}" class="bubble"> <span class="bubble"></span>{{ 'MENU.PROFILES.WIZARD.SKILLS' | translate }}</li>
+            <li [ngClass]="{bubble: activeStep === 5, completed: activeStep > 5}" class="bubble"> <span class="bubble"></span>{{ 'MENU.PROFILES.WIZARD.LANGUAGES' | translate }}</li>
+            <li [ngClass]="{bubble: activeStep === 6, completed: activeStep > 6}" class="bubble"> <span class="bubble"></span>{{ 'MENU.PROFILES.WIZARD.CONTACT_INFO' | translate }}</li>
+        </ul>
+    </div>
+</div>
+

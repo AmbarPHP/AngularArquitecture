@@ -1,0 +1,65 @@
+.my-account-information-container {
+    background-color: #fff;
+    border: 1px solid #eaeaea;
+    border-radius: 3px;
+    margin-bottom: 15px;
+
+    .alert-container {
+        margin-top: 20px;
+    }
+
+    .personal-information {
+        padding-bottom: 10px;
+    }
+
+    h4 {
+        margin: 20px 0 0 0;
+    }
+
+    .img-container {
+        margin-top: 30px;
+
+        .profile-img-size {
+            width: 70px;
+            height: 70px;
+        }
+
+        .edit-photo {
+            margin-left: 10px;
+        }
+    }
+
+    .first-name-group, .company-name-group {
+        margin-top: 15px;
+    }
+
+    .update-button {
+        width: 140px;
+        height: 40px;
+        background-color: #58a8fc;
+        color: #fff;
+        border-radius: 2px;
+        margin-bottom: 15px;
+    }
+
+}
+
+@media screen and (min-width: 667px) {
+    .my-account-information-container {
+        .form-group {
+            width: 35%;
+            display: inline-block;
+        }
+        .last-name-group, .state-group {
+            margin-left: 20px;
+        }
+
+        .professional-title-group {
+            display: block;
+        }
+
+        .resume-group {
+            display: block;
+        }
+    }
+}

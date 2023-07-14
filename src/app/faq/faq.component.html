@@ -1,0 +1,95 @@
+<div class="faq-container">
+    <div class="faq-header">
+        <h1>Preguntas Frecuentes</h1>
+    </div>
+    <div class="faq-body">
+
+        <h4>Conociendo Zourcing</h4>
+        <div class="toggle-container">
+            <div (click)="estrellaPerfilToggle()" class="toggle-faq" data-toggle="collapse" data-target="#estrellaPerfil" aria-expanded="false" aria-controls="estrellaPerfil">
+                <i *ngIf="!estrellaPerfil" class="fa fa-plus-circle" data-toggle="collapse" data-target="#estrellaPerfil" aria-expanded="false" aria-controls="estrellaPerfil"></i>
+                <i *ngIf="estrellaPerfil" class="fa fa-minus-circle" data-toggle="collapse" data-target="#estrellaPerfil" aria-expanded="false" aria-controls="estrellaPerfil"></i>
+                <p>Qué significa la estrella sobre un perfil?</p>
+            </div>
+            <div class="toggle-faq-body collapse" id="estrellaPerfil">
+                <p>¡Zourcing te recomienda candidatos! Basado en tu historial de búsquedas, podrás ver marcados una estrella los perfiles que te podrían interesar.</p>
+            </div>
+        </div>
+        <div class="toggle-container">
+            <div (click)="zourcingPerfilToggle()" class="toggle-faq" data-toggle="collapse" data-target="#zourcingPerfil" aria-expanded="false" aria-controls="zourcingPerfil">
+                <i *ngIf="!zourcingPerfil" class="fa fa-plus-circle" data-toggle="collapse" data-target="#zourcingPerfil" aria-expanded="false" aria-controls="zourcingPerfil"></i>
+                <i *ngIf="zourcingPerfil" class="fa fa-minus-circle" data-toggle="collapse" data-target="#zourcingPerfil" aria-expanded="false" aria-controls="zourcingPerfil"></i>
+                <p>Qué significa el logo de Zourcing sobre un perfil?</p>
+            </div>
+            <div class="toggle-faq-body collapse" id="zourcingPerfil">
+                <p>¡Disponible para chatear! Una Z (En vez de Z, poner el logo) significa que es un candidato que se registró en nuestra base de datos y podrás chatear con él a través de Zourcing.</p>
+            </div>
+        </div>
+        <div class="toggle-container">
+            <div (click)="zourcearPerfilToggle()" class="toggle-faq" data-toggle="collapse" data-target="#zourcearPerfil" aria-expanded="false" aria-controls="zourcearPerfil">
+                <i *ngIf="!zourcearPerfil" class="fa fa-plus-circle" data-toggle="collapse" data-target="#zourcearPerfil" aria-expanded="false" aria-controls="zourcearPerfil"></i>
+                <i *ngIf="zourcearPerfil" class="fa fa-minus-circle" data-toggle="collapse" data-target="#zourcearPerfil" aria-expanded="false" aria-controls="zourcearPerfil"></i>
+                <p>Qué es “zourcear” un perfil?</p>
+            </div>
+            <div class="toggle-faq-body collapse" id="zourcearPerfil">
+                <p>¡Estás a un paso de conseguirlo! Zourcear es comprar, así que al dar click sólo necesitarás agregar tus datos de compra para obtener ese perfil.</p>
+            </div>
+        </div>
+
+        <h4>Cuenta y perfil</h4>
+        <div class="toggle-container">
+            <div (click)="restablecerPasswordToggle()" class="toggle-faq" data-toggle="collapse" data-target="#restablecerPassword" aria-expanded="false" aria-controls="restablecerPassword">
+                <i *ngIf="!restablecerPassword" class="fa fa-plus-circle" data-toggle="collapse" data-target="#restablecerPassword" aria-expanded="false" aria-controls="restablecerPassword"></i>
+                <i *ngIf="restablecerPassword" class="fa fa-minus-circle" data-toggle="collapse" data-target="#restablecerPassword" aria-expanded="false" aria-controls="restablecerPassword"></i>
+                <p>Restablecer contraseña</p>
+            </div>
+            <div class="toggle-faq-body collapse" id="restablecerPassword">
+                <p>Ingresa al link “¿Olvidaste tu contraseña?” en la pantalla de inicio de sesión y proporciona el email con el que creaste tu cuenta de Zourcing, ahí recibirás un correo con una contraseña temporal que podrás después cambiar si lo deseas.</p>
+            </div>
+        </div>
+        <div class="toggle-container">
+            <div (click)="forgotPasswordToggle()" class="toggle-faq" data-toggle="collapse" data-target="#forgotPassword" aria-expanded="false" aria-controls="forgotPassword">
+                <i *ngIf="!forgotPassword" class="fa fa-plus-circle" data-toggle="collapse" data-target="#forgotPassword" aria-expanded="false" aria-controls="forgotPassword"></i>
+                <i *ngIf="forgotPassword" class="fa fa-minus-circle" data-toggle="collapse" data-target="#forgotPassword" aria-expanded="false" aria-controls="forgotPassword"></i>
+                <p>Olvidé mi usuario</p>
+            </div>
+            <div class="toggle-faq-body collapse" id="forgotPassword">
+                <p>Por definir.</p>
+            </div>
+        </div>
+        <div class="toggle-container">
+            <div (click)="closeAccountToggle()" class="toggle-faq" data-toggle="collapse" data-target="#closeAccount" aria-expanded="false" aria-controls="closeAccount">
+                <i *ngIf="!closeAccount" class="fa fa-plus-circle" data-toggle="collapse" data-target="#closeAccount" aria-expanded="false" aria-controls="closeAccount"></i>
+                <i *ngIf="closeAccount" class="fa fa-minus-circle" data-toggle="collapse" data-target="#closeAccount" aria-expanded="false" aria-controls="closeAccount"></i>
+                <p>Cerrar mi cuenta</p>
+            </div>
+            <div class="toggle-faq-body collapse" id="closeAccount">
+                <p>Por definir.</p>
+            </div>
+        </div>
+
+        <h4>Vacantes</h4>
+        <div class="toggle-container">
+            <div (click)="duracionVacantesToggle()" class="toggle-faq" data-toggle="collapse" data-target="#duracionVacantes" aria-expanded="false" aria-controls="duracionVacantes">
+                <i *ngIf="!duracionVacantes" class="fa fa-plus-circle" data-toggle="collapse" data-target="#duracionVacantes" aria-expanded="false" aria-controls="duracionVacantes"></i>
+                <i *ngIf="duracionVacantes" class="fa fa-minus-circle" data-toggle="collapse" data-target="#duracionVacantes" aria-expanded="false" aria-controls="duracionVacantes"></i>
+                <p>Duración de las vacantes</p>
+            </div>
+            <div class="toggle-faq-body collapse" id="duracionVacantes">
+                <p>¡No te limitamos! Sólo te invitamos a mantenerlas al día, tus vacantes pueden estar abiertas el tiempo que necesites, podrás ver todas las que has creado siempre que no las borres definitivamente y estás dejarán de ser visibles al público cuando modifiques su status a “Cancelada” o “Completa”.</p>
+            </div>
+        </div>
+
+        <h4>Contáctanos</h4>
+        <div class="toggle-container">
+            <div (click)="contactoFaqToggle()" class="toggle-faq" data-toggle="collapse" data-target="#contactoFaq" aria-expanded="false" aria-controls="contactoFaq">
+                <i *ngIf="!contactoFaq" class="fa fa-plus-circle" data-toggle="collapse" data-target="#contactoFaq" aria-expanded="false" aria-controls="contactoFaq"></i>
+                <i *ngIf="contactoFaq" class="fa fa-minus-circle" data-toggle="collapse" data-target="#contactoFaq" aria-expanded="false" aria-controls="contactoFaq"></i>
+                <p>Contacto</p>
+            </div>
+            <div class="toggle-faq-body collapse" id="contactoFaq">
+                <p>No encuentras respuesta a tu inquietud, escríbenos a info@zourcing.com, daremos seguimiento a tu solicitud.</p>
+            </div>
+        </div>
+    </div>
+</div>

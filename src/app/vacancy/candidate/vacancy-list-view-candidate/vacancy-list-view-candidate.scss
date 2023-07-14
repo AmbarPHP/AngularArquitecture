@@ -1,0 +1,63 @@
+.row {
+    padding: 0px 15px;
+}
+
+.vacancy-list-card-table {
+    background-color: #fff;
+    border-radius: 3px;
+    border: 1px solid #eaeaea;
+    margin-bottom: 15px;
+    padding-left: 0px;
+    padding-right: 0px;
+    height: 90px;
+    display: table;
+    width: 100%;
+}
+
+.profile-img-size {
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+}
+
+.vacancy-list-card-information {
+
+    vertical-align: inherit;
+
+    p {
+        margin: 0;
+    }
+}
+
+.vacancy-image {
+    margin-right: 10px;
+}
+
+.vacancy-image, .vacancy-list-card-information, .vacancy-list-card-view {
+    display: inline-block;
+}
+
+// .vacancy-image, .vacancy-list-card-information {
+//     float: left;
+// }
+
+// .vacancy-list-card-view {
+//     float: right;
+// }
+
+.clear-floats {
+    clear: both;
+}
+
+.vacancy-table-cell {
+    display: table-cell;
+    vertical-align: middle;
+    height: 90px;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.view-vacancy {
+    float: right;
+    margin-top: 15px;
+}

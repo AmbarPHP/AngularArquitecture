@@ -1,0 +1,94 @@
+.col-main-filter {
+    margin: 30px 0 0 0;
+}
+
+.input-group {
+    width: 100% !important;
+}
+
+.sort-by-select {
+    margin-top: 20px;
+}
+
+.sort-by-btn {
+    border: 1px solid #eaeaea;
+    color: #747474;
+    background-color: #fff;
+}
+
+.sort-by-btn:active {
+    border: 1px solid #eaeaea;
+    color: #000;
+    background-color: #fff;
+}
+
+button:active, button:focus {
+    color: #747474 !important;
+}
+
+.ic-arrangement-list {
+    width: 40px;
+    height: 45px;
+    object-fit: contain;
+    content: url("/assets/images/ic-arrangement-list.svg")
+}
+
+.ic-arrangement-card {
+    width: 40px;
+    height: 45px;
+    object-fit: contain;
+    content: url("/assets/images/ic-arrangement-cards.svg")
+}
+
+.main-filter-div {
+    display: inline-table;
+    width: 95% !important;
+
+    .input-group-addon {
+        background-color: #fff;
+        border: 1px solid #eaeaea;
+        cursor: pointer;
+        color: #000;
+    }
+}
+
+li > a.selected::after{
+    font-family: 'Glyphicons Halflings';
+    content: " \e013";
+}
+
+.list-icon {
+    display: inline-table;
+    vertical-align: bottom;
+}
+
+.results-found-container {
+    margin-top: 10px;
+    padding-right: 10px;
+
+    p {
+        margin: 0;
+    }
+}
+
+@media screen and (max-width: 666px) {
+    .desktop {
+        display: none;
+    }
+}
+
+@media screen and (min-width: 667px) {
+    .mobile {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 1023px) {
+    .list-icon {
+        display: none;
+    }
+
+    .main-filter-div {
+        width: 100% !important;
+    }
+}

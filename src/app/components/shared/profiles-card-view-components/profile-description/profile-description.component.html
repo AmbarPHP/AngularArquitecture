@@ -1,0 +1,13 @@
+<div class="img-container" [ngClass]="{'img-container-margin-top': profile.attachments.length === 0}">
+    <div class="picture-container">
+        <img [routerLink]="['/profiles', profile.id]" class="profile-img-size img-circle card-img" [src]="profile.profile_picture"
+            onError="this.src='assets/images/user.png';">
+    </div>
+    <div class="description-container">
+        <p class="description-name">{{profile.name}}</p>
+        <p class="description-name">{{profile.pd_position | slice:0:35}}</p>
+        <span class="badge badge-zourcing" *ngFor="let skill of profile?.skills;  let i=index"><span *ngIf="i<4 && skill != ''">{{skill}}</span></span>
+        <p class="description-location">{{profile.location| slice:0:20}}</p>
+    </div>
+
+</div>

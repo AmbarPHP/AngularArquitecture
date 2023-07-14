@@ -1,0 +1,24 @@
+.img-container {
+    display: flex;
+    margin-top: 10px;
+
+    .picture-container {
+        display: inline-block;
+
+        .profile-img-size {
+            width: 50px;
+            height: 50px;
+            cursor: pointer;
+        }
+    }
+    
+    .description-container {
+        height: 160px;
+        display: inline-block;
+        margin-left: 15px;
+        
+        .badge-zourcing {
+            background-color: #58a8fc;
+        }
+    }
+}

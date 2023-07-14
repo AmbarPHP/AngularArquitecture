@@ -1,0 +1,19 @@
+<div class="col-sm-12 col-header">
+    <div class="header-bottom-margin">
+        <div class="h1-container pull-left">
+            <h1>{{ 'MENU.PROFILES.SHOPPING_CART' | translate }}</h1>
+        </div>
+        <div class="header-options pull-right">
+            <a (click)="deselectAll()" class="header-deselect">{{ 'MENU.PROFILES.DESELECT_CART' | translate }}({{selectedProfiles.length}})</a>
+            <button (click)="removeFromCart()" class="btn header-pipeline-btn" [disabled]="selectedProfiles.length < 1">{{ 'MENU.PROFILES.REMOVE_SELECTED_PROFILES' | translate }}</button>
+            <img [ngClass]="{'ic-arrangement-card': profileListView, 'ic-arrangement-list': !profileListView}" alt="">
+        </div>
+    </div>
+</div>
+<div class="remove-bottom-section" [ngClass]="{'remove-bottom-section-1': pagedItems.length === 1}">
+        <div class="col-xs-12 remove-bottom">
+
+            <a (click)="deselectAll()" class="pull-left">{{ 'MENU.PROFILES.DESELECT_CART' | translate }}({{selectedProfiles.length}})</a>
+            <button (click)="removeFromCart()" class="btn header-pipeline-btn pull-right" [disabled]="selectedProfiles.length < 1">{{ 'MENU.PROFILES.FILTERS.REMOVE' | translate }}</button>
+        </div>
+</div>

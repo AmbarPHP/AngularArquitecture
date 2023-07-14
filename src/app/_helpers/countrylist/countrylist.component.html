@@ -1,0 +1,28 @@
+<div class="profile-filter country-filters desktop">
+    <div class="col-md-6 left-0">
+        <label class="filter-label">Country:</label>
+        <select class="form-control" [(ngModel)]="selectedCountry.id" (change)="onSelect($event.target.value)">
+        <option *ngFor="let country of countries" value= {{country.id}}>{{country.name}}</option>
+    </select>
+    </div>
+    <div class="col-md-6 left-0">
+        <label class="filter-label">City:</label>
+        <select class="dropdown form-control" [(ngModel)]="selectedCity.id" (change)="onCitySelect($event.target.value)">
+        <option value=""></option>
+        <option *ngFor="let city of cities" value= {{city.id}}>{{city.name}}</option>
+    </select>
+    </div>
+</div>
+
+<div class="mobile">
+    <label>Location:</label>
+    <br>
+    <select class="form-control location-mobile" [(ngModel)]="selectedCountry.id" (change)="onSelect($event.target.value)">
+        <option value="0"></option>
+        <option *ngFor="let country of countries" value= {{country.id}}>{{country.name}}</option>
+    </select>
+    <select class="form-control location-mobile" [(ngModel)]="selectedCity.id" (change)="onCitySelect($event.target.value)">
+        <option value="0"></option>
+        <option *ngFor="let city of cities" value= {{city.id}}>{{city.name}}</option>
+    </select>
+</div>

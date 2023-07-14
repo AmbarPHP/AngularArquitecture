@@ -1,0 +1,15 @@
+<div class="row" *ngFor="let vacancy of pagedItems">
+    <div class="vacancy-list-card-table">
+        <div class="vacancy-table-cell">
+            <div class="vacancy-image">
+                <img class="profile-img-size img-circle card-img" src="assets/images/img-companypic-empty-big.svg"
+                onError="this.src='assets/images/user.png';">
+            </div>
+            <div class="vacancy-list-card-information">
+                <p>{{vacancy.posting_title}}</p>
+                <p>{{vacancy.country}}, {{vacancy.state}}, {{vacancy.city}}</p>
+            </div>
+            <a [routerLink]="['/vacancies-candidate', vacancy.id]" class="view-vacancy">View full vacancy</a>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,39 @@
+<div class="row">
+    <div class="col-sm-3" *ngFor="let vacancy of (pagedItems | vacancyFilter: filterString); let i = index">
+        <div class="vacancy-card">
+            <div class="checkbox-container">
+                <input type="checkbox" [checked]="getCheckBoxesSaved(vacancy.id)" (change)="$event.target.checked ? checkCard(vacancy.id) : uncheckCard(vacancy.id)">
+            </div>
+            <div class="vacancy-card-details">
+                <p class="vacancy-title">{{vacancy.posting_title}}</p>
+                <p class="vacancy-title">{{vacancy.job_description}}</p>
+                <p class="vacancy-location">{{vacancy.country}}, {{vacancy.city}}</p>
+                <p class="vacancy-location">{{vacancy.total_work_experience_in_it}}</p>
+            </div>
+            <div class="vacancy-share-container">
+                <p>Compartir en:</p>
+                <button class="share-twitter-btn" (click)="shareTwitter(vacancy.posting_title, vacancy.job_description, vacancy.country, vacancy.id)">
+                    <i class="fa fa-twitter"></i>
+                </button>
+                <button class="share-facebook-btn" (click)="shareFacebook(vacancy.posting_title, vacancy.job_description, vacancy.country, vacancy.id)">
+                    <i class="fa fa-facebook"></i>
+                </button>
+            </div>
+            <div class="vacancy-status">
+                <p>{{ 'MENU.VACANCIES.VACANCY_STATUS_LABEL' | translate }}: {{vacancy.status_name}}</p>
+            </div>
+            <div class="vacancy-card-images">
+                <div *ngFor="let applicant of vacancy.applicants; let i = index" class="img-container">
+                    <img *ngIf="i < 4" class="card-image-size img-circle card-img" [ngClass]="{'img-position': i > 0}" [src]="applicant.profile_picture"
+                        onError="this.src='assets/images/user.png';">
+                </div>
+                <button *ngIf="vacancy.applicants.length > 4" href="" class="card-image-size img-circle card-img card-more-images">+{{vacancy.applicants.length - 4}}</button>
+                <h4 class="no-applicants" *ngIf="vacancy.applicants.length == 0">No one has applied yet.</h4>
+            </div>
+            <div class="vacancy-card-view-full">
+                <a [routerLink]="['/vacancies', vacancy.id]">{{ 'MENU.VACANCIES.VIEW_FULL_VACANCY' | translate }}</a>
+            </div>
+        </div>
+    </div>
+
+</div>

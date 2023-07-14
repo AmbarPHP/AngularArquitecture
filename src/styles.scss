@@ -1,0 +1,8 @@
+/* You can add global styles to this file, and also import other style files */
+// @import '~ngx-chips/dist/ngx-chips.css';
+
+@import "~angular-star-rating/assets/scss/star-rating";
+
+.popover {
+    max-width: 500px !important;
+}

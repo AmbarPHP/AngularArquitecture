@@ -1,0 +1,90 @@
+<div class="col-xs-12 my-account-workexperience-container">
+    <div *ngIf="candidateWorkExperience">
+        <div class="alert-container">
+            <alert></alert>
+        </div>
+        <div *ngFor="let workExperience of candidateWorkExperience; index as i" class="work-experience">
+            <div *ngIf="workExperience_displayed[i].editView === false">
+                <h4>{{ 'MENU.PROFILES.WIZARD.WORK_EXPERIENCE' | translate }}</h4>
+                <h4>{{workExperience.name}}</h4>
+                <p>{{workExperience.position}}</p>
+                <p class="gray-text">{{workExperience.location}}</p>
+                <p class="gray-text" *ngIf="!workExperience.currently_working">{{workExperience.from_date}} - {{workExperience.to_date}}</p>
+                <p class="gray-text" *ngIf="workExperience.currently_working">{{workExperience.from_date}} - Present</p>
+                <a class="edit-link" (click)="workExperience_displayed[i].editView = true"><i class="fa fa-pencil" aria-hidden="true"></i>{{ 'MENU.PROFILES.WIZARD.EDIT' | translate }}</a>
+                <a (click)="deleteWorkExperience(workExperience.id)"><i class="fa fa-trash-o" aria-hidden="true"></i>{{ 'MENU.PROFILES.WIZARD.DELETE' | translate }}</a>
+            </div>
+            <div *ngIf="workExperience_displayed[i].editView === true">
+                <form #editWorkExperienceForm="ngForm">
+                    <h4 class="title-edit-view">{{ 'MENU.PROFILES.WIZARD.WORK_EXPERIENCE' | translate }}</h4>
+                    <div class="form-group company-name-group">
+                        <input type="text" id="id" name="id" [(ngModel)]="workExperience.id" class="hide">
+                        <label for="name">{{ 'MENU.PROFILES.WIZARD.COMPANY_NAME' | translate }}</label>
+                        <input type="text" id="name" name="name" class="form-control" [(ngModel)]="workExperience.name" required>
+                    </div>
+                    <div class="form-group location-group">
+                        <label for="location">{{ 'MENU.PROFILES.WIZARD.LOCATION' | translate }}</label>
+                        <input type="text" id="location" name="location" class="form-control" [(ngModel)]="workExperience.location" required>
+                    </div>
+                    <div class="form-group position-group">
+                        <label for="position">{{ 'MENU.PROFILES.WIZARD.POSITION' | translate }}</label>
+                        <input name="position" id="position" class="form-control" [(ngModel)]="workExperience.position" required>
+                    
+                    </div>
+                    <div class="form-group from-group">
+                        <label for="from">{{ 'MENU.PROFILES.WIZARD.DEGREE' | translate }}</label>
+                        <input type="date" name="from_date" id="from_date" class="form-control" [(ngModel)]="workExperience.from_date" required>
+                    </div>
+                    <div class="form-group to-group">
+                        <label for="to_date">{{ 'MENU.PROFILES.WIZARD.TO' | translate }}</label>
+                        <input [disabled]="workExperience.currently_working" type="date" name="to_date" id="to_date" class="form-control" [(ngModel)]="workExperience.to_date" required>
+                        <input type="checkbox" id="currently_working" name="currently_working" [(ngModel)]="workExperience.currently_working">
+                        <label for="currently_working">{{ 'MENU.PROFILES.WIZARD.CURRENTLY_WORKING' | translate }}</label>
+                    </div>
+                    <div class="responabilities-group form-group">
+                        <label>{{ 'MENU.PROFILES.WIZARD.RESPONSABILITIES' | translate }}</label>
+                        <textarea name="responsabilities" id="responsabilities" cols="30" rows="3" [(ngModel)]="workExperience.responsabilities" class="form-control"></textarea>
+                    </div>
+                    <button [disabled]="editWorkExperienceForm.invalid" class="btn save-button" (click)="editWorkExperience(editWorkExperienceForm.value, i)">{{ 'MENU.PROFILES.WIZARD.SAVE' | translate }}</button>
+                </form>
+            </div>
+        </div>
+        <div class="add-workexperience">
+            <h4>{{ 'MENU.PROFILES.WIZARD.ADD_WORK_EXPERIENCE' | translate }}</h4>
+            <div *ngFor="let workExperience_info of workExperience_infos">
+                <form #form="ngForm">
+                    <div class="form-group company-name-group">
+                        <label for="name">{{ 'MENU.PROFILES.WIZARD.COMPANY_NAME' | translate }}</label>
+                        <input type="text" id="name" name="name" class="form-control" [(ngModel)]="workExperience_info.name">
+                    </div>
+                    <div class="form-group location-group">
+                        <label for="location">{{ 'MENU.PROFILES.WIZARD.LOCATION' | translate }}</label>
+                        <input type="text" id="location" name="location" class="form-control" [(ngModel)]="workExperience_info.location">
+                    </div>
+                    <div class="form-group position-group">
+                        <label for="position">{{ 'MENU.PROFILES.WIZARD.POSITION' | translate }}</label>
+                        <input name="position" id="position" class="form-control" [(ngModel)]="workExperience_info.position">
+                    </div>
+                    <div class="form-group from-group">
+                        <label for="from">{{ 'MENU.PROFILES.WIZARD.FROM' | translate }}</label>
+                        <input type="date" name="from_date" id="from_date" class="form-control" [(ngModel)]="workExperience_info.from_date">
+                    </div>
+                    <div class="form-group to-group">
+                        <label for="to_date">{{ 'MENU.PROFILES.WIZARD.TO' | translate }}</label>
+                        <input [disabled]="workExperience_info.currently_working" type="date" name="to_date" id="to_date" class="form-control" [(ngModel)]="workExperience_info.to_date">
+                        <input type="checkbox" id="currently_working" name="currently_working" [(ngModel)]="workExperience_info.currently_working">
+                        <label for="currently_working">{{ 'MENU.PROFILES.WIZARD.CURRENTLY_WORKING' | translate }}</label>
+                    </div>
+                    <div class="responabilities-group form-group">
+                        <label>{{ 'MENU.PROFILES.WIZARD.RESPONSABILITIES' | translate }}</label>
+                        <textarea name="responsabilities" id="responsabilities" cols="30" rows="3" [(ngModel)]="workExperience_info.responsabilities" class="form-control"></textarea>
+                    </div>
+                </form>
+                
+            </div>
+            <button [disabled]="candidateWorkExperience.length >= workExperiencesAllowed" class="btn add-button" (click)="addWorkExperience()">{{ 'MENU.PROFILES.WIZARD.ADD' | translate }}</button>
+        </div>
+        <button class="btn update-button" (click)="updateWorkExperience()">{{ 'MENU.PROFILES.WIZARD.UPDATE_BUTTON' | translate }}</button>
+        <!-- {{ workExperience_infos | json }} -->
+    </div>
+</div>

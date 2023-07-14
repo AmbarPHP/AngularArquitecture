@@ -1,0 +1,26 @@
+<div class="col-sm-12 col-header">
+    <div class="header-bottom-margin">
+        <div class="h1-container pull-left">
+            <h1>{{ 'MENU.PROFILES.TALENT' | translate }}</h1>
+            <ul class="talent-ul-views">
+                <li class="mouse-hover" [ngClass]="{'option-selected': boughtProfilesState && !_profileService.importedContactsState}" (click)="sendBoughtProfilesStateEvent(true)">{{ 'MENU.PROFILES.BOUGHT' | translate }}</li>
+                <li class="mouse-hover" [ngClass]="{'option-selected': !boughtProfilesState || _profileService.importedContactsState}" (click)="sendBoughtProfilesStateEvent(false)">{{ 'TALENT.IMPORTED_CONTACTS' | translate }}</li>
+            </ul>
+        </div>
+        <div class="header-options pull-right">
+            <profile-cards-qty 
+                [location]="'talent'"
+                (sendChangeProfileCardsQty)="getChangeProfileCardsQty($event)">
+
+            </profile-cards-qty>
+            <img class="list-icon" [ngClass]="{'ic-arrangement-card': talentListView, 'ic-arrangement-list': !talentListView}"
+                (click)="talentListViewToogle()" alt="">
+        </div>
+        <div class="clear-floats"></div>
+        <select name="" id="" class="form-control talent-dropdown-views" (change)="dropdownValue($event.target.value)" [value]="dropdownOptionSelected">
+            <!-- <option value="">{{ 'TALENT.SELECT_OPTION' | translate }}</option> -->
+            <option value="1">{{ 'MENU.PROFILES.BOUGHT' | translate }}</option>
+            <option value="2">{{ 'TALENT.IMPORTED_CONTACTS' | translate }}</option>
+        </select>
+    </div>
+</div>

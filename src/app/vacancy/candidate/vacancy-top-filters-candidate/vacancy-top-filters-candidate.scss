@@ -1,0 +1,42 @@
+.form-control{
+    border: 1px solid #eaeaea;
+    box-shadow: none;
+}
+
+.input-group {
+    width: 100% !important;
+}
+
+.input-search-button {
+    color: #fff;
+    background-color: #58a8fc;
+    min-width: 140px;
+    cursor: pointer;
+}
+
+.dropdown-search-button {
+    border: 1px solid #eaeaea;
+    background-color: #fff;
+    font-size: 12px;
+}
+
+.dropdown-search-button select {
+    background-color: #fff;
+    border: none;
+}
+
+.sortByMobile {
+    margin-top: 15px;
+}
+
+@media screen and (max-width: 666px) {
+    .desktop {
+        display: none;
+    }
+}
+
+@media screen and (min-width: 667px){
+    .mobile {
+        display: none;
+    }
+}

@@ -1,0 +1,46 @@
+<div class="col-xs-12 col-sm-6 talent-work-experience-card">
+    <div class="col-xs-12 monthly-avarage">
+        <p *ngIf="profile?.estimated_salary > 0">The monthly average salary for this type of profile is:</p>
+        <p *ngIf="profile?.estimated_salary > 0"class="avarage">${{profile?.estimated_salary}} MXN</p>
+        <p *ngIf="profile?.estimated_salary > 0">This information was obtained from a calculated average at <a href="http://lovemondays.com">Lovemondays.com</a></p>
+        <p *ngIf="profile?.estimated_salary == 0">Sorry, unfortunately we do not have enough information to estimate a salary for this profile.</p>
+    </div>
+    <div class="col-xs-12 work-experience-card">
+        <h4>Work Experience</h4>
+        <div class="col-xs-12 work-experience-details" *ngFor="let profileExperience of profile?.details">
+            <p *ngIf="profileExperience" class="work-experience-position">{{profileExperience.pd_position}}</p> 
+            @
+            <h4 class="work-experience-title">{{profileExperience.pd_place}}</h4>
+            <p class="work-experience-location">{{profile?.location}}</p>
+            <p class="work-experience-date">{{profileExperience.pd_exp_range}}</p>
+            <p class="work-experience-date">{{profileExperience.pd_responsabilities}}</p>
+        </div>
+        <!--<div class="col-xs-12 work-experience-details no-border-bottom">
+            <h4 class="work-experience-title">Invision</h4>
+            <p class="work-experience-position">Visual Designer</p>
+            <p class="work-experience-location">San Diego, California</p>
+            <p class="work-experience-date">November 2016 - Present</p>
+        </div>-->
+    </div>
+    <div class="col-xs-12 work-experience-skills">
+        <h4>Skills</h4>
+        <span class="badge" *ngFor="let skill of profile?.profile_skills">{{skill.pd_skill}}</span>
+        <!--<span class="badge">Motion Design 90%</span>
+        <span class="badge">UX 90%</span>
+        <span class="badge">HTML 90%</span>
+        <span class="badge">CSS 90%</span>-->
+    </div>
+    <div class="col-xs-12 work-experience-education">
+        <h4>Education</h4>
+        <h4 class="work-experience-collage">{{profile?.education}}</h4>
+
+    </div>
+    <div class="col-xs-12 work-experience-languages" *ngIf="languages.length > 0">
+        <h4>Languages</h4>
+        <span class="badge language-badge" *ngFor="let language of languages">{{language.pd_achievement}}</span>
+    </div>
+    <div class="col-xs-12 work-experience-projects" *ngIf="projects.length > 0">
+        <h4 class="language-title">Projects</h4>
+        <span class="badge project-badge" *ngFor="let project of projects">{{project.pd_achievement}}</span>
+    </div>
+</div>

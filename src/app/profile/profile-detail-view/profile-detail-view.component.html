@@ -1,0 +1,45 @@
+<div class="container-fluid">
+    <div class="text-center" *ngIf="loading === true">
+        <img class="loading-spinner" src="assets/images/ring.svg">
+    </div>
+    <div class="row" *ngIf="loading === false">
+        <div class="col-xs-12 profile-detail-menu">
+            <profile-detail-menu
+                [contactInfo]="contactInfo"
+                (sendContactInfoEvent)="contactInfo = $event">
+            </profile-detail-menu>
+        </div>
+        <div class="col-xs-12 profile-detail desktop">
+            <profile-detail-view-card
+                [currentUser]="currentUser"
+                [profile]="profile"
+                [socialSource]="socialSource">
+            </profile-detail-view-card>
+            <profile-work-experience-card
+                [profile]="profile"
+                [languages]="languages"
+                [projects]="projects">
+            </profile-work-experience-card>
+            <profile-similar-profiles-card
+                [related_profiles]="related_profiles">
+            </profile-similar-profiles-card>
+        </div>
+        <div class="col-xs-12 profile-detail mobile">
+            <profile-detail-view-card 
+                *ngIf="contactInfo"
+                [currentUser]="currentUser"
+                [profile]="profile">
+            </profile-detail-view-card>
+            <profile-work-experience-card
+                *ngIf="!contactInfo"
+                [profile]="profile"
+                [languages]="languages"
+                [projects]="projects">
+            </profile-work-experience-card>
+            <profile-similar-profiles-card
+                *ngIf="contactInfo"
+                [related_profiles]="related_profiles">
+            </profile-similar-profiles-card>
+        </div>
+    </div>
+</div>

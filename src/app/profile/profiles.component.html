@@ -1,0 +1,200 @@
+<div class="container-fluid desktop">
+    <div class="row">
+        <profile-header
+            [msgs]="msgs"
+            [selectedProfiles]="selectedProfiles"
+            [remainingCredits]="remainingCredits"
+            (sendDeselectAllEvent)="deselectAll()"
+            (sendAddToCartEvent)="addToCart()"
+            (sendProfileCardsQtyEvent)="getProfileCardsQty($event)"
+            (sendChangeProfileCardsQtyEvent)="getPageSize($event)">
+        </profile-header>
+
+        <profile-main-filter 
+            (sendLoadingEvent)="loading = $event"
+            (sendTermEvent)="term = $event"
+            (sendProfileListViewEvent)="getprofileListView($event)"
+            (sendMainSearchEvent)="getMainSearch($event)"
+            (sendOrderByEvent)="getSearchOrderBy($event)"
+            [term]="term"
+            [profileListView]="profileListView"
+            [orderSelected]="orderBy">
+        </profile-main-filter>
+    </div>
+    <div class="row">
+        <profile-left-filters *ngIf="profileListView === false"
+            (sendBooleansEvent)="getBooleans($event)"
+            (sendSearchSkillsEvent)="getSearchSkills($event)"
+            (sendClearFiltersEvent)="getClearFilters($event)"
+            (sendLocationCountryEvent)="getLocationCountry($event)"
+            (sendLocationCityEvent)="getLocationCity($event)"
+            (sendFiltersMobileEvent)="filters_mobile = $event"
+            (sendYearsOfExperienceEvent)="getYearsOfExperience($event)"
+            (sendEducationEvent)="getEducation($event)"
+            (sendCountryFilterEvent)="getCountryFilter($event)"
+            (sendStateFilterEvent)="getStateFilter($event)"
+            (sendCityFilterEvent)="getCityFilter($event)"
+            (sendLanguageFilterEvent)="getLanguageFilter($event)"
+            (sendSearchById)="getSearchById($event)"
+            (sendLocationEvent)="getLocationEvent($event)"
+            [checkBoxFiltersStatus]="checkBoxFiltersStatus"
+            [selectedCountry]="selectedCountry"
+            [countryFilter]="search_location_country_id"
+            [languageFilter]="search_language_id"
+            [byId]="search_by_id"
+            [cityFilter]="search_location_city_id"
+            [leftFilterCountry]="leftFilterCountry"
+            [leftFilterStates]="leftFilterStates"
+            [leftFilterCities]="leftFilterCities"
+            [leftFilterLanguage]="leftFilterLanguage"
+            [location]="location"
+            [search_by_id]="search_by_id">
+        </profile-left-filters>
+
+        <div class="col-xs-12 col-sm-9 col-profile-card-view" *ngIf="profileListView === false">
+            <div class="text-center" *ngIf="loading === true">
+                <img class="loading-spinner" src="assets/images/ring.svg">
+            </div>
+            <div class="row" *ngIf="loading === false">
+                <profile-card-view *ngFor="let profile of pagedItems"
+                    [pagedItems]="profile"
+                    [savedSelectedProfiles]="savedSelectedProfiles"
+                    (sendSelectedProfilesEvent)="getSelectedProfiles($event)"
+                    (sendUnselectedProfilesEvent)="getUnselectedProfiles($event)"
+                    (sendBuyProfileEvent)="buyProfile($event)"
+                >
+                </profile-card-view>
+            </div>
+            <div class="row">
+                <profile-pagination [pager]="pager"
+                    [profiles]="profiles"
+                    [total]="total"
+                    [pages]="pages"
+                    [pagedItems]="pagedItems"
+                    (sendPaginationEvent)="getPagination($event)"
+                    *ngIf="loading === false && profiles.length > 0"
+                >
+                </profile-pagination>
+            </div>
+        </div>
+        <div *ngIf="profileListView === true">
+            <div class="text-center" *ngIf="loading === true">
+                <img class="loading-spinner" src="assets/images/ring.svg">
+            </div>
+            <div *ngIf="loading === false && profiles.length > 0">
+                <profile-list-view
+                    *ngFor="let profile of pagedItems"
+                    [pagedItems]="profile"
+                    [selectedProfiles]="selectedProfiles"
+                    [savedSelectedProfiles]="savedSelectedProfiles"
+                    (sendSelectedProfilesEvent)="getSelectedProfiles($event)"
+                    (sendUnselectedProfilesEvent)="getUnselectedProfiles($event)"
+                    (sendBuyProfileEvent)="buyProfile($event)">
+                </profile-list-view>
+            </div>
+        </div>
+        <div class="empty-wrapper" *ngIf="profiles.length == 0 && loading === false">
+            <p class="empty"> 
+                {{ 'MENU.PROFILES.NO_RESULTS' | translate }}<br>
+                    <button *ngIf="loggedIn && term.value != ''" class="btn search-more" (click)="searchDetail()">Search More</button> 
+            </p>
+        </div>
+        <profile-pagination [pager]="pager"
+            [profiles]="profiles"
+            [pagedItems]="pagedItems"
+            [total]="total"
+            [pages]="pages"
+            (sendPaginationEvent)="getPagination($event)"
+            *ngIf="loading === false && profileListView === true && profiles.length > 0">
+        </profile-pagination>
+    </div>
+</div>
+<!-- Mobile View  -->
+<div class="container-fluid mobile">
+    <div class="row">
+        <profile-header
+            [ngClass]="{'desktop': filters_mobile}"
+            [msgs]="msgs"
+            [selectedProfiles]="selectedProfiles"
+            (sendDeselectAllEvent)="deselectAll()"
+            (sendAddToCartEvent)="addToCart()">
+        </profile-header>
+
+         <profile-main-filter-mobile 
+            (sendMainSearchEvent)="getMainSearch($event)"            
+            (sendOrderByEvent)="getSearchOrderBy($event)"
+            [ngClass]="{'desktop': filters_mobile}"
+            [termMobile]="termMobile"
+            [orderSelected]="orderBy">
+        </profile-main-filter-mobile> 
+    </div>
+    <div class="row">
+         <profile-left-filters
+            *ngIf="profileListView === false"
+            [filters_mobile]="filters_mobile"
+            (sendBooleansEvent)="booleans = $event; search()"
+            [checkBoxFiltersStatus]="checkBoxFiltersStatus"
+            (sendSearchSkillsEvent)="getSearchSkills($event)"
+            (sendClearFiltersEvent)="getClearFilters($event)"
+            (sendLocationCountryEvent)="getLocationCountry($event)"
+            (sendLocationCityEvent)="getLocationCity($event)"
+            (sendFiltersMobileEvent)="filters_mobile = $event"
+            (sendClearAllMobileEvent)="getClearAllMobile()"
+            [selectedCountry]="selectedCountry">
+        </profile-left-filters> 
+
+        <div class="col-xs-12 col-sm-9 col-profile-card-view">
+            <div class="text-center" *ngIf="loading === true">
+                <img class="loading-spinner" src="assets/images/ring.svg">
+            </div>
+            <div *ngIf="loading === false">
+                <profile-card-view 
+                    [ngClass]="{'desktop': filters_mobile}"
+                    *ngFor="let profile of pagedItems"
+                    [pagedItems]="profile"
+                    [savedSelectedProfiles]="savedSelectedProfiles"
+                    (sendSelectedProfilesEvent)="getSelectedProfiles($event)"
+                    (sendUnselectedProfilesEvent)="getUnselectedProfiles($event)"
+                    (sendBuyProfileEvent)="buyProfile($event)">
+                </profile-card-view>
+            </div>
+            <profile-filters-mobile
+                *ngIf="filters_mobile"
+                [leftFilterLanguage]="leftFilterLanguage"
+                [checkBoxFiltersStatus]="checkBoxFiltersStatus"
+                [languageFilter]="search_language_id"
+                (sendApplyMobileFiltersEvent)="getMobileFilters($event)">
+            </profile-filters-mobile>
+        </div>
+        <profile-pagination
+            [ngClass]="{'desktop': filters_mobile}"
+            [pager]="pager"
+            [profiles]="profiles"
+            [total]="total"
+            [pages]="pages"
+            [pagedItems]="pagedItems"
+            (sendPaginationEvent)="getPagination($event)"
+            *ngIf="loading === false && profiles.length > 6">
+        </profile-pagination>
+        <div class="empty-wrapper" *ngIf="profiles.length == 0 && loading === false">
+            <p class="empty"> 
+                {{ 'MENU.PROFILES.NO_RESULTS' | translate }}
+                    <br>                        
+                    <button *ngIf="loggedIn && term.value != ''" class="btn search-more" (click)="searchDetail()">Search More</button>  
+            </p>                
+        </div>
+        <div class="col-xs-12 cards-selected-bottom mobile">
+            <div class="cards-selected-option">
+                <a (click)="deselectAll()" class="deselect-mobile pull-left">{{ 'MENU.PROFILES.DESELECT_CART' | translate }}({{selectedProfiles.length}})</a>
+                <button class="btn remove-btn pull-right" [disabled]="selectedProfiles.length === 0" (click)="addToCartMobile()">{{ 'MENU.PROFILES.ADD_CART' | translate }}</button>
+            </div>
+        </div>
+  
+    </div>
+    
+</div>
+
+<credit-confirmation-modal
+    [zourcedProfile]="zourcedProfile"
+    [selectedProfiles]="selectedProfiles">
+</credit-confirmation-modal>

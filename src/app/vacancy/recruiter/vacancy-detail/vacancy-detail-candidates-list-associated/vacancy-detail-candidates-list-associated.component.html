@@ -1,0 +1,54 @@
+<div class="col-md-12 talent-list-view-container">
+        <div class="talent-list-img pull-left">
+            <input type="checkbox" [checked]="getCheckBoxesSaved(applicant.id)" (change)="$event.target.checked ? checkProfile(applicant.id) : uncheckProfile(applicant.id)">
+            <img class="profile-img-size img-circle card-img" [src]="applicant.profile_picture"
+                                onError="this.src='assets/images/user.png';">
+        </div>
+        <div class="talent-list-description col-md-4">
+            <p class="description-name">{{applicant.name}}</p>
+            <!-- <span class="badge badge-zourcing" *ngFor="let skill of applicant.skills;  let i=index"><span *ngIf="i<4 && skill != ''">{{skill}}</span></span> -->
+            <p class="description-location">{{applicant.location| slice:0:20}}...</p>
+        </div>
+        <div class="talent-list-social col-md-3 text-center">
+            <div class="col-md-2">
+                <i class="fa fa-linkedin" [ngClass]="{'social-source': socialLinkedin}"></i>
+            </div>
+            <div class="col-md-2">
+                <i class="fa fa-facebook-f" [ngClass]="{'social-source': socialFacebook}"></i>
+            </div>
+            <div class="col-md-2">
+                <i class="fa fa-github" [ngClass]="{'social-source': socialGithub}"></i>
+            </div>
+            <div class="col-md-2">
+                <i class="fa fa-skype" [ngClass]="{'social-source': socialSkype}"></i>
+            </div>
+            <div class="col-md-2">
+                <i class="fa fa-twitter" [ngClass]="{'social-source': socialTwitter}"></i>
+            </div>
+            <!-- <div class="col-md-2">
+                <a *ngIf="hasWebsiteInformation" href="http://{{websiteUrl}}" target="_blank"><i [ngClass]="{'social-source': hasWebsiteInformation}" class="fa fa-link"></i></a>
+                <i class="fa fa-link"></i>
+            </div> -->
+            <div class="col-md-12">
+                <p *ngIf="applicant.home || applicant.mobile" class="talent-mobile">
+                    <i class="fa fa-phone"></i> {{applicant.home || applicant.mobile}}
+                </p>
+            </div>
+            <div class="col-md-12">
+                <p *ngIf="applicant.email" class="talent-email">
+                    <i class="fa fa-envelope-o"></i> {{applicant.email}}
+                </p>
+            </div>
+        </div>
+        <div class="talent-list-chat col-md-2" *ngIf="applicant.owns === false">
+            <button [routerLink]="['/profiles', applicant.id]" class="chat-button">View more details</button>
+        </div>
+        <div class="talent-list-chat col-md-2" *ngIf="applicant.owns === true">
+            <button [routerLink]="['/talent', applicant.id]" class="chat-button-bought">View more details</button>
+        </div>
+        <div class="talent-list-full col-md-2">
+            <a *ngIf="applicant.owns === true && applicant.source != null" (click)="sendInvite()">Send Invitation</a>
+            <a *ngIf="applicant.owns === true && applicant.source == null" [routerLink]="['/chat', applicant.id]">Chat</a>
+            <a *ngIf="applicant.owns === false" (click)="buyProfile(applicant.id)">Zource profile</a>
+        </div>
+    </div>

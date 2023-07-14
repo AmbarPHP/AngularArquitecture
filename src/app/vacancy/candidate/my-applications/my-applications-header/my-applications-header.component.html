@@ -1,0 +1,28 @@
+<div class="row">
+    <div class="col-xs-12 my-applications-header-container">
+        <h1>{{ 'MENU.VACANCIES_CANDIDATE.MY_APPLICATIONS.TITLE' | translate }}</h1>
+        <div class="deselect-container">
+            <a class="deselect-all" (click)="deselectAllApplications()">{{ 'MENU.VACANCIES_CANDIDATE.MY_APPLICATIONS.DESELECT_ALL' | translate }}({{notInterested.length}})</a>
+            <button [disabled]="notInterested.length === 0" class="btn btn-not-interested" data-toggle="modal" data-target="#notInterestedModal">{{ 'MENU.VACANCIES_CANDIDATE.MY_APPLICATIONS.NOT_INTERESTED_BUTTON' | translate }}</button>
+            <img class="ic-arrangement-list">
+        </div>
+        <div class="clear-floats"></div>
+        <div class="header-line"></div>
+    </div>
+</div>
+
+<div class="modal fade" id="notInterestedModal" tabindex="-1" role="dialog" aria-labelledby="notInterestedModal">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="myModalLabel">{{ 'MENU.VACANCIES_CANDIDATE.MY_APPLICATIONS.NOT_INTERESTED_MODAL.TITLE' | translate }}</h4>
+            </div>
+            <div class="modal-body">
+                {{ 'MENU.VACANCIES_CANDIDATE.MY_APPLICATIONS.NOT_INTERESTED_MODAL.MESSAGE' | translate }}
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-not-interested  pull-left" (click)="removeApplicants()" data-dismiss="modal">{{ 'MENU.VACANCIES_CANDIDATE.MY_APPLICATIONS.NOT_INTERESTED_MODAL.NOT_INTERESTED_BUTTON' | translate }}</button>
+            </div>
+        </div>
+    </div>
+</div>

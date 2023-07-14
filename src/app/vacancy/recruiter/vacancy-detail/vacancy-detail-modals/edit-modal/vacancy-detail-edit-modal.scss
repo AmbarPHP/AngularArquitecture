@@ -1,0 +1,34 @@
+.add-language {
+    margin-bottom: 15px;
+}
+
+.btn-delete-skill {
+    background-color: #f96a6e;
+    color: #fff;
+    width: 40px;
+    height: 35px;
+}
+
+.btn-save-changes {
+    background-color: #58a8fc;
+    color: #fff;
+    width: 140px;
+    height: 40px;
+    border-radius: 2px;
+}
+
+.red-star {
+    color: red;
+}
+
+.language-form-group, .language-level-group {
+    width: 40%;
+    display: inline-block;
+}
+
+.language-level-group {
+    .language-level {
+        width: 80%;
+        display: inline-block;
+    }
+}

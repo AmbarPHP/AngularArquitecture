@@ -1,0 +1,62 @@
+<p-growl [(value)]="msgs" sticky="sticky"></p-growl>
+
+
+<div class="container-fluid">
+    <div class="row">
+        <talent-header
+            [talentListView]="talentListView"
+            [boughtProfilesState]="boughtProfilesState"
+            [dropdownOptionSelected]="dropdownOptionSelected"
+            (sendTalentListViewEvent)="talentListView = $event"
+            (sendChangeProfileCardsQtyEvent)="getChangeProfileCardsQty($event)"
+            (changeBoughtProfilesStateEvent)="getBoughtProfilesStateEvent($event)">
+        </talent-header>
+        <talent-filter
+            (sendTalentMainFilter)="getTalentMainFilter($event)"
+            *ngIf="boughtProfilesState">
+        </talent-filter>
+    </div>
+    <div class="text-center" *ngIf="loading == true">
+        <img class="loading-spinner" src="assets/images/ring.svg">
+    </div>
+    <div class="row" *ngIf="loading == false && boughtProfilesState && !profileService.importedContactsState">
+        <div *ngIf="(pagedItems | filter: filterString).length > 0">
+            <div *ngIf="!talentListView" class="col-xs-12 talent-card-view">
+                <talent-card-view [pagedItems]="pagedItems" *ngFor="let items of (pagedItems | filter: filterString); let i = index" [items]="items" [index]="i" [page]="page"></talent-card-view>
+            </div>
+            <div *ngIf="talentListView" class="col-xs-12 talent-list-view">
+                <talent-list-view class="list-view" [pagedItems]="pagedItems" *ngFor="let items of (pagedItems | filter: filterString); let i = index" [items]="items" [index]="i" [page]="page"></talent-list-view>
+                <talent-card-view class="card-view" [pagedItems]="pagedItems" *ngFor="let items of (pagedItems | filter: filterString); let i = index" [items]="items" [index]="i" [page]="page"></talent-card-view>
+            </div>
+            <profile-pagination
+                [pager]="pager"
+                [profiles]="profiles"
+                [pagedItems]="pagedItems"
+                [total]="total"
+                [pages]="pages"
+                (sendPaginationEvent)="getPagination($event)">
+            </profile-pagination>
+        </div>
+        <div *ngIf="(pagedItems | filter: filterString).length == 0">
+            <div class="empty-wrapper">
+                <p class="empty">
+                    Sorry but no profiles match your criteria, please try a different search.
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="row" *ngIf="!boughtProfilesState || profileService.importedContactsState">
+        <!-- <div>
+            <div class="empty-wrapper">
+                <p class="empty">
+                    Sorry but you don't have imported contacts.
+                </p>
+            </div>
+        </div> -->
+        <talent-imported-contacts
+            [importedContacts]="importedContacts"
+            [loading]="loadingImportedContacts">
+
+        </talent-imported-contacts>
+    </div>
+</div>

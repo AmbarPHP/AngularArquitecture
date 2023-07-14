@@ -1,0 +1,24 @@
+.checkout-header-container {
+    border-bottom: 1px solid #eaeaea;
+}
+
+.checkout-navigation {
+    color: #9f9e9e;
+    margin-bottom: 15px;
+}
+
+
+@media screen and (max-width: 666px) {
+    .checkout-header-container {
+        border: none;
+    }
+    .checkout-navigation {
+        display: none;
+    }
+}
+
+@media screen and (min-width: 667px) {
+    .checkout-header-container {
+        margin-bottom: 30px;
+    }
+}

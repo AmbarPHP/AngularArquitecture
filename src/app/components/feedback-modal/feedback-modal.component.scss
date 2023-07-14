@@ -1,0 +1,16 @@
+.clear-floats {
+    clear: both;
+}
+
+.modal-body-container {
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    .fa-check-circle {
+        color: #58d490;
+        font-size: 35px;
+    }
+}

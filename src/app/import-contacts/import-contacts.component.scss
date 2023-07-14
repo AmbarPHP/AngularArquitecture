@@ -1,0 +1,59 @@
+h1 {
+    margin: 0;
+}
+
+.import-header {
+    height: 60px;
+    margin-top: 10px;
+}
+
+.import-btn {
+    background-color: #58d490;
+    color: #fff;
+    border: none;
+    border-radius: 2px;
+    min-width: 140px;
+    height: 35px;
+}
+
+.min-size {
+    min-height: 500px;
+}
+
+.not-found-btn {
+    background-color: #58d490;
+    color: #fff;
+    border: none;
+    border-radius: 2px;
+    min-width: 140px;
+    height: 35px;
+}
+
+.clean-floats {
+    clear: both;
+}
+
+.header-border {
+    border-bottom: 1px solid #eaeaea;
+    margin-top: 20px;
+}
+
+.gmailContacts-not-found {
+    text-align: center;
+    margin-top: 200px;
+    height: 300px;
+}
+
+.alert-container {
+    margin: 15px 0;
+
+    a {
+        color: #3c763d;
+    }
+}
+
+@media screen and (max-width: 666px) {
+    .import-btn {
+        min-width: 90px
+    }
+}

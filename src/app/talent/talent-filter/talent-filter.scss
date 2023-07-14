@@ -1,0 +1,83 @@
+.talent-filter-sm {
+    margin-top: 25px;
+}
+
+.talent-filter-input {
+    margin-bottom: 15px;
+    border: 1px solid #eaeaea;
+    box-shadow: none;
+}
+
+.talent-filter-dropdown {
+    border: 1px solid #eaeaea;
+    box-shadow: none;
+}
+
+.talent-filter-md {
+    margin-top: 30px;
+    .group-input, .dropdown-search-button, .input-search-button {
+        border: none;
+        border: 1px solid #eaeaea;
+    }
+
+    .input-group {
+        width: 100% !important;
+    }
+
+    .group-input {
+        box-shadow: none;
+    }
+    
+    .dropdown-search-button {
+        background-color: #fff;
+        padding-left: 0;
+        padding-right: 0;
+        border-left: none;
+        border-right: none;
+    }
+
+    .dropdown-search-select {
+        background-color: transparent;
+        border: none;
+        width: 140px;
+    }
+
+    .input-search-button {
+        background-color: #58a8fc;
+        color: #fff;
+        border: 1px solid #58a8fc;
+        width: 140px;
+    }
+}
+
+.talent-filter-sm {
+    margin-bottom: 15px;
+    
+    .input-group {
+        width: 100% !important;
+
+        .input-group-addon {
+            background-color: #fff;
+            border: 1px solid #eaeaea;
+            border-left: none;
+        }
+    }
+
+    .talent-filter-input {
+        margin-bottom: 0;
+    }
+
+
+}
+
+@media screen and (min-width: 667px) {
+    .talent-filter-sm {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 666px) {
+    .talent-filter-md {
+        display: none;
+    }
+}

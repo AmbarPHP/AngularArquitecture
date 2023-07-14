@@ -1,0 +1,46 @@
+.vacancy-header-container {
+    margin-top: 20px;
+    margin-bottom: 20px;
+
+    h1 {
+        margin: 0;
+        display: inline-block;
+    }
+
+}
+
+.header-border {
+    margin-top: 20px;
+    border-bottom: 1px solid #eaeaea;
+}
+
+
+.ic-arrangement-list {
+    width: 40px;
+    height: 45px;
+    object-fit: contain;
+    content: url("/assets/images/ic-arrangement-list.svg")
+}
+
+.list-icon {
+    display: inline-table;
+    vertical-align: top;
+    float: right;
+}
+
+.ic-arrangement-card {
+    width: 40px;
+    height: 45px;
+    object-fit: contain;
+    content: url("/assets/images/ic-arrangement-cards.svg")
+}
+
+.clear-floats {
+    clear: both;
+}
+
+@media screen and (max-width: 1023px) {
+    .list-icon {
+        display: none;
+    }
+}

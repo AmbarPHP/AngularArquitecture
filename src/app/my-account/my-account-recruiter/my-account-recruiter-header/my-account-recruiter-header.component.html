@@ -1,0 +1,15 @@
+<!-- <select name="information" id="information" class="form-control information-dropdown mobile" (change)="onChange($event.target.value)"> -->
+<select name="information" id="information" class="form-control information-dropdown mobile">    
+    <option value="0">{{ 'MY_ACCOUNT_RECRUITER.HEADER.INFORMATION' | translate }}</option>
+    <option value="1">{{ 'MY_ACCOUNT_RECRUITER.HEADER.PREFERENCES' | translate }}</option>
+</select>
+
+<div class="information-menu desktop">
+    <ul>
+        <li (click)="changeRecruiterState('information')" [ngClass]="{'option-selected': myAccountRecruiterState == 'information' && !membershipState}">{{ 'MY_ACCOUNT_RECRUITER.HEADER.INFORMATION' | translate }}</li>
+        <li (click)="changeRecruiterState('preferences')" [ngClass]="{'option-selected': myAccountRecruiterState == 'preferences' && !membershipState}">{{ 'MY_ACCOUNT_RECRUITER.HEADER.PREFERENCES' | translate }}</li>
+        <li (click)="memebershipState()" [ngClass]="{'option-selected': membershipState }">{{ 'MY_ACCOUNT_RECRUITER.HEADER.SUBSCRIPTIONS' | translate }}</li>
+        <!-- <li (click)="changeRecruiterState('payment')" [ngClass]="{'option-selected': myAccountRecruiterState == 'payment' && !membershipState}">{{ 'MY_ACCOUNT_RECRUITER.HEADER.PAYMENT_METHODS' | translate }}</li> -->
+    </ul>
+    <div class="clear-both"></div>
+</div>

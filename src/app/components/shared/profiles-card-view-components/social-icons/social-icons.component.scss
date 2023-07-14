@@ -1,0 +1,25 @@
+.social-container {
+    margin-top: 10px;
+    height: 25px;
+
+    .social-list {
+        margin: 0;
+        padding: 0;
+        list-style-type: none;
+        display: flex;
+        justify-content: center;
+
+        .social-list-item {
+            display: inline-block;
+            width: 14%;
+            text-align: center;
+            color: #a0c0ff;
+            font-size: 24px;
+
+            a {
+                color: #a0c0ff;
+                text-decoration: none;
+            }
+        }
+    }
+}

@@ -1,0 +1,15 @@
+<div class="col-xs-12">
+    <div class="header-title">
+        <h1>Complete Your Profile</h1>
+    </div>
+</div>
+
+<div class="col-xs-12 register-progress-container">
+    <div class="col-xs-12 register-progress">
+        <ul class="progress-indicator">
+            <li [ngClass]="{bubble: recruiterFirstStep, completed: !recruiterFirstStep}"> <span class="bubble"></span>{{ 'MENU.PROFILES.WIZARD.PERSONAL_INFORMATION' | translate }}</li>
+            <li class="bubble"> <span class="bubble"></span>{{ 'MENU.PROFILES.WIZARD.COMPANY_INFORMATION' | translate }}</li>
+        </ul>
+
+    </div>
+</div>

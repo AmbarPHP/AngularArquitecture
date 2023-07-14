@@ -1,0 +1,120 @@
+.my-applications-card-container {
+    padding-left: 0px;
+
+    .clear-floats {
+        clear: both;
+    }
+
+    .my-applications-card {
+        background-color: #fff;
+        border: 1px solid #eaeaea;
+        border-radius: 3px;
+        min-height: 335px;
+        margin-bottom: 15px;
+
+        .checkbox-container {
+            margin-top: 5px;
+            .card-checkbox {
+                float: right;
+            }
+
+        }
+
+        .my-applications-description-container {
+            height: 270px;
+
+            .img-container {
+                padding: 0;
+                
+                .card-img {
+                    width: 60px;
+                    height: 60px;
+                }
+            }
+
+            .my-applications-description {
+
+                h4 {
+                    margin: 0;
+                }
+
+                p {
+                    margin: 0;
+                }
+
+                .color-gray {
+                    color: #9f9e9e;
+                }
+
+            }
+            
+            .button-container {
+                text-align: center;
+                margin-top: 20px;
+                padding: 0;
+    
+                .btn-chat {
+                    width: 140px;
+                    height: 40px;
+                    color: #fff;
+                    background-color: #58a8fc;
+                    border-radius: 2px;
+                }
+            }
+        }
+
+        .full-vacancy-container {
+            border-top: 1px solid #eaeaea;
+            text-align: center;
+            padding-top: 10px;
+        }
+
+    }
+}
+
+.no-applications {
+    text-align: center;
+    height: 200px;
+
+    h3 {
+        margin: 0;
+    }
+
+    p {
+        margin: 0;
+        margin-top: 10px;
+    }
+
+    .btn-search {
+        width: 140px;
+        height: 40px;
+        color: #fff;
+        background-color: #58a8fc;
+        border-radius: 2px;
+        margin-top: 20px;
+    }
+}
+
+.applications-not-found {
+    text-align: center;
+    height: 200px;
+
+    h3 {
+        margin: 0;
+    }
+
+    .btn-clear {
+        width: 140px;
+        height: 40px;
+        color: #fff;
+        background-color: #58a8fc;
+        border-radius: 2px;
+        margin-top: 20px;
+    }
+}
+
+@media screen and (max-width: 666px) {
+    .my-applications-card-container {
+        padding-right: 0px;
+    }
+}

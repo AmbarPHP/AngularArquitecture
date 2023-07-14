@@ -1,0 +1,74 @@
+.vacancy-details {
+
+    background-color: #fff;
+    border: 1px solid #eaeaea;
+    border-radius: 3px;
+    padding: 20px 15px;
+
+    h4 {
+        margin: 0;
+        margin-bottom: 5px;
+    }
+
+    p {
+        margin: 0;
+        margin-top: 15px;
+    }
+
+    .color-gray {
+        color: #9f9e9e;
+    }
+
+    .width-first-column {
+        width: 100px;
+    }
+
+    .clear-floats {
+        clear: both;
+    }
+}
+
+.vacancy-skills {
+
+    background-color: #fff;
+    border: 1px solid #eaeaea;
+    border-radius: 3px;
+    padding: 20px 15px;
+    margin-top: 20px;
+
+    h4 {
+        margin: 0;
+        margin-bottom: 10px;
+    }
+
+    .badge-skills {
+        background-color: #eaeaea;
+        color: #000;
+        padding: 5px 10px;
+        font-weight: normal;
+        margin-top: 10px;
+        margin-right: 10px;
+
+        .year-bold {
+            font-weight: bold;
+        }
+    }
+}
+
+.vacancy-comments {
+    background-color: #fff;
+    border: 1px solid #eaeaea;
+    border-radius: 3px;
+    padding: 20px 15px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+
+    h4 {
+        margin: 0;
+        margin-bottom: 20px;
+    }
+
+    p {
+        margin: 0;
+    }
+}

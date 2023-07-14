@@ -1,0 +1,48 @@
+.faq-container {
+    padding: 0px 15px;
+
+    .faq-header {
+        margin-top: 10px;
+        height: 60px;
+        border-bottom: 1px solid #eaeaea;
+    
+        h1 {
+            margin: 0;
+        }
+    }
+
+    .faq-body {
+
+        .toggle-container {
+            margin: 10px 0;
+
+            .toggle-faq {
+                background-color: #eaeaea;
+                padding: 10px;
+                display: flex;
+                cursor: pointer;
+    
+                .fa-plus-circle {
+                    font-size: 20px;
+                }
+
+                .fa-minus-circle {
+                    font-size: 20px;
+                }
+    
+                p {
+                    margin: 0 0 0 10px;
+                }
+            }
+    
+            .toggle-faq-body {
+                padding-left: 35px;
+                
+                p {
+                    margin: 0;
+                }
+            }
+        }
+
+    }
+}

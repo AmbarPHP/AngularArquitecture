@@ -1,0 +1,72 @@
+<div class="col-xs-12 col-sm-3 talent-detail-card">
+    <div class="go-back">
+        <a (click)="goBack()">< back</a>
+    </div>    
+    <div class="image-container">
+        <img class="profile-img-size img-circle card-img" [src]="profile.profile_picture"
+            onError="this.src='assets/images/user.png';">
+    </div>
+    <div class="talent-description">
+        <p>{{profile.name}}</p>
+        <p *ngIf="profile.details[0]">{{profile.details[0].pd_position}}</p> 
+        <p>{{profile.skills || profile.profile_skills[0].pd_skill}}</p>
+        <p>{{profile.location}}</p>
+    </div>
+    <div class="talent-button">
+        <div>
+            <button *ngIf="profile.source === null" [routerLink]="['/chat']" class="btn chat-button">Chat</button> 
+            <button *ngIf="profile.source !== null" class="btn chat-button">Send Invitation</button>  
+        </div>
+    </div>
+    <div class="talent-contact-info">
+        <h4>{{ 'MENU.PROFILES.WIZARD.CONTACT_INFO' | translate }}</h4>
+        <p class="phone-icon" *ngIf="profile.mobile || profile.home"><i class="fa fa-phone" aria-hidden="true"></i> {{profile.mobile || profile.home}}</p>
+        <p *ngIf="profile.email"><i class="fa fa-envelope-o" aria-hidden="true"></i> {{profile.email}}</p>
+    </div>
+    <div class="col-xs-12 social-container text-center">
+        <div class="col-xs-2">
+            <a *ngIf="profile.source === 'linkedin'" [href]="profile.url" target="_blank"><i [ngClass]="{'social-source': profile.source === 'linkedin'}" class="fa fa-linkedin"></i></a>
+            <i *ngIf="profile.source != 'linkedin'" class="fa fa-linkedin"></i>
+        </div>
+        <div class="col-xs-2">
+            <a *ngIf="hasFacebookInformation" pTooltip="Facebook: {{facebookUrl}}" escape="false" tooltipPosition="top" ><i [ngClass]="{'social-source': hasFacebookInformation}" class="fa fa-facebook-f"></i></a>
+            <i *ngIf="!hasFacebookInformation" class="fa fa-facebook-f"></i>
+        </div>
+        <div class="col-xs-2">
+            <a *ngIf="profile.source === 'github'" href="https://github.com/search?q={{profile.email}}&type=Users" target="_blank"><i [ngClass]="{'social-source': profile.source === 'github'}" class="fa fa-github"></i></a>
+            <i *ngIf="profile.source != 'github'" class="fa fa-github"></i>
+        </div>
+        <div class="col-xs-2">
+            <a *ngIf="hasSkypeInformation" pTooltip="Skype: {{skypeUrl}}" escape="false" tooltipPosition="top" ><i [ngClass]="{'social-source': hasSkypeInformation}" class="fa fa-skype"></i></a>
+            <i *ngIf="!hasSkypeInformation" class="fa fa-skype"></i>
+        </div>
+        <div class="col-xs-2">
+            <a *ngIf="hasTwitterInformation" href="https://twitter.com/{{usernameTwitter}}" target="_blank"><i [ngClass]="{'social-source': hasTwitterInformation}" class="fa fa-twitter"></i></a>
+            <i *ngIf="!hasTwitterInformation" class="fa fa-twitter"></i>
+        </div>
+        <div class="col-xs-2">
+            <a *ngIf="hasWebsiteInformation" href="http://{{websiteUrl}}" target="_blank"><i [ngClass]="{'social-source': hasWebsiteInformation}" class="fa fa-link"></i></a>
+            <i *ngIf="!hasWebsiteInformation" class="fa fa-link"></i>
+        </div>
+    </div>
+    <div class="col-xs-12 talent-more-options">
+        <h4>More Options</h4>
+        <p class="emai-profile" (click)="email()"><i class="fa fa-envelope-o" aria-hidden="true"></i> Email Profile</p>
+        <p class="save-profile" (click)="pdf()"><i class="fa fa-download" aria-hidden="true"></i> Save Profile</p>
+        <div class="clear-floats"></div>
+    </div>
+    <div *ngIf="profile.attachments.length > 0" class="col-xs-12 resume-container">
+        <button class="resume-download-btn"  (click)="downloadResume()">
+            Descargar CV
+        </button>
+    </div>
+    <div class="col-xs-12 profile-vacancy">
+        <h4>Add to Open Position</h4>
+        <select name="addtovacancy" id="addtovacancy" class="form-control add-to-vacancy-select" (change)="associateToVacancy($event.target.value)">
+            <option value="">Select a Open Position</option>
+            <!-- <option value="1">UX Designer</option>
+            <option value="2">Java Developer</option> -->
+            <option *ngFor="let vacancy of vacancies" [value]="vacancy.id">{{vacancy.posting_title}}</option>
+        </select>
+    </div> 
+</div>

@@ -1,0 +1,28 @@
+<div class="container-fluid">
+    <div class="team-title">
+        <h1>Zourcing Team</h1>
+    </div>
+    <div class="row">
+        <div class="col-xs-12 col-sm-4 col-md-3" *ngFor="let profile of profiles">
+            <div class="bio-card">
+                <div class="info-container">
+                    <div class="image-bio-container">
+                        <img class="bio-image" [src]="profile.image">
+                    </div>
+                    <div class="bio-name">
+                        <p>{{ profile.name }}</p>
+                    </div>
+                    <div class="bio-position">
+                        <p>{{ profile.position }}</p>
+                    </div>
+                    <div class="bio-skills">
+                        <span class="badge" *ngFor="let skill of profile.skills">{{ skill }}</span>
+                    </div>
+                </div>
+                <div class="bio-more-details">
+                    <button class="btn btn-more-details" [routerLink]="['/team', profile.id]">View more details</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

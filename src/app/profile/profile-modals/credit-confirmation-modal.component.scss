@@ -1,0 +1,27 @@
+.modal-sm {
+    width: 360px;
+}
+
+.modal-content {
+    border-radius: 2px;
+}
+
+.modal-footer {
+    border: none;
+    padding: 5px 15px 15px 15px;
+
+    .get-profile-btn {
+        background-color: #58d490;
+        color: #fff;
+    }
+}
+
+.success-modal {
+    .modal-body {
+        text-align: center;
+    }
+
+    .modal-footer {
+        text-align: center;
+    }
+}

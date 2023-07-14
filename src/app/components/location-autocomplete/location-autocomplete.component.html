@@ -1,0 +1,3 @@
+<div class="input-group">
+    <ng2-completer (keyup)=updateDataService() (keyup.enter)="search()" [(ngModel)]="locationStr" [inputClass]="'form-control'"  [datasource]="dataService" [minSearchLength]="0"></ng2-completer>
+</div>

@@ -1,0 +1,29 @@
+<p-growl [(value)]="msgs" life="5000"></p-growl>
+<div class="container-fluid">
+    <div class="text-center" *ngIf="loading === true">
+        <img class="loading-spinner" src="assets/images/ring.svg">
+    </div>
+    <div class="row desktop" *ngIf="loading === false">
+        <div class="col-xs-12 col-sm-3 vacancy-detail-view-card">
+            <vacancy-detail-candidate-view-card
+                [vacancy]="vacancy"
+                [isApplicant]="isApplicant"
+                (sendApplyForJobEvent)="getApplyForJob($event)"
+                (sendNotInterestedEvent)="getNotInterested($event)">
+
+            </vacancy-detail-candidate-view-card>
+        </div>
+        <div class="col-xs-12 col-sm-6 vacancy-detail-candidates">
+            <vacancy-detail-candidate-details
+                [vacancy]="vacancy">
+
+            </vacancy-detail-candidate-details>
+
+        </div>
+        <div class="col-xs-12 col-sm-3 vacancy-similar-positions">
+            <vacancy-detail-candidate-similar>
+                
+            </vacancy-detail-candidate-similar>
+        </div>
+    </div>
+</div> 

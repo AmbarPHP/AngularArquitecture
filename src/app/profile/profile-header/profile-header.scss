@@ -1,0 +1,47 @@
+.h1-container {
+    h1 {
+        margin: 0;
+    }
+}
+
+.col-header {
+    margin: 10px 0 0 0;
+}
+
+.header-deselect {
+    margin-right: 10px;
+}
+
+.header-pipeline-btn {
+    background-color: #58d490;
+    color: #fff;
+    margin-right: 5px;
+}
+
+.header-bottom-margin {
+    border-bottom: 1px solid #eaeaea;
+    height: 60px;
+}
+
+.header-credits-btn {
+    background-color: #ffb03e;
+    color: #fff;
+}
+
+@media screen and (max-width: 666px) {
+    .desktop {
+        display: none;
+    }
+}
+
+@media screen and (min-width: 667px) {
+    .mobile {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 1023px) {
+    .list-icon {
+        display: none;
+    }
+}

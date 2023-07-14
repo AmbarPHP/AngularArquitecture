@@ -1,0 +1,12 @@
+<div *ngIf="wizardStep === 1">
+    <iframe-wizard-personal
+        (sendPersonalInformationEvent)="getPersonalInformation($event)"
+        (sendWizardStepEvent)="getWizardStep($event)">
+    </iframe-wizard-personal>
+</div>
+
+<div *ngIf="wizardStep === 2">
+    <iframe-wizard-work-experience
+        (sendWizardStepEvent)="getWizardStep($event)">
+    </iframe-wizard-work-experience>
+</div>

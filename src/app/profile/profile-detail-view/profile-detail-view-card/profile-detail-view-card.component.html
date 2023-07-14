@@ -1,0 +1,87 @@
+<p-growl [(value)]="msgs" life="5000"></p-growl>
+<div class="col-xs-12 col-sm-3 profile-detail-card">
+    <div class="go-back">
+        <a (click)="goBack()" [ngClass]="{'hide-back': previousUrl === 1}">< {{ 'PROFILE_DETAILS.BACK' | translate }}</a>
+    </div>
+    <div class="image-container">
+        <img class="profile-img-size img-circle card-img" [src]="profile?.profile_picture"
+            onError="this.src='assets/images/user.png';">
+    </div>
+    <div class="profile-description">
+        <p>{{profile?.name}}</p>
+         <p *ngIf="profile?.details[0]">{{profile?.details[0].pd_position}}</p> 
+        <p>{{(profile?.skills| slice:0:25) || (profile?.profile_skills[0].pd_skill | slice:0:25)}}...</p>
+        <p>{{profile?.location}}</p>
+    </div>
+    <div class="profile-button">
+        <div>
+            <button class="btn buy-button" (click)="buyProfile(profile.id)">{{ 'MENU.PROFILES.FILTERS.ZOURCE_PROFILE' | translate }}</button>
+        </div>
+        <div>
+            <button class="btn pipeline-button" (click)="addToCart(profile.id)">{{ 'PROFILE_DETAILS.ADD_SHOPPING_CART_BTN' | translate }}</button>
+        </div>
+    </div>
+    
+    <div class="buy-profile-description">
+        <p>{{ 'PROFILE_DETAILS.BUY_INFORMATION_LABEL' | translate }}</p>
+    </div>
+    <div class="profile-contact-info">
+        <h4>{{ 'MENU.PROFILES.WIZARD.CONTACT_INFO' | translate }}</h4>
+        <p class="phone-icon" *ngIf="profile?.mobile || profile?.home"><i class="fa fa-phone" aria-hidden="true"></i> {{profile?.mobile || profile?.home}}</p>
+        <p *ngIf="profile?.email"><i class="fa fa-envelope-o" aria-hidden="true"></i> {{profile?.email}}</p>
+    </div>
+    <div class="col-xs-12 social-container text-center">
+        <div class="col-xs-2">
+            <i [ngClass]="{'social-source': socialSource === 'linkedin' || hasLinkedinInformation === true}" class="fa fa-linkedin"></i>
+        </div>
+        <div class="col-xs-2">
+            <i [ngClass]="{'social-source': socialSource === 'facebook' || hasFacebookInformation === true}" class="fa fa-facebook-f"></i>
+        </div>
+        <div class="col-xs-2">
+            <i [ngClass]="{'social-source': socialSource === 'github' || hasGithubInformation === true}" class="fa fa-github"></i>
+        </div>
+        <div class="col-xs-2">
+            <i [ngClass]="{'social-source': socialSource === 'skype' || hasSkypeInformation === true}" class="fa fa-skype"></i>
+        </div>
+        <div class="col-xs-2">
+            <i [ngClass]="{'social-source': socialSource === 'twitter' || hasTwitterInformation === true}" class="fa fa-twitter"></i>
+        </div>
+        <div class="col-xs-2">
+            <i [ngClass]="{'social-source': hasWebsiteInformation === true}" class="fa fa-link"></i>
+        </div>
+    </div>
+    <div class="col-xs-12 profile-more-options">
+        <h4>{{ 'PROFILE_DETAILS.MORE_OPTIONS_LABEL' | translate }}</h4>
+        <p class="emai-profile" [ngClass]="{'removeLeftFloat': !profile.owns }" data-toggle="modal" data-target="#sendEmailModal"><i class="fa fa-envelope-o" aria-hidden="true"></i> {{ 'PROFILE_DETAILS.EMAIL_PROFILE' | translate }}</p>
+        <p *ngIf="profile.owns" class="save-profile" (click)="profilePdf(profile.id)"><i class="fa fa-download" aria-hidden="true"></i> {{ 'PROFILE_DETAILS.SAVE_PROFILE' | translate }}</p>
+        <div class="clear-floats"></div>
+    </div>
+    <div class="col-xs-12 profile-vacancy" *ngIf="isLoggedIn">
+        <h4>{{ 'PROFILE_DETAILS.ADD_TO_OPEN_POSITION' | translate }}</h4>
+        <select name="addtovacancy" id="addtovacancy" class="form-control add-to-vacancy-select" (change)="associateToVacancy($event.target.value)">
+            <option value="">{{ 'PROFILE_DETAILS.SELECT_A_OPEN_POSITION' | translate }}</option>
+            <option *ngFor="let vacancy of vacancies" [value]="vacancy.id">{{vacancy.posting_title}}</option>
+        </select>
+    </div> 
+</div>
+
+<!-- Email Profile Modal -->
+
+<div class="modal fade" id="sendEmailModal" tabindex="-1" role="dialog" aria-labelledby="sendEmailModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="loginModalLabel">Send the profile information</h4>
+      </div>
+      <div class="modal-body">
+        <div class="modal-body-container">
+            <input type="text" class="form-control" name="sendEmailTxt" [(ngModel)]="sendEmailTxt" placeholder="Enter an email">
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-primary" data-dismiss="modal" (click)="emailProfile(profile.id, sendEmailTxt)">Send Email</button>
+      </div>
+    </div>
+  </div>
+</div>

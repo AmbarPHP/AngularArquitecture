@@ -1,0 +1,28 @@
+<div class="social-container">
+    <ul class="social-list">
+        <li class="social-list-item" *ngIf="profileSource == 'linkedin' || hasLinkedinInformation">
+            <i *ngIf="!profile.owns" class="fa fa-linkedin"></i>
+            <a *ngIf="profile.owns == true" [href]="profile.url" target="_blank"><i class="fa fa-linkedin"></i></a>
+        </li>
+        <li class="social-list-item" *ngIf="profileSource == 'facebook' || hasFacebookInformation">
+            <i *ngIf="!profile.owns" class="fa fa-facebook-f"></i>
+            <a *ngIf="profile.owns == true" href="https://www.facebook.com/{{facebookUrl}}" target="_blank" pTooltip="Facebook: {{facebookUrl}}" escape="false" tooltipPosition="top"><i class="fa fa-facebook-f"></i></a>
+        </li>
+        <li class="social-list-item" *ngIf="profileSource == 'github' || hasGithubInformation">
+            <i *ngIf="!profile.owns" class="fa fa-github"></i>
+            <a *ngIf="profile.owns == true" href="https://github.com/search?q={{profile.email}}&type=Users" target="_blank"><i class="fa fa-github"></i></a>
+        </li>
+        <li class="social-list-item" *ngIf="profileSource == 'skype' || hasSkypeInformation">
+            <i *ngIf="!profile.owns" class="fa fa-skype"></i>
+            <a *ngIf="profile.owns == true" pTooltip="Skype: {{skypeUrl}}" escape="false" tooltipPosition="top"><i class="fa fa-skype"></i></a>
+        </li>
+        <li class="social-list-item" *ngIf="profileSource == 'twitter' || hasTwitterInformation">
+            <i *ngIf="!profile.owns" class="fa fa-twitter"></i>
+            <a *ngIf="profile.owns == true" href="https://twitter.com/{{usernameTwitter}}" target="_blank" pTooltip="Twitter: {{usernameTwitter}}" escape="false" tooltipPosition="top"><i class="fa fa-twitter"></i></a>
+        </li>
+        <li class="social-list-item" *ngIf="hasWebsiteInformation">
+            <i *ngIf="!profile.owns" class="fa fa-link"></i>
+            <a *ngIf="profile.owns == true" href="http://{{websiteUrl}}" target="_blank"><i class="fa fa-link"></i></a>
+        </li>
+    </ul>
+</div>

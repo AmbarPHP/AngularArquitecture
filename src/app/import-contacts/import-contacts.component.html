@@ -1,0 +1,76 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-12 import-header">
+            <div class="pull-left">
+                <h1>Import Contacts</h1>
+            </div>
+            <div class="clean-floats"></div>
+            <div class="header-border"></div>
+        </div>
+    </div>
+    <div *ngIf="importSuccess" class="alert alert-success alert-container" role="alert">Contactos importados exitosamente! <strong><a (click)="importContactsState()" [routerLink]="['/talent']">Ir a Talent</a></strong></div>
+    <div class="min-size" *ngIf="validGmailContacts.length > 0 || validOutlookContacts.length > 0">
+        <div class="row" *ngIf="validGmailContacts.length > 0">
+            <div class="col-xs-6">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th><input type="checkbox" (change)="$event.target.checked ? selectAllGmailContacts() : deselectAllGmailContacts()"></th>
+                            <th>Name</th>
+                            <th>Email</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let contact of validGmailContacts; let i = index">
+                            <td>
+                                <input type="checkbox" [checked]="getSelectedContact(i)" (change)="$event.target.checked ? selectGmailContact(i, contact.names[0].displayName, contact.emailAddresses[0].value) : unselectGmailContact(i)">
+                            </td>
+                            <td>
+                                {{ contact.names[0].displayName }}
+                            </td>
+                            <td *ngIf="contact.emailAddresses">
+                                {{ contact.emailAddresses[0].value }}
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <button [disabled]="selectedGmailContacts.length == 0" class="btn import-btn" (click)="submitImportContacts()">Import</button>
+            </div>
+        </div>
+        <div class="row" *ngIf="validOutlookContacts.length > 0">
+            <div class="col-xs-6">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th><input type="checkbox" (change)="$event.target.checked ? selectAllOutlookContacts() : deselectAllOutlookContacts()"></th>
+                            <th>Name</th>
+                            <th>Email</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let contact of validOutlookContacts; let i = index">
+                            <td>
+                                <input type="checkbox" [checked]="getSelectedOutlookContact(i)" (change)="$event.target.checked ? selectOutlookContact(i, contact.DisplayName, contact.EmailAddresses[0].Address) : unselectOutlookContact(i)">
+                            </td>
+                            <td>
+                                {{ contact.DisplayName }}
+                            </td>
+                            <td *ngIf="contact.EmailAddresses.length > 0">
+                                {{ contact.EmailAddresses[0].Address }}
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <button [disabled]="selectedOutlookContacts.length == 0" class="btn import-btn" (click)="submitImportOutlookContacts()">Import</button>
+            </div>
+        </div>
+    </div>
+    <div class="row" *ngIf="validGmailContacts.length == 0 && validOutlookContacts.length == 0 ">
+        <div class="col-xs-12">
+            <div class="gmailContacts-not-found">
+                <h4>No se han importado contactos.</h4>
+                <button class="btn not-found-btn" (click)="openImportContactsModal()">Importar Contactos</button>
+            </div>
+        </div>
+    </div>
+</div>

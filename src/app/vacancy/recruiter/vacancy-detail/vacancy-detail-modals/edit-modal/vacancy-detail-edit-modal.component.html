@@ -1,0 +1,134 @@
+<div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="myModalLabel">Edit Vacancy Information</h4>
+        </div>
+        <div class="modal-body">
+            <alert></alert>
+            <form [formGroup]="editForm">
+                <div class="form-group" [ngClass]="{'has-error': titleHasError}">
+                    <label for="inputAddTitle">Title<span class="red-star">*</span></label>
+                    <input type="text" class="form-control" formControlName="title" [formControl]="editForm.controls['title']" placeholder="Enter">
+                </div>
+                <div class="form-group" [ngClass]="{'has-error': positionHasError}">
+                    <label for="inputAddPosition">Position<span class="red-star">*</span></label>
+                    <input type="text" class="form-control" formControlName="position" [formControl]="editForm.controls['position']" placeholder="Enter">
+                </div>
+
+                <div class="form-group" [ngClass]="{'has-error': typeHasError}">
+                  <label for="inputAddType">Type<span class="red-star">*</span></label>
+                  <select [ngModel]="vacancy[0].employment_term_id" formControlName="type" [formControl]="editForm.controls['type']" class="form-control">
+                      <option value="">Select</option>
+                      <option value="1">Full Time</option>
+                      <option value="2">Part Time</option>
+                      <option value="3">Internship</option>
+                  </select>
+              </div>
+              <div class="form-group">
+                  <label for="inputAddCity">Location</label>
+                  <div class="form-group country-group">
+                      <select id="country" class="form-control" formControlName="country" [formControl]="editForm.controls['country']" (change)="getStates($event.target.value)">
+                          <option value="">Country</option>
+                          <option *ngFor="let country of countries" [value]="country.clave">{{country.name}}</option>
+                      </select>
+                  </div>
+                  <div class="form-group state-group">
+                      <select id="state" formControlName="state" [formControl]="editForm.controls['state']" class="form-control" (change)="getCities($event.target.value)">
+                          <option value="">State</option>
+                          <option *ngFor="let state of states" [value]="state.key">{{state.name}}</option>
+                      </select>
+                  </div>
+                  <div class="form-group city-group">
+                      <select id="city" formControlName="city" [formControl]="editForm.controls['city']" class="form-control" >
+                          <option value="">City</option>
+                          <option *ngFor="let city of cities" [value]="city.clave">{{city.name}}</option>
+                      </select>
+                  </div>
+              </div>
+              <div class="form-group">
+                  <label for="salary">Salary</label>
+                  <div class="form-inline salary-group">
+                      <input type="number" class="form-control salary-input" id="salary" formControlName="salary" [formControl]="editForm.controls['salary']" placeholder="0.00">
+                      <select class="form-control currency-select" id="currency" formControlName="currency" [formControl]="editForm.controls['currency']"> 
+                          <option value="">Currency</option>
+                          <option value="1">USD</option>
+                          <option value="2">MXN</option>
+                          <option value="3">CAD</option>
+                      </select>
+                  </div>
+              </div>
+            <div class="form-group">
+                <div class="form-inline">
+                    <div class="form-group yoe-group" [ngClass]="{'has-error': yoeHasError}">
+                        <label for="id_yoe">Years of Experience<span class="red-star">*</span></label>
+                        <br>
+                        <input type="number" class="form-control yoe-input" id="id_yoe" formControlName="yoe" [formControl]="editForm.controls['yoe']" placeholder="0.00">
+                    </div>
+                    <div class="form-group education-group" [ngClass]="{'has-error': educationHasError}">
+                        <label for="education">Degree<span class="red-star">*</span></label>
+                        <br>
+                        <select name="education" id="education" formControlName="education" [formControl]="editForm.controls['education']" class="education-dropdown form-control">
+                            <option value="">Select Degree</option>
+                            <option value="1">Bachelor</option>
+                            <option value="2">Master</option>
+                            <option value="3">Degree</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group" formArrayName="languages">
+                <label for="language">Languages<span class="red-star">*</span></label>
+                <div *ngFor="let language of editFormMethod.controls; let i = index">
+                    <div [formGroupName]="i">
+                        <div class="form-group language-form-group" [ngClass]="{'has-error': languageHasError(i)}">
+                            <input type="text" class="form-control language-input" id="language" formControlName="language" placeholder="Languague Name">
+                        </div>
+                        <div class="form-group language-level-group" [ngClass]="{'has-error': languageLevelHasError(i)}">
+                            <select name="language_level" class="form-control language-level" formControlName="level" id="language_level">
+                                <option value="">Select<span class="red-star">*</span></option>
+                                <option value="1">Basic</option>
+                                <option value="2">Intermediate</option>
+                                <option value="3">Advanced</option>
+                                <option value="4">Native</option>
+                            </select>
+                            <button class="btn btn-delete-skill" [disabled]="i <= 0" (click)="removeLanguage(i)"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <a (click)="addLanguage()"><i class="fa fa-plus-square-o plus-icon add-language" aria-hidden="true"></i>Add another Language</a>
+
+            <div class="form-group" formArrayName="skills">
+                <label for="skill">Skills<span class="red-star">*</span></label>
+                <div *ngFor="let skill of editFormSkills.controls; let i = index">
+                    <div [formGroupName]="i" class="form-group form-inline" [ngClass]="{'has-error': skillsHasError(i)}">
+                        <input type="text" class="form-control" id="skill" formControlName="value" placeholder="Skill Name">
+                        <button class="btn btn-delete-skill" [disabled]="i <= 0" (click)="removeSkill(i)"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+                    </div>
+                </div>
+            </div>
+            <a (click)="addSkill()"><i class="fa fa-plus-square-o plus-icon add-language" aria-hidden="true"></i>Add another language</a>
+            <div class="form-group comments-group" [ngClass]="{'has-error': commentsHasError}">
+                <label for="comments">Comments<span class="red-star">*</span></label>
+                <input type="text" class="form-control" id="comments" formControlName="comments" [formControl]="editForm.controls['comments']" placeholder="Enter">
+            </div>
+            <div class="form-group status-group" [ngClass]="{'has-error': statusHasError}">
+                <label for="status">Vacancy Status:<span class="red-star">*</span></label>
+                <select id="status" class="form-control" formControlName="status">
+                    <option value="">Select Status</option>
+                    <option value="1">Cancelled</option>
+                    <option value="2">Filled</option>
+                    <option value="3">In-Progress</option>
+                    <option value="4">On-hold</option>
+                </select>
+            </div>
+            </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" [disabled]="!editForm.valid" class="btn btn-save-changes pull-left" (click)="updateVacancy(editForm.value)">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>

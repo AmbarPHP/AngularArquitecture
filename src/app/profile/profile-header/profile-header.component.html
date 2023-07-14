@@ -1,0 +1,17 @@
+<p-growl [(value)]="msgs" life="5000"></p-growl>
+<div class="col-sm-12 col-header">
+    <div class="header-bottom-margin">
+        <div class="h1-container pull-left">
+            <h1>{{ 'MENU.PROFILES.TITLE' | translate }}</h1>
+        </div>
+        <div class="header-options pull-right desktop">
+            <profile-cards-qty
+                [location]="'profiles'"
+                (sendChangeProfileCardsQty)="getChangeProfileCardsQty($event)">
+            </profile-cards-qty>
+            <a (click)="deselectAll()" class="header-deselect">{{ 'MENU.PROFILES.DESELECT_CART' | translate }}</a>
+            <button [disabled]="selectedProfiles.length === 0" (click)="addToCart()" class="btn header-pipeline-btn">{{ 'MENU.PROFILES.ADD_CART' | translate }} ({{selectedProfiles.length}})</button>
+            <button [disabled]="(selectedProfiles.length === 0 || remainingCredits < 1) || selectedProfiles.length > remainingCredits || remainingCredits == undefined" (click)="buyWithCredits()" class="btn header-credits-btn">{{ 'MENU.PROFILES.USE_CREDITS' | translate }}</button>
+        </div>
+    </div>
+</div>

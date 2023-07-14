@@ -1,0 +1,35 @@
+.vacancy-similar-header {
+    border-bottom: 1px solid #eaeaea;
+
+    h4 {
+        margin: 0;
+        margin-bottom: 10px;
+    }
+}
+
+.vacancy-similar-body {
+    padding-top: 15px;
+    margin-bottom: 20px;
+    
+    .vacancy-similar-container {
+        margin-bottom: 15px;
+
+        .card-image-size {
+            width: 60px;
+            height: 60px;
+        }
+
+        .vacancy-similar-details {
+            display: inline-block;
+            vertical-align: middle;
+
+            p {
+                margin: 0;
+            }
+
+            .color-gray {
+                color: #9f9e9e;
+            }
+        }
+    }
+}

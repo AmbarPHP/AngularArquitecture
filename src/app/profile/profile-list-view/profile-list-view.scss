@@ -1,0 +1,167 @@
+.profile-list-container {
+    margin-top: 25px;
+    padding: 0 15px;
+}
+
+.profile-list-item {
+    background-color: #fff;
+    border: 1px solid #eaeaea;
+    border-radius: 3px;
+    padding: 10px;
+    margin-bottom: 25px;
+    height: 120px;
+    display: flex;
+    justify-content: space-between;
+
+    .profile-list-information {
+        display: flex;
+        align-items: center;
+
+        .profile-img-size {
+            width: 60px;
+            height: 60px;
+            margin-left: 10px;
+        }
+
+        .profile-list-name {
+            margin-left: 10px;
+            
+            p {
+                margin: 0;
+            }
+
+            .skill-badge {
+                background-color: #58a8fc;
+                color: #fff;
+            }
+        }
+    }
+
+    .profile-list-details {
+        display: flex;
+        justify-content: space-between;
+        width: 500px;
+
+        .profile-list-social {
+            color: #ccc;
+            
+            .social-list {
+                color: #a0c0ff;
+                margin: 0;
+                padding: 0;
+                list-style-type: none;
+                min-width: 170px;
+                display: flex;
+                min-height: 34px;
+
+                .social-list-item {
+                    display: inline-block;
+                    font-size: 24px;
+                    margin-right: 14%;
+                }
+            }
+        }
+
+        .profile-list-more-details {
+
+            .view-more-details-btn {
+                background-color: #ffb03e;
+                color: #fff;
+                border: none;
+                border-radius: 2px;
+                width: 140px;
+                padding: 10px;
+                text-decoration: none;
+            }
+
+            .view-more-details-btn-bought {
+                background-color: #58d490;
+                color: #fff;
+                border: none;
+                border-radius: 2px;
+                width: 140px;
+                padding: 10px;
+                text-decoration: none;
+            }
+
+            p {
+                margin: 5px 0 0 0;
+                color: #58a8fc;
+                text-align: center;
+            }
+
+            .tags-list {
+                margin: 0;
+                padding: 0;
+                list-style-type: none;
+                display: flex;
+                justify-content: center;
+                margin-top: 5px;
+
+                .tags-list-item {
+                    display: inline-block;
+                    width: 20px;
+                    height: 20px;
+
+                    .zourcing-logo {
+                        width: 20px;
+                        height: 20px;
+                        content: url("/assets/images/intro/img-home-logo/img-home-logo-copy.png");
+                    }
+
+                    .fa-star {
+                        color: #ffb03e;
+                    }
+                }
+            }
+
+            .start-item, .clip-item {
+                text-align: center;
+                vertical-align: middle;
+            }
+
+            .preview-profile-button-owned {
+                background-color: #58d490;
+                color: #fff;
+                border: none;
+                border-radius: 2px;
+                min-width: 36px;
+                height: 36px;
+            }
+            
+            .preview-profile-button-not-owned {
+                background-color: #ffb03e;
+                color: #fff;
+                border: none;
+                border-radius: 2px;
+                min-width: 36px;
+                height: 36px;
+            }
+
+            .ngb-rating {
+                display: block;
+                text-align: center;
+                color: #58a8fc;
+            }
+        }
+
+        .profile-list-zource-profile {
+            display: flex;
+            text-align: center;
+            align-items: center;
+            width: 90px;
+
+            .zourced {
+                display: inline-block;
+                color: #58d490;
+                border: 1px solid #58d490;
+                border-radius: 4px;
+                padding: 6px;
+            }
+        }
+    }
+}
+
+.profile-list-item-bought {
+    box-shadow: 0 4px 8px 0 rgba(177,255,183,.2), 0 6px 20px 0 rgba(14,170,0,.19);
+}

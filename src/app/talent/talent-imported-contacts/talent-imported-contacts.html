@@ -1,0 +1,25 @@
+<div class="imported-cards-container">
+    <div *ngIf="loading === false && importedContacts.length > 0">
+        <div class="col-xs-12 col-sm-4 col-md-4" *ngFor="let importedContact of importedContacts">
+            <div class="imported-card-style">
+                <div class="input-group group-name">
+                    <span class="input-group-addon" id="basic-addon1"><i class="fa fa-user"></i></span>
+                    <input [disabled]="true" type="text" class="form-control" aria-describedby="basic-addon1" [value]="importedContact.name">
+                </div>
+                <div class="input-group group-email">
+                    <span class="input-group-addon" id="basic-addon1"><i class="fa fa-envelope"></i></span>
+                    <input [disabled]="true" type="text" class="form-control" aria-describedby="basic-addon1" [value]="importedContact.email">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div *ngIf="loading === false && importedContacts.length == 0">
+        <div class="no-imported-contacts">
+            <h4>Actualmente no cuentas con contactos importados</h4>
+            <button class="btn import-contacts" (click)="openImportContactsModal()">Importar contactos</button>
+        </div>
+    </div>
+    <div class="text-center" *ngIf="loading === true">
+        <img class="loading-spinner" src="assets/images/ring.svg">
+    </div>
+</div>

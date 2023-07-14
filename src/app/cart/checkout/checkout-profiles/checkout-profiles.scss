@@ -1,0 +1,70 @@
+.profiles-header-container {
+
+    .profiles-header {
+        border-bottom: 1px solid #eaeaea;
+        padding-bottom: 10px;
+        h4 {
+            margin: 0;
+            display: inline-block;
+            float: left;
+        }
+    
+        p {
+            margin: 0;
+            display: inline-block;
+            float: right;
+        }
+    
+        .clear-floats {
+            clear: both;
+        }
+    }
+    
+    .profiles-card-container {
+        margin-top: 20px;
+
+        .profiles-card {
+            margin-bottom: 20px;
+
+            .profiles-description {
+                display: flex;
+                align-items: center;
+                
+                .profiles-image {
+                    
+                    .profile-img-size {
+                        width: 60px;
+                        height: 60px;
+                        margin-left: 5px;
+                    }
+                }
+                .profiles-name {
+                    margin-left: 10px;
+                    width: 160px;
+
+                    p {
+                        margin: 0;
+                    }
+                
+                    .description-gray {
+                        width: 90%;
+                        color: #9f9e9e;
+                    }   
+                }
+            }
+        }  
+    }
+}
+
+@media screen and (min-width: 667px) {
+    .profiles-header-container {
+        float: left;
+    }
+}
+
+@media screen and (max-width: 666px) {
+    .profiles-header-container {
+        margin-top: 20px;
+    }
+}
+

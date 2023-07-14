@@ -1,0 +1,66 @@
+<!-- 1. Add latest jQuery and fancyBox files -->
+
+<div class="intro-container container-fluid">
+    <div class="intro-logo">
+        <!-- <img src="assets/images/intro/img-home-logo/img-home-logo.png" class="img-home-logo"> -->
+    </div>
+    <div class="intro-title">
+        <h1>{{ 'MENU.PROFILES.LANDING.HEADER_1' | translate }}</h1>
+    </div>
+
+    <div class="intro-message">
+        <!-- <p>{{ 'MENU.PROFILES.LANDING.HEADER_2' | translate }}</p> -->
+    </div>
+    <intro-autocomplete [type]="type"></intro-autocomplete>
+    <div class="intro-get-started">
+        <button class="btn-coming-soon" data-toggle="modal" data-target="#comingSoonModal">{{ 'MENU.PROFILES.LANDING.LET_ME_KNOW' | translate }}</button>
+        <button class="btn-get-started" data-toggle="modal" data-target="#signupModal">{{ 'MENU.PROFILES.LANDING.GET_STARTED' | translate }}</button>
+        <a data-fancybox href="assets/video/zourcing.com-1.mp4">
+            <div class="intro-how-works">
+                <img class="img-ic-play" src="assets/images/intro/ic-play/ic-play.png"> {{ 'MENU.PROFILES.LANDING.HOW_IT_WORKS' | translate }}
+            </div>
+        </a>
+    </div>
+    <div class="intro-bottom-logos">
+        <div class="logos-container">
+            <!-- <img src="assets/images/intro/img-badge-apple/img-badge-apple.png" alt="">
+            <img src="assets/images/intro/img-badge-android/img-badge-android.png" alt=""> -->
+        </div>
+    </div>
+    <!-- <button id='googleres'></button> -->
+</div>
+
+<coming-soon-modal></coming-soon-modal>
+
+<forgot-password-modal></forgot-password-modal>
+
+<div class="modal fade" id="linkedinRegisterModal" tabindex="-1" role="dialog" aria-labelledby="linkedinRegisterModal">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+            <button type="button" class="close" (click)="closeLinkedinTypeModal()"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="signupModalLabel">Sign Up</h4>
+            </div>
+            <div class="modal-body">
+            <alert></alert>
+            <form [formGroup]="userTypeForm">
+                <div class="form-group">
+                    Your account is not registered yet, do you want to join us as Recruiter or Candidate?
+                    <br>
+                    <label for="recruiter">Recruiter</label>
+                    <input id="linkedin_recruiter" type="radio" value="recruiter" name="userType" formControlName="userType">
+                    <label for="candidate">Candidate</label>
+                    <input id="linkedin_candidate" type="radio" value="candidate" name="userType" formControlName="userType">
+                    <br>
+                    <button class="btn btn-primary" (click)="linkedinRegister(userTypeForm.value)" [disabled]="!userTypeForm.valid">Create Account</button>
+                </div>
+            </form>
+            </div>
+            <div class="modal-footer">
+            <!--<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>-->
+            <p class="pull-left">{{ 'MENU.PROFILES.MODAL.BY_SIGNING' | translate }} <a href="https://zourcing.com/about-us/"> {{ 'MENU.PROFILES.FOOTER.TERMS_AND_CONDITIONS' | translate }}</a> and <a href="http://tas-screenit.com/wp-content/uploads/2016/09/privacy-policy.pdf">{{ 'MENU.PROFILES.FOOTER.HELP_CENTER' | translate }}</a></p>
+            </div>
+        </div>
+    </div>
+</div>
+

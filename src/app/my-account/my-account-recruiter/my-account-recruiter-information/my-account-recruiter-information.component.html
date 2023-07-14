@@ -1,0 +1,60 @@
+<div class="col-xs-12 my-account-information-container">
+    <form *ngIf="loading === false" [formGroup]="formInformation">
+        <div class="personal-information">
+            <h4>{{ 'MENU.PROFILES.WIZARD.PERSONAL_INFORMATION' | translate }}</h4>
+            <div *ngIf="updateInformationError" class="recruiter-information-error">
+                <p><i class="fa fa-exclamation-circle" aria-hidden="true"></i>First name and Last name are required fields.</p>
+            </div>
+            <div *ngIf="updateInformationSuccess" class="recruiter-information-success">
+                <p><i class="fa fa-exclamation-circle" aria-hidden="true"></i>User information updated successfully.</p>
+            </div>
+            <div class="img-container" *ngIf="!imageLoading">
+                <input type="file" (change)="fileChange($event)" id="add_photo" name="add_photo" style="display:none;">
+                <img class="profile-img-size img-circle card-img" [src]="userInformation.profile_picture"
+                onError="this.src='assets/images/user.png';">
+                <a class="edit-photo" onclick="document.getElementById('add_photo').click();">{{ 'MENU.PROFILES.WIZARD.EDIT_PHOTO' | translate }}</a>
+            </div>
+            <div *ngIf="imageLoading" style="height: 60px; margin-top: 30px; margin-bottom: 45px">
+                <img class="loading-spinner" src="assets/images/ring.svg">
+            </div>
+            <div class="form-group first-name-group">
+                <label for="firstName">{{ 'MENU.PROFILES.WIZARD.FIRST_NAME' | translate }}</label>
+                <input type="text" id="firstName" class="form-control" formControlName="first_name">
+            </div>
+            <div class="form-group last-name-group">
+                <label for="lastName">{{ 'MENU.PROFILES.WIZARD.LAST_NAME' | translate }}</label>
+                <input type="text" id="lastName" class="form-control" formControlName="last_name">
+            </div>
+            <div class="form-group reference-code-group">
+                <label for="referenceCode">{{ 'MENU.PROFILES.WIZARD.REFERENCE_CODE' | translate }}</label>
+                <input type="text" id="referenceCode" class="form-control" formControlName="reference_code" readonly>
+            </div>
+            <div class="form-group share-code-group">
+                <label for="">Share you reference code:</label>
+                <button class="share-twitter-btn" (click)="shareTwitter()">
+                    <i class="fa fa-twitter"></i>
+                </button>
+                <button class="share-facebook-btn" (click)="shareFacebook()">
+                    <i class="fa fa-facebook"></i>
+                </button>
+            </div>
+        </div>
+        <div class="company-information">
+            <h4>{{ 'MENU.PROFILES.WIZARD.COMPANY_INFORMATION' | translate }}</h4>
+            <div class="img-container" *ngIf="!imageCompanyLoading">
+                <input type="file" (change)="fileChangeCompany($event)" id="add_photo_company" name="add_photo_company" style="display:none;">
+                <img class="profile-img-size img-circle card-img" [src]="companyPhoto"
+                onError="this.src='assets/images/user.png';">
+                <a class="edit-photo" onclick="document.getElementById('add_photo_company').click();">{{ 'MENU.PROFILES.WIZARD.EDIT_LOGO' | translate }}</a>
+            </div>
+            <div style="height: 60px; margin-top: 30px; margin-bottom: 65px" *ngIf="imageCompanyLoading">
+                <img class="loading-spinner" src="assets/images/ring.svg">
+            </div>
+            <div class="form-group company-name-group">
+                <label for="">{{ 'MENU.PROFILES.WIZARD.COMPANY_NAME' | translate }}</label>
+                <input type="text" class="form-control" formControlName="company_name">
+            </div>
+            <button class="btn update-button" (click)="updateInformation()" [disabled]="imageCompanyLoading || imageLoading" >{{ 'MENU.PROFILES.WIZARD.UPDATE_BUTTON' | translate }}</button>
+        </div>
+    </form>
+</div>

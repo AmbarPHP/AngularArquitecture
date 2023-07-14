@@ -1,0 +1,68 @@
+.candidate-personal-container {
+    background-color: #fff;
+    border: 1px solid #eaeaea;
+    border-radius: 3px;
+    padding-top: 15px;
+    margin-bottom: 20px;
+
+    h4 {
+        margin: 0;
+    }
+
+    .first-name-group {
+        margin-top: 15px;
+    }
+}
+
+.candidate-personal {
+    margin-top: 25px;
+}
+
+.professional-title-group {
+    p {
+        margin: 0;
+    }
+}
+
+.candidate-picture-group {
+    p {
+        margin: 0;
+    }
+}
+
+.profile-img-size {
+    width: 50px;
+    height: 50px;
+}
+
+.img-container {
+    margin-top: 10px;
+}
+
+.upload-photo {
+    margin-left: 10px;
+}
+
+.next-personal-btn {
+    width: 140px;
+    height: 40px;
+    color: #fff;
+    background-color: #58a8fc;
+    // margin-top: 40px;
+    margin-bottom: 20px;
+}
+
+.red-star {
+    color: red;
+}
+
+@media screen and (min-width: 667px) {
+    .first-name-group, .last-name-group, .city-group, .country-group, .professional-title-input {
+        display: inline-block;
+        width: 35%;
+    }
+
+    .last-name-group, .country-group {
+        margin-left: 10px;
+    }
+}

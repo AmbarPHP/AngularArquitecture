@@ -1,0 +1,57 @@
+@media screen and (max-width: 666px){
+    .intro-pre-footer {
+        ul {
+            padding: 0;
+            margin: 0 10px 0 0;
+        }
+    }
+}
+
+.iframeView {
+    display: none;
+}
+
+.intro-pre-footer {
+    a {
+        color: #fff;
+        text-decoration: none;
+    }
+}
+
+.feedback-icon {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+
+    .feedback-img {
+        width: 60px;
+        height: 60px;
+    }
+}
+
+.feedback-icon:hover {
+    background-color: #fff;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+}
+
+.go-pro-option {
+    margin-top: 10px;
+    margin-left: 10px;
+    
+    text-align: center;
+
+    .freeMembership {
+        color: #ffb02c !important;
+    }
+}
+
+.go-pro-option-active {
+
+    text-align: center;
+     
+    .membershipName {
+        color: #58d490;
+    }
+}

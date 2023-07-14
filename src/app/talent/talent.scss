@@ -1,0 +1,20 @@
+.talent-card-view {
+    margin-top: 25px;
+    padding: 0;
+}
+
+.talent-list-view {
+    margin-top: 25px;
+}
+
+@media screen and (min-width: 1024px) {
+    .card-view {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 1023px) {
+    .list-view {
+        display: none;
+    }
+}

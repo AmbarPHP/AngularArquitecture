@@ -1,0 +1,93 @@
+.h1-container {
+    h1 {
+        margin: 0;
+    }
+}
+
+.col-header {
+    margin: 10px 0 0 0;
+}
+
+.header-deselect {
+    margin-right: 10px;
+}
+
+.header-pipeline-btn {
+    background-color: #f96a6e;
+    color: #fff;
+    margin-right: 5px;
+}
+
+.header-bottom-margin {
+    border-bottom: 1px solid #eaeaea;
+    height: 60px;
+}
+
+.ic-arrangement-list {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+    content: url("/assets/images/ic-arrangement-list.svg")
+}
+
+.ic-arrangement-card {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+    content: url("/assets/images/ic-arrangement-cards.svg")
+}
+
+    .remove-bottom-section {
+        // position: fixed;
+        // bottom: 0;
+        // height: 80px;
+        // background-color: #fff;
+        // border-top: 1px solid #eaeaea;
+        // width: 100%;
+        // z-index: 5;
+
+        background-color: rgba(255, 255, 255, 0.5);
+        height: 80px;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        border-top: 1px solid #eaeaea;
+        z-index: 2;
+    }
+    
+    .remove-bottom-section-1 {
+        background-color: #fff;
+        z-index: 99;
+    }
+
+    .remove-bottom {
+        padding: 10px;
+    }
+
+@media screen and (max-width: 666px) {
+    .header-options {
+        display: none;
+    }
+
+    .header-bottom-margin {
+        border: none;
+    }
+}
+
+@media screen and (min-width: 667px) {
+    .remove-bottom-section {
+        position: fixed;
+        bottom: 0;
+        height: 80px;
+        background-color: #fff;
+        border-top: 1px solid #eaeaea;
+        width: 100%;
+        z-index: 5;
+        display: none;
+    }   
+
+    .remove-bottom {
+        padding: 10px;
+    }
+}

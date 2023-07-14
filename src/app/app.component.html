@@ -1,0 +1,193 @@
+﻿<div [ngClass]="{'iframeView': iframeView}" *ngIf="hideHeaderAndFooter">
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
+                    aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a  *ngIf="type === 'candidate'" class="navbar-brand" href="http://zourcing.com/"><img src="assets/images/zourcing-navbar-logo.png"></a>
+                <a  *ngIf="type != 'candidate'" class="navbar-brand" href="http://zourcing.com/"><img src="assets/images/zourcing-navbar-logo.png"></a>
+                
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="navbar-collapse collapse navbar-links" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-custom" *ngIf='loggedIn'>
+                    <li [routerLinkActive]="['active']" *ngIf="type != 'candidate'">
+                        <a href="#" [routerLink]="['/profiles']">{{ 'MENU.PROFILES.PROFILES' | translate }} </a>
+                    </li>
+                    <li [routerLinkActive]="['active']" *ngIf="type == 'candidate'">
+                        <a href="#" [routerLink]="['/vacancies-candidate']">{{ 'MENU.PROFILES.PROFILES' | translate }}</a>
+                    </li>
+                    <li [routerLinkActive]="['active']" *ngIf="type === 'candidate'">
+                        <a href="#" [routerLink]="['/my-applications']">{{ 'MENU.PROFILES.MY_APPLICATIONS' | translate }} </a>
+                    </li>
+       
+                    <li [routerLinkActive]="['active']" *ngIf="type != 'candidate'">
+                        <a href="#" [routerLink]="['/talent']">{{ 'MENU.PROFILES.TALENT' | translate }}</a>
+                    </li>
+                    <!-- <li [routerLinkActive]="['active']"> -->
+                        <!-- <a [routerLink]="['/chat']">
+                            {{ 'MENU.CHAT' | translate }} -->
+                            <!-- <span class="badge zource-badge"></span> -->
+                        <!-- </a> -->
+                    <!-- </li> -->
+                    <li [routerLinkActive]="['active']" *ngIf="type != 'candidate'"><a [routerLink]="['/cart']">{{ 'MENU.PROFILES.SHOPPING_CART' | translate }}</a>
+                    </li>
+                    <li [routerLinkActive]="['active']" *ngIf="(type === 'recruiter' )"><a [routerLink]="['/vacancies']">{{ 'MENU.PROFILES.VACANCIES' | translate }}</a>
+                    </li>
+                </ul>
+                <ul class="nav navbar-nav navbar-custom" *ngIf='!(loggedIn)'>
+                    <li [routerLinkActive]="['active']">
+                        <a [routerLink]="['/landing']">{{ 'MENU.PROFILES.TITLE' | translate }}</a>
+                    </li>
+                    <li [routerLinkActive]="['active']"><a [routerLink]="['/landing-candidate']">{{ 'MENU.PROFILES.FIND_JOBS' | translate }}</a>
+                    </li>
+                    <li [routerLinkActive]="['active']"><a [routerLink]="['/cart']">{{ 'MENU.PROFILES.SHOPPING_CART' | translate }}</a>
+                    </li>
+                    <!-- <li [routerLinkActive]="['active']"><a [routerLink]="['/memberships']" class="memberships-link">{{ 'MENU.PROFILES.START_NOW' | translate }}</a>
+                    </li> -->
+                    <!-- usuarios no logueados no pueden ver el menu de vacancies arriba -->
+                    <!-- <li [routerLinkActive]="['active']" *ngIf="(type != 'candidate')"><a [routerLink]="['/vacancies']">{{ 'MENU.PROFILES.VACANCIES' | translate }}</a>
+                    </li> -->
+                </ul>
+
+
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <select class="form-control language-select" #langSelect (change)="languageChange(langSelect.value)">
+                            <option *ngFor="let lang of translate.getLangs()" [value]="lang"
+                                    [selected]="lang === translate.currentLang">{{ lang }}
+                            </option>
+                        </select>
+                    </li>
+                    <li *ngIf="(type == 'recruiter' || type == 'r') && userMembership">
+                        <a (click)="goToAccountMembership()" class="go-pro-option" *ngIf="userMembership[0]?.membership == 'Free'"><span class="freeMembership">Upgrade now</span><br> {{ 'MENU.YOU_HAVE' | translate }} {{userMembership[0]?.remaining_credits}} {{ 'MENU.PROFILES_LEFT' | translate }}</a>
+                        <a (click)="goToAccountMembership()" class="go-pro-option-active" *ngIf="userMembership[0]?.membership != 'Free'"><span class="membershipName">{{userMembership[0]?.membership}} {{ 'MENU.MEMBERSHIP' | translate }}</span><br> {{ 'MENU.YOU_HAVE' | translate }} {{userMembership[0]?.remaining_credits}} {{ 'MENU.PROFILES_LEFT' | translate }}</a>
+                        <!-- {{userMembership | json}} -->
+                    </li>
+                    <li *ngIf="loggedIn" class="dropdown" [routerLinkActive]="['active']">
+                        <a href="#" class="dropdown-toggle user-bar-name" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><img *ngIf="currentUser.picture" [src]="currentUser.picture"
+                                                      class="profile-image img-circle"> {{currentUser.firstName}}
+                            {{currentUser.lastName}}<span
+                                    class="caret"></span></a>
+
+                        <ul class="dropdown-menu">
+                            <li><a href="#" [routerLink]="['/account']"><i class="fa fa-clog"
+                                                                                     aria-hidden="true"></i>{{ 'MENU.ACCOUNT' | translate }}</a>
+                            </li>
+                            <li><a href="#"><i class="fa fa-clog" aria-hidden="true"></i>{{ 'MENU.ABOUT_ZOURCING' | translate }}</a>
+                            </li>
+                            <li><a [routerLink]="['/reports']"><i class="fa fa-clog" aria-hidden="true"></i>{{'MENU.REPORTS' | translate}}</a>
+                            </li>
+                            <li><a (click)="openImportContactsModal()"><i class="fa fa-clog" aria-hidden="true"></i>{{'MENU.IMPORT_CONTACTS' | translate}}</a>
+                            </li>
+
+                            <li><a [routerLinkActive]="['active']" (click)="logout()"><i class="fa fa-sign-out"
+                                                                                                aria-hidden="true"></i>
+                                {{ 'MENU.LOGOUT' |
+                                translate }}
+                                </a>
+                            </li>
+                        </ul>
+                        
+                    </li>
+
+                    
+                    <li class="login-link" *ngIf="!(loggedIn)">
+                        <a (click)="showLoginModal()">
+                            {{ 'MENU.LOGIN' | translate }}
+                        </a>
+                    </li>
+
+                    <!-- <li class="login-link" *ngIf="!(loggedIn)">
+                        <a data-toggle="modal" data-target="#signupModal" >
+                            {{ 'MENU.REGISTER' | translate }}
+                        </a>
+                    </li> -->
+                    
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
+</div>
+
+<!-- main app container -->
+<div>
+    <router-outlet></router-outlet>
+    <intro-login-modal></intro-login-modal>
+</div>
+
+<div class="intro-pre-footer-wrapper" [ngClass]="{'iframeView': iframeView}" *ngIf="hideHeaderAndFooter">
+    <div class="col-xs-12 intro-pre-footer">
+        <div>
+            <ul>
+                <li class="header">{{ 'MENU.PROFILES.FOOTER.COMPANY' | translate }}</li>
+                <li><a href="https://zourcing.com/">{{ 'MENU.PROFILES.FOOTER.HOME' | translate }}</a></li>
+                <li><a href="https://zourcing.com/about-us/">{{ 'MENU.PROFILES.FOOTER.ABOUT' | translate }}</a></li>
+                <li><a href="https://zourcing.com/pricing-tables/">{{ 'MENU.PROFILES.FOOTER.PLANS' | translate }}</a></li>
+                <li><a href="https://zourcing.freshdesk.com/support/tickets/new" target="_blank">{{ 'MENU.PROFILES.FOOTER.SUPPORT' | translate }}</a></li>
+            </ul>
+        </div>
+        <div>
+            <ul>
+                <li class="header">{{ 'MENU.PROFILES.FOOTER.PARTNERS' | translate }}</li>
+                <li><a href="https://tas-screenit.com/" target="_blank">ScreenIT</a></li>
+                <li>&nbsp;</li>
+                <li>&nbsp;</li>
+            </ul>
+        </div>
+        <div>
+            <ul>
+                <!-- <li class="header">{{ 'MENU.PROFILES.FOOTER.COUNTRIES' | translate }}</li>
+                <li>{{ 'MENU.PROFILES.FOOTER.MEXICO' | translate }}</li>
+                <li>{{ 'MENU.PROFILES.FOOTER.UNITED_STATES' | translate }}</li>
+                <li>{{ 'MENU.PROFILES.FOOTER.CANADA' | translate }}</li> -->
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="col-xs-12 intro-footer" [ngClass]="{'iframeView': iframeView}" *ngIf="hideHeaderAndFooter">
+    <div class="img-footer">
+        <img src="assets/images/intro/img-footer-logo/img-footer-logo.png" alt=""> 2017 Zourcing
+    </div>
+    <div class="icons-footer">
+        <a class="social" href="https://zourcing.com/#contactform"><i class="fa fa-envelope-o"></i></a>
+        <a class="social" href="https://twitter.com/zourcing"><i class="fa fa-twitter"></i></a>
+        <a class="social" href="https://www.facebook.com/zourcing/"><i class="fa fa-facebook"></i></a>
+        <a class="social" href="https://www.linkedin.com/company/25173066/"><i class="fa fa-linkedin"></i></a>
+        <a href="https://zourcing.com/about-us/">
+            <div class="about-footer">
+                {{ 'MENU.PROFILES.FOOTER.TERMS_AND_CONDITIONS' | translate }}
+            </div>
+        </a>
+        <div class="about-footer">
+            <a href="assets/pdf/privacy-policy-zourcing.pdf">
+                    {{ 'MENU.PROFILES.FOOTER.PRIVACY_POLICY' | translate }}
+                </a>
+        </div>
+        <div class="about-footer">
+            <a href="https://zourcing.freshdesk.com/support/solutions">
+                    {{ 'MENU.PROFILES.FOOTER.HELP_CENTER' | translate }}
+                </a>
+        </div>
+    </div>
+</div>
+
+<!-- credits -->
+<!--<div class="text-center top-2">
+    <i class="fa fa-copyright" aria-hidden="true"></i> {{ 'HOME.COPYRIGHT' | translate }}
+</div>-->
+
+<import-contacts-modal></import-contacts-modal>
+<feedback-modal></feedback-modal>
+<div class="feedback-icon" pTooltip="feedback" tooltipPosition="left" (click)="openFeedbackModal()">
+    <img src="assets/images/feedback-icon.png" class="feedback-img">
+</div>
+<ngx-json-ld [json]="jsonLD"></ngx-json-ld>

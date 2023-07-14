@@ -1,0 +1,8 @@
+<ul>
+    <li class="menu-position-info" [ngClass]="{'option-active': positionInfo}" (click)="changePositionInfo(true)">
+        Position Info
+    </li>
+    <li class="menu-your-talent" [ngClass]="{'option-active': !positionInfo}" (click)="changePositionInfo(false)">
+        Your Talent
+    </li>
+</ul>

@@ -1,0 +1,34 @@
+<div class="vacancy-list-card" *ngFor="let vacancy of (pagedItems | vacancyFilter: filterString); let i = index">
+    <div class="vacancy-list-container">
+        <div class="vacancy-list-card-information">
+            <input type="checkbox" [checked]="getCheckBoxesSaved(vacancy.id)" (change)="$event.target.checked ? checkCard(vacancy.id) : uncheckCard(vacancy.id)">
+            <div class="vacancy-information">
+                <p class="vacancy-title">{{ vacancy.posting_title }}</p>
+                <p class="gray-text">{{ vacancy.job_description }}</p>
+                <p class="gray-text">{{ vacancy.country }}, {{ vacancy.city }}</p>
+            </div>
+        </div>
+        <div class="vacancy-secondary-information">
+            <div class="vacancy-share-container">
+                <button class="share-twitter-btn" (click)="shareTwitter(vacancy.posting_title, vacancy.job_description, vacancy.country, vacancy.id)">
+                    <i class="fa fa-twitter"></i>
+                </button>
+                <button class="share-facebook-btn" (click)="shareFacebook(vacancy.posting_title, vacancy.job_description, vacancy.country, vacancy.id)">
+                    <i class="fa fa-facebook"></i>
+                </button>
+            </div>
+            <div class="interested-profiles" [ngClass]="{'margin-right-to-fix': vacancy.applicants.length > 4}">
+                <ul class="interested-profiles-list">
+                    <li class="interested-profiles-list-item" *ngFor="let applicant of vacancy.applicants; let i = index">
+                        <img *ngIf="i < 4" class="profile-img-size img-circle" [src]="applicant.profile_picture" onError="this.src='assets/images/user.png';">
+                    </li>
+                    <button *ngIf="vacancy.applicants.length > 4" href="" class="card-image-size img-circle more-images-btn">+{{vacancy.applicants.length - 4}}</button>
+                </ul>
+            </div>
+            <div class="vertical-line"></div>
+            <div class="view-full-vacancy">
+                <a [routerLink]="['/vacancies', vacancy.id]">{{ 'MENU.VACANCIES.VIEW_FULL_VACANCY' | translate }}</a>
+            </div>
+        </div>
+    </div>
+</div>

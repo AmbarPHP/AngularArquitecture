@@ -1,0 +1,9 @@
+<form #subscriberForm="ngForm" (ngSubmit)="subscribe(subscriberForm)">
+    <div class="form-inline">
+        <div class="form-group">
+            <label for="email">Email</label>
+            <br>
+            <input type="email" id="email" name="email" class="form-control input-width" [(ngModel)]="subscriberModel.email" (ngModelChange)="subscribe(subscriberModel)" required>
+        </div>
+    </div>
+</form>

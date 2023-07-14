@@ -1,0 +1,137 @@
+<p-growl [(value)]="msgs" life="5000"></p-growl>
+<div class="modal fade" id="addVacancyModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title" id="myModalLabel">{{ 'MENU.VACANCIES.VACANCY_NEW_MODAL.MODAL_TITLE' | translate }}</h4>
+            </div>
+            <div class="modal-body">
+                <!-- <alert></alert> -->
+                <div class="alert alert-danger" role="alert" *ngIf="vacancyError">Ha ocurrido un error al crear la vacante</div>
+                <form [formGroup]="newVacancyForm">
+                    <div class="form-group group-title" [ngClass]="{'has-error': titleHasError}">
+                        <label for="inputAddTitle">{{ 'MENU.VACANCIES.VACANCY_NEW_MODAL.TITLE' | translate }}<span class="red-star">*</span></label>
+                        <input type="text" class="form-control" id="id_title" formControlName="title" [formControl]="newVacancyForm.controls['title']" placeholder="Enter">
+                    </div>
+                    <div class="form-group group-position" [ngClass]="{'has-error': positionHasError}">
+                        <label for="inputAddPosition">{{ 'MENU.VACANCIES.VACANCY_NEW_MODAL.POSITION' | translate }}<span class="red-star">*</span></label>
+                        <input type="text" class="form-control" id="id_position" formControlName="position" [formControl]="newVacancyForm.controls['position']" placeholder="Enter">
+                    </div>
+
+                    <div class="form-group group-type" [ngClass]="{'has-error': typeHasError}">
+                        <select id="type" formControlName="type" [formControl]="newVacancyForm.controls['type']" class="form-control">
+                            <option value="">{{ 'MENU.VACANCIES.VACANCY_NEW_MODAL.TYPE_OF_JOB' | translate }}<span class="red-star">*</span></option>
+                            <option value="1">{{ 'MENU.VACANCIES.VACANCY_NEW_MODAL.FULL_TIME' | translate }}</option>
+                            <option value="2">{{ 'MENU.VACANCIES.VACANCY_NEW_MODAL.PART_TIME' | translate }}</option>
+                            <option value="3">{{ 'MENU.VACANCIES.VACANCY_NEW_MODAL.INTERNSHIP' | translate }}</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group country-group">
+                        <select id="country" class="form-control" formControlName="country" [formControl]="newVacancyForm.controls['country']" (change)="getStates($event.target.value)">
+                            <option value="">{{ 'MENU.VACANCIES.VACANCY_NEW_MODAL.COUNTRY' | translate }}</option>
+                            <option *ngFor="let country of countries" [value]="country.clave">{{country.name}}</option>
+                        </select>
+                    </div>
+                    <div class="form-group state-group">
+                        <select id="state" class="form-control" formControlName="state" [formControl]="newVacancyForm.controls['state']" (change)="getCities($event.target.value)">
+                            <option value="">{{ 'MENU.VACANCIES.VACANCY_NEW_MODAL.STATE' | translate }}</option>
+                            <option *ngFor="let state of states" [value]="state.key">{{state.name}}</option>
+                        </select>
+                    </div>
+                    <div class="form-group city-group">
+                        <select id="city" formControlName="city" [formControl]="newVacancyForm.controls['city']"class="form-control">
+                            <option value="">{{ 'MENU.VACANCIES.VACANCY_NEW_MODAL.CITY' | translate }}</option>
+                            <option *ngFor="let city of cities" [value]="city.clave">{{city.name}}</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="salary">{{ 'MENU.VACANCIES.VACANCY_NEW_MODAL.SALARY' | translate }}</label>
+                        <div class="form-inline salary-group">
+                            <input type="number" class="form-control salary-input" id="id_salary" formControlName="salary" [formControl]="newVacancyForm.controls['salary']" placeholder="0.00">
+                            <select id="currency" formControlName="currency" [formControl]="newVacancyForm.controls['currency']" class="form-control currency-select">
+                                <option value="">{{ 'MENU.VACANCIES.VACANCY_NEW_MODAL.CURRENCY' | translate }}</option>
+                                <option value="1">USD</option>
+                                <option value="2">MXN</option>
+                                <option value="3">CAD</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="form-inline">
+                            <div class="form-group yoe-group" [ngClass]="{'has-error': yoeHasError}">
+                                <label for="inputAddYears">{{ 'MENU.VACANCIES.VACANCY_NEW_MODAL.YOE' | translate }}<span class="red-star">*</span></label>
+                                <br>
+                                <input type="number" class="form-control yoe-input" id="id_yoe" formControlName="yoe" [formControl]="newVacancyForm.controls['yoe']"placeholder="0.00">
+                            </div>
+                            <div class="form-group education-group" [ngClass]="{'has-error': educationHasError}">
+                                <label for="education">{{ 'MENU.VACANCIES.VACANCY_NEW_MODAL.DEGREE' | translate }}<span class="red-star">*</span></label>
+                                <br>
+                                <select id="education" formControlName="education" [formControl]="newVacancyForm.controls['education']" class="education-dropdown form-control">
+                                    <option value="">{{ 'MENU.VACANCIES.VACANCY_NEW_MODAL.SELECT_DEGREE' | translate }}</option>
+                                    <option value="1">{{ 'MENU.VACANCIES.VACANCY_NEW_MODAL.BACHELOR' | translate }}</option>
+                                    <option value="2">{{ 'MENU.VACANCIES.VACANCY_NEW_MODAL.MASTER' | translate }}</option>
+                                    <option value="3">{{ 'MENU.VACANCIES.VACANCY_NEW_MODAL.DEGREE_OPTION' | translate }}</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group from-group-language-container" formArrayName="languages">
+                        <label for="language">{{ 'MENU.VACANCIES.VACANCY_NEW_MODAL.LANGUAGE' | translate }}<span class="red-star">*</span></label>
+                        <div *ngFor="let language of newVacancyFormLanguages.controls; let i = index">
+                            <div [formGroupName]="i">
+                                <div class="form-group language-form-group" [ngClass]="{'has-error': languageHasError(i)}">
+                                    <input type="text" class="form-control language-input" id="language" formControlName="language" placeholder="Enter">
+                                </div>
+                                <div class="form-group language-level-group" [ngClass]="{'has-error': languageLevelHasError(i)}">
+                                    <select id="language_level" class="form-control language-level" formControlName="level">
+                                        <option value="">{{ 'MENU.VACANCIES.VACANCY_NEW_MODAL.SELECT' | translate }}<span class="red-star">*</span></option>
+                                        <option value="1">{{ 'MENU.VACANCIES.VACANCY_NEW_MODAL.BASIC' | translate }}</option>
+                                        <option value="2">{{ 'MENU.VACANCIES.VACANCY_NEW_MODAL.INTERMEDIATE' | translate }}</option>
+                                        <option value="3">{{ 'MENU.VACANCIES.VACANCY_NEW_MODAL.ADVANCED' | translate }}</option>
+                                        <option value="4">{{ 'MENU.VACANCIES.VACANCY_NEW_MODAL.NATIVE' | translate }}</option>
+                                    </select>
+                                    <button class="btn btn-delete-skill" [disabled]="i <= 0" (click)="removeLanguage(i)"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <a (click)="addLanguage()"><i class="fa fa-plus-square-o plus-icon add-language-link" aria-hidden="true"></i>{{ 'MENU.VACANCIES.VACANCY_NEW_MODAL.ADD_LANGUAGE' | translate }}</a>
+                    <div class="form-group" formArrayName="skills">
+                        <label for="skill">{{ 'MENU.VACANCIES.VACANCY_NEW_MODAL.SKILLS' | translate }}<span class="red-star">*</span></label>
+                        <div *ngFor="let skill of newVacancyFormSkills.controls; let i = index">
+                            <div [formGroupName]="i">
+                                <div class="form-group skill-group" [ngClass]="{'has-error': skillsHasError(i)}">
+                                    <input type="text" class="form-control skill-input" id="skill" formControlName="value" placeholder="Skill Name">
+                                    <button class="btn btn-delete-skill" [disabled]="i <= 0" (click)="removeSkill(i)"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <a (click)="addSkill()"><i class="fa fa-plus-square-o plus-icon" aria-hidden="true"></i>{{ 'MENU.VACANCIES.VACANCY_NEW_MODAL.ADD_SKILL' | translate }}</a>
+                    <div class="form-group comments-group" [ngClass]="{'has-error': commentsHasError}">
+                        <label for="comments">{{ 'MENU.VACANCIES.VACANCY_NEW_MODAL.COMMENTS' | translate }}<span class="red-star">*</span></label>
+                        <textarea name="comments" id="comments" rows="2" class="form-control" formControlName="comments" [formControl]="newVacancyForm.controls['comments']" placeholder="Enter"></textarea>
+                    </div>
+                    <div class="form-group status-group" [ngClass]="{'has-error': statusHasError}">
+                        <label for="status">{{ 'MENU.VACANCIES.VACANCY_NEW_MODAL.VACANCY_STATUS' | translate }}<span class="red-star">*</span></label>
+                        <select id="status" class="form-control" formControlName="status">
+                            <option value="">{{ 'MENU.VACANCIES.VACANCY_NEW_MODAL.SELECT_STATUS' | translate }}</option>
+                            <option value="1">{{ 'MENU.VACANCIES.VACANCY_NEW_MODAL.CANCELLED' | translate }}</option>
+                            <option value="2">{{ 'MENU.VACANCIES.VACANCY_NEW_MODAL.FILLED' | translate }}</option>
+                            <option value="3">{{ 'MENU.VACANCIES.VACANCY_NEW_MODAL.IN_PROGRESS' | translate }}</option>
+                            <option value="4">{{ 'MENU.VACANCIES.VACANCY_NEW_MODAL.ON_HOLD' | translate }}</option>
+                        </select>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button [disabled]="!newVacancyForm.valid" type="button" (click)="submit(newVacancyForm.value)" class="btn btn-save-vacancy pull-left">{{ 'MENU.VACANCIES.VACANCY_NEW_MODAL.SAVE_BUTTON' | translate }}</button>
+            </div>
+        </div>
+    </div>
+</div>

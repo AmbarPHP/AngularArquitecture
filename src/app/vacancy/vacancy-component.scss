@@ -1,0 +1,20 @@
+.container-fluid {
+
+}
+.row {
+    
+}
+
+.no-items-div {
+    margin-top: 200px;
+    margin-bottom: 200px;
+    text-align: center;
+
+    .add-new-btn {
+        background-color: #58d490;
+        width: 140px;
+        height: 40px;
+        color: #fff;
+        border-radius: 2px;
+    }
+}

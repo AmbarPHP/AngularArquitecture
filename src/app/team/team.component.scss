@@ -1,0 +1,59 @@
+.team-title {
+    border-bottom: 1px solid #eaeaea;
+    margin-bottom: 30px;
+}
+
+.bio-card {
+    background-color: #fff;
+    height: 300px;
+    border: 1px solid #eaeaea;
+    margin-bottom: 20px;
+
+    .info-container {
+        min-height: 190px;
+    }
+
+    .image-bio-container {
+        text-align: center;
+
+        .bio-image {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            background-color: #ccc;
+            border: 1px solid #eaeaea;
+            margin-top: 10px;
+        }
+    }
+
+    .bio-name {
+        text-align: center;
+    }
+
+    .bio-position {
+        text-align: center;
+    }
+
+    .bio-skills {
+        text-align: center;
+
+        .badge {
+            color: #fff;
+            background-color: rgba(0, 100, 245, 0.56);
+            margin-right: 3px;
+        }
+    }
+
+    .bio-more-details {
+        text-align: center;
+        margin-top: 30px;
+
+        .btn-more-details {
+            background-color: #ffb03e;
+            color: #fff;
+            min-width: 140px;
+            height: 35px;
+            border-radius: 2px;
+        }
+    }
+}

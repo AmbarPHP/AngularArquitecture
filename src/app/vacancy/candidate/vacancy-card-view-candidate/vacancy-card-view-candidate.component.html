@@ -1,0 +1,23 @@
+<div class="col-xs-12 col-sm-6 col-md-4 vacancy-card-container" *ngFor="let vacancy of pagedItems">
+    <div class="col-xs-12 vacancy-card">
+        <div class="row">
+            <div class="vacancy-description-container">
+                <div class="col-xs-3 col-sm-4 img-container">
+                    <img class="img-circle card-img" src="assets/images/img-companypic-empty-big.svg" >
+                </div>
+                <div class="col-xs-9 col-sm-8 vacancy-description">
+                    <h4>{{vacancy.posting_title}}</h4>
+                    <p class="color-gray">{{vacancy.job_description}}</p>
+                    <p class="color-gray">IT Ready</p>
+                    <p class="color-gray">{{vacancy.country}}, {{vacancy.state}}</p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 vacancy-line"></div>
+            <div class="col-xs-12 full-position">
+                <a [routerLink]="['/vacancies-candidate', vacancy.id]">{{ 'MENU.VACANCIES_CANDIDATE.VACANCY_CARD.VIEW_FULL_POSITION' | translate }}</a>
+            </div>
+        </div>
+    </div>
+</div>

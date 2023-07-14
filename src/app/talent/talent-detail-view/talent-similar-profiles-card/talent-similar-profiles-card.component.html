@@ -1,0 +1,16 @@
+<div class="col-xs-12 col-sm-3 similar-profiles-card">
+    <div class="similar-profiles-head">
+        <h4>Similar Profiles</h4>
+    </div>
+    <div class="similar-profiles-info" *ngFor="let profile of related_profiles">
+        <div class="similar-profiles-image">
+            <img class="profile-img-size img-circle card-img" [src]="profile.profile_picture"
+            onError="this.src='assets/images/user.png';">
+        </div>
+        <div class="similar-profiles-description">
+            <p class="similar-profiles-name"><a [routerLink]="['/profiles', profile.id]" >{{profile.name}}</a></p>
+            <p class="similar-profiles-title">{{profile.skills| slice:0:15}}...</p>
+            <p class="similar-profiles-location">{{profile.location}}</p>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,49 @@
+<h3>Salarios por puesto </h3>
+<div class="row">
+    <p-dataTable [value]="salaries" [rows]="10" [paginator]="true" [loading]="loading">
+
+
+        <p-column field="role" header="Puesto"></p-column>
+        <p-column field="amount" header="Sueldo">
+            <ng-template let-col let-salary="rowData" let-ri="rowIndex" pTemplate="body">
+
+                {{salary[col.field]| currency : 'USD' : 2 }}
+
+            </ng-template>
+
+        </p-column>
+        <p-column field="max" header="Max">
+
+            <ng-template let-col let-salary="rowData" let-ri="rowIndex" pTemplate="body">
+
+                {{salary[col.field]| currency : 'USD' : 2 }}
+
+            </ng-template>
+        </p-column>
+        <p-column field="min" header="Min">
+            <ng-template let-col let-salary="rowData" let-ri="rowIndex" pTemplate="body">
+
+                {{salary[col.field]| currency : 'USD' : 2 }}
+
+            </ng-template>
+
+        </p-column>
+        <p-column field="frequency" header="Frecuencia">
+               <ng-template let-col let-salary="rowData" let-ri="rowIndex" pTemplate="body">
+
+                /{{salary[col.field] }}
+
+            </ng-template>
+
+
+        </p-column>
+        <p-column field="avg" header="Promedio">
+            <ng-template let-col let-salary="rowData" let-ri="rowIndex" pTemplate="body">
+
+                <p-progressBar [value]="salary[col.field]"></p-progressBar>
+
+            </ng-template>
+        </p-column>
+    </p-dataTable>
+
+</div>

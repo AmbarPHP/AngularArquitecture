@@ -1,0 +1,22 @@
+<select name="information" id="information" class="form-control information-dropdown mobile">
+    <option value="0">{{ 'MENU.PROFILES.WIZARD.CONTACT_INFO' | translate }}</option>
+    <option value="1">{{ 'MENU.PROFILES.WIZARD.EDUCATION' | translate }}</option>
+    <option value="0">{{ 'MENU.PROFILES.WIZARD.WORK_EXPERIENCE' | translate }}</option>
+    <option value="1">{{ 'MENU.PROFILES.WIZARD.SKILLS' | translate }}</option>
+    <option value="0">{{ 'MENU.PROFILES.WIZARD.LANGUAGES' | translate }}</option>
+    <option value="1">{{ 'MENU.PROFILES.WIZARD.CONTACT_INFO' | translate }}</option>
+    <option value="1">Preferences</option>
+</select>
+
+<div class="information-menu desktop">
+    <ul>
+        <li (click)="clickMenu('information')" class="option-selected" [ngClass]="{'option-selected': candidateMenuSelected === 'information'}">{{ 'MENU.PROFILES.WIZARD.INFORMATION' | translate }}</li>
+        <li (click)="clickMenu('education')" [ngClass]="{'option-selected': candidateMenuSelected === 'education'}">{{ 'MENU.PROFILES.WIZARD.EDUCATION' | translate }}</li>
+        <li (click)="clickMenu('experience')" [ngClass]="{'option-selected': candidateMenuSelected === 'experience'}">{{ 'MENU.PROFILES.WIZARD.WORK_EXPERIENCE' | translate }}</li>
+        <li (click)="clickMenu('skills')" [ngClass]="{'option-selected': candidateMenuSelected === 'skills'}">{{ 'MENU.PROFILES.WIZARD.SKILLS' | translate }}</li>
+        <li (click)="clickMenu('languages')" [ngClass]="{'option-selected': candidateMenuSelected === 'languages'}">{{ 'MENU.PROFILES.WIZARD.LANGUAGES' | translate }}</li>
+        <li (click)="clickMenu('contactInfo')" [ngClass]="{'option-selected': candidateMenuSelected === 'contactInfo'}">{{ 'MENU.PROFILES.WIZARD.CONTACT_INFO' | translate }}</li>
+        <li (click)="clickMenu('preferences')" [ngClass]="{'option-selected': candidateMenuSelected === 'preferences'}">{{ 'MENU.PROFILES.WIZARD.PREFERENCES' | translate }}</li>
+    </ul>
+    <div class="clear-both"></div>
+</div>

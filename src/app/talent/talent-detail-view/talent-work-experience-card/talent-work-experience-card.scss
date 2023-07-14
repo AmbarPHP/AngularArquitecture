@@ -1,0 +1,161 @@
+.monthly-avarage {
+    background-color: #58d490;
+    border-radius: 3px;
+    text-align: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+
+    p {
+        margin: 0;
+        color: #fff;
+    }
+
+    .avarage {
+        font-size: 20px;
+        margin: 10px 0 10px 0;
+    }
+}
+
+.work-experience-card {
+    background-color: #fff;
+    border: 1px solid #eaeaea;
+    border-radius: 3px;
+    margin-top: 20px;
+    padding-top: 20px;
+    padding-bottom: 10px;
+
+    h4, p {
+        margin: 0;
+    }
+
+}
+
+.work-experience-skills {
+    background-color: #fff;
+    border: 1px solid #eaeaea;
+    border-radius: 3px;
+    margin-top: 20px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+
+    .badge {
+        background-color: #eaeaea;
+        color: #000;
+        padding: 7px 12px;
+        margin-top: 8px;
+        margin-right: 5px;
+    }
+
+    h4 {
+        margin-top: 0px;
+    }
+}
+
+.work-experience-education {
+    background-color: #fff;
+    border: 1px solid #eaeaea;
+    border-radius: 3px;
+    margin-top: 20px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+
+    h4, p {
+        margin: 0;
+    }
+
+    .work-experience-collage {
+        margin-top: 20px;
+    }
+
+    .work-experience-degree, .work-experience-year {
+        color: #bababa;
+    }
+}
+
+.work-experience-languages {
+    background-color: #fff;
+    border: 1px solid #eaeaea;
+    border-radius: 3px;
+    margin-top: 20px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+
+    .work-experience-languages-container {
+        border-bottom: 1px solid #eaeaea;
+        padding-bottom: 20px;
+    }
+
+    h4 {
+        margin-top: 0px;
+        margin-bottom: 10px;
+    }
+    
+    .work-experience-language {
+        margin-top: 20px;
+    }
+
+    .work-experience-percent {
+        color: #bababa;
+    }
+
+    .language-badge {
+        background-color: #eaeaea;
+        color: #000;
+        padding: 7px 12px;
+        margin-top: 8px;
+        margin-right: 5px;
+    }
+}
+
+.work-experience-projects {
+    background-color: #fff;
+    border: 1px solid #eaeaea;
+    border-radius: 3px;
+    margin-top: 20px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+
+    h4 {
+        margin-top: 0;
+    }
+
+    .project-badge {
+        background-color: #eaeaea;
+        color: #000;
+        padding: 7px 12px;
+        margin-top: 8px;
+        margin-right: 5px;
+    }
+}
+
+.work-experience-details {
+    padding-left: 0px;
+    padding-right: 0px;
+    border-bottom: 1px solid #eaeaea;
+    padding-bottom: 20px;
+
+    .work-experience-title {
+        // margin-top: 20px;
+        display: inline-block;
+    }
+
+    .work-experience-position {
+        margin-top: 20px;
+        display: inline-block;
+    }
+
+    .work-experience-location, .work-experience-date {
+        color: #bababa;
+    }
+
+}
+.no-border-bottom {
+    border: none;
+}
+
+@media screen and (max-width: 666px) {
+    .talent-work-experience-card {
+        padding-left: 0;
+        padding-right: 0;
+    }
+}

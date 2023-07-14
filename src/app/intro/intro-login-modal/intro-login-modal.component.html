@@ -1,0 +1,150 @@
+<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content" *ngIf="showLoginModal === true">
+            <div class="modal-header">
+                <button type="button" class="close" (click)="closeModal()"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="loginModalLabel">{{ 'MENU.LOGIN' | translate }}</h4>
+            </div>
+            <div class="modal-body">
+                <alert></alert> 
+                <div class="alert alert-danger" *ngIf="loginError" role="alert">Lo sentimos, por el momento no se pueden crear cuentas</div>
+                <div *ngIf="captchaAlert" class="alert alert-danger captcha-alert">
+                    Seleccionar primero el captcha
+                </div>
+                <p>{{ 'MENU.LOGIN_WITH' | translate }}</p>
+                <div class="modal-body-container">
+                    <button class="facebook-button" (click)="onFacebookLoginClick()">
+                        <i class="fa fa-facebook-f"></i> Facebook
+                    </button>
+                    <a *ngIf="enableLogin" [attr.href]="callbackUrl">
+                        <button class="linkedin-button">
+                            <i class="fa fa-linkedin"></i> Linkedin
+                        </button>
+                    </a>
+
+                    <button *ngIf="!enableLogin" class="linkedin-button" (click)="linkedinClick()">
+                        <i class="fa fa-linkedin"></i> Linkedin
+                    </button>
+
+                    <a *ngIf="enableLogin" [attr.href]="githubCallbackUrl">
+                        <button class="github-button">
+                            <i class="fa fa-github"></i> Github
+                        </button>
+                    </a>
+
+                    <button *ngIf="!enableLogin" class="github-button" (click)="githubClick()">
+                        <i class="fa fa-github"></i> Github
+                    </button>
+                </div>
+                <p>{{ 'MENU.LOGIN_MODAL.OR_LABEL' | translate }}</p>
+                <form name="form" (ngSubmit)="f.form.valid && login()" #f="ngForm" novalidate>
+                    <div class="form-group">
+                        <input type="email" name="username" [(ngModel)]="model.username" #username="ngModel" id="intro-signup-email" class="form-control" placeholder="{{ 'MENU.LOGIN_MODAL.EMAIL_PLACEHOLDER' | translate }}">
+                        <br>
+                        <input type="password" class="form-control" name="password" [(ngModel)]="model.password" #password="ngModel" id="intro-signup-password" class="form-control" placeholder="{{ 'MENU.LOGIN_MODAL.PASSWORD_PLACEHOLDER' | translate }}">
+                        
+                        <div class="intro-remember-container">
+                            <div>
+                                <input type="checkbox" id="intro-signup-remember" name="intro-signup-remember" class="intro-signup-remember">
+                                <label for="intro-signup-remember">{{ 'MENU.PROFILES.MODAL.REMEMBER_ME' | translate }}</label>
+                            </div>
+                            <div>
+                                <a class="intro-forgot-password pull-right" (click)="openForgotPasswordModal()">{{ 'MENU.PROFILES.MODAL.FORGOT_PASSWORD' | translate }}</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <p [ngClass]="{'test': socialUserNoExist == true}">{{ 'MENU.NEW_TO_ZOURCING' | translate }} <a (click)="goToSignupModal()">{{ 'MENU.CREATE_AN_ACCOUNT' | translate }}</a></p>
+                        <re-captcha (resolved)="resolved($event)" name="captcha" [(ngModel)]="model.captcha" siteKey="6LfK5T0UAAAAAMOzzJ7I_lsAtJw-kwYj-6YJVD2Y" required></re-captcha>
+                        <button type="submit" class="btn btn-primary intro-login-button pull-left">{{ 'MENU.LOGIN' | translate }} </button>
+                        
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <!--<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>-->
+                <p class="pull-left">{{ 'MENU.PROFILES.MODAL.BY_SIGNING' | translate }} <a href="https://zourcing.com/about-us/"> {{ 'MENU.PROFILES.FOOTER.TERMS_AND_CONDITIONS' | translate }}</a> {{ 'MENU.PROFILES.MODAL.AND' | translate }} <a href="assets/pdf/privacy-policy-zourcing.pdf">{{ 'MENU.PROFILES.FOOTER.PRIVACY_POLICY' | translate }}</a></p>
+            </div>
+        </div>
+
+    <!-- Sign up -->
+
+        <div class="modal-content" *ngIf="showSignupModal === true">
+            <div class="modal-header">
+                <button type="button" class="close" (click)="closeModal()"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="signupModalLabel">Sign Up</h4>
+            </div>
+            <div class="modal-body">
+                <alert></alert>
+                <label for="isRecruiter">{{ 'MENU.LOGIN_MODAL.ARE_YOU_CANDIDATE' | translate }}</label>
+                <input id="isRecruiter" (change)="isRecruiterFunction($event.target.checked)" type="checkbox">
+                <!-- <p>Sign Up with</p> -->
+                <div class="modal-body-container">
+                </div>
+                <!-- <p>Or</p> -->
+                <form name="form" (ngSubmit)="f.form.valid && register(isRecruiter)" #f="ngForm" novalidate>
+                    <div class="form-group">
+                        <input type="email" name="username" [(ngModel)]="model.username" #username="ngModel" id="intro-signup-email" class="form-control" placeholder="Email">
+                        <br>
+                        <input type="password" class="form-control" name="password" [(ngModel)]="model.password" #password="ngModel" id="intro-signup-password" class="form-control" placeholder="Password">
+                        <br>
+                        <input type="reference_code" class="form-control" name="reference_code" [(ngModel)]="model.reference_code" #reference_code="ngModel" id="intro-reference-code" class="form-control" placeholder="Reference Code">
+
+                        <div class="intro-remember-container">
+                            <div>
+                                <input type="checkbox" id="intro-signup-remember" name="intro-signup-remember" class="intro-signup-remember">
+                                <label for="intro-signup-remember">{{ 'MENU.PROFILES.MODAL.REMEMBER_ME' | translate }}</label>
+                            </div>
+                            <div>
+                                <a href="" class="intro-forgot-password pull-right" data-toggle="modal" data-target="#forgotPasswordModal">Forgot your password?</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    
+                    <p>{{ 'MENU.PROFILES.MODAL.ALREADY_HAVE' | translate }} <a (click)="goToLoginModal()">Login</a></p>
+                    <button type="submit" class="btn btn-primary intro-login-button pull-left">Sign Up</button>
+        
+                </form>
+            </div>
+            <div class="modal-footer">
+                <!--<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>-->
+                <p class="pull-left">{{ 'MENU.PROFILES.MODAL.BY_SIGNING' | translate }} <a href="https://zourcing.com/about-us/"> {{ 'MENU.PROFILES.FOOTER.TERMS_AND_CONDITIONS' | translate }}</a> and <a href="http://tas-screenit.com/wp-content/uploads/2016/09/privacy-policy.pdf">{{ 'MENU.PROFILES.FOOTER.HELP_CENTER' | translate }}</a></p>
+            </div>
+        </div>
+        
+        
+    </div>
+</div>
+
+
+<div class="modal fade" id="socialUserModal" tabindex="-1" role="dialog" aria-labelledby="socialUserModal">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+            <button type="button" class="close" (click)="closeSocialUserModal()"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="signupModalLabel">Sign Up</h4>
+            </div>
+            <div class="modal-body">
+            <alert></alert>
+            <form [formGroup]="userTypeForm">
+                <div class="form-group">
+                    Your Facebook account is not registered yet, do you want to join us as Recruiter or Candidate?
+                    <br>
+                    <label for="recruiter">Recruiter</label>
+                    <input id="facebook_recruiter" type="radio" value="recruiter" name="userType" formControlName="userType">
+                    <label for="candidate">Candidate</label>
+                    <input id="facebook_candidate" type="radio" value="candidate" name="userType" formControlName="userType">
+                    <br>
+                    <button class="btn btn-primary" (click)="facebookRegister(userTypeForm.value)" [disabled]="!userTypeForm.valid">Create Account</button>
+                </div>
+            </form>
+            </div>
+            <div class="modal-footer">
+            <!--<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>-->
+            <p class="pull-left">{{ 'MENU.PROFILES.MODAL.BY_SIGNING' | translate }} <a href="https://zourcing.com/about-us/"> {{ 'MENU.PROFILES.FOOTER.TERMS_AND_CONDITIONS' | translate }}</a> and <a href="http://tas-screenit.com/wp-content/uploads/2016/09/privacy-policy.pdf">{{ 'MENU.PROFILES.FOOTER.HELP_CENTER' | translate }}</a></p>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,9 @@
+<div class="row">
+    <div class="col-xs-12 main-filter-container">
+        <div class="input-group">
+            <!-- <input type="text" [ngModel]="term" (ngModelChange)="valuechange($event)" class="form-control" placeholder="Search Positions By Title" ngDefaultControl> -->
+            <input type="text" [ngModel]="term" (ngModelChange)="valueChange($event)" class="form-control" placeholder="{{ 'MENU.VACANCIES_CANDIDATE.MY_APPLICATIONS.SEARCH_PLACEHOLDER' | translate }}">
+            <div (click)="searchVacancy()" class="input-group-addon input-search-button">{{ 'MENU.VACANCIES_CANDIDATE.MY_APPLICATIONS.SEARCH_BUTTON' | translate }}</div>
+        </div>
+    </div>
+</div>

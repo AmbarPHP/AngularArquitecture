@@ -1,0 +1,58 @@
+<div class="col-xs-12 work-experience">
+    <div class="col-xs-12 work-experience-container">
+        <h4>{{ 'MENU.PROFILES.WIZARD.WORK_EXPERIENCE' | translate }}</h4>
+        <div class="no-experience-group form-group">
+            <input [(ngModel)]="noWorkExperience" (change)="getNoWorkExperience($event.target.checked)" type="checkbox" id="no_work_experience" name="no_work_experience">
+            <label for="noexperience">{{ 'MENU.PROFILES.WIZARD.NO_WORK_EXPERIENCE' | translate }}</label>
+        </div>
+        <form [formGroup]="workExperienceForm" *ngIf="!loading">
+            <div formArrayName="experiences">
+                <div *ngFor="let experience of workExperienceForm.controls.experiences.controls; let i = index">
+                    <div [formGroupName]="i">
+                        <div class="form-fields" *ngIf="!noWorkExperience">
+                            <div class="company-name-group form-group">
+                                <label for="companyname">{{ 'MENU.PROFILES.WIZARD.COMPANY_NAME' | translate }}</label>
+                                <input type="text" class="company-name-input form-control" formControlName="name" placeholder="Enter (required)">
+                            </div>
+                            <div class="location-group form-group">
+                                <label for="location">{{ 'MENU.PROFILES.WIZARD.LOCATION' | translate }}</label>
+                                <input type="text" class="location-input form-control" formControlName="location" placeholder="Enter (required)">
+                            </div>
+                            <div class="position-group form-group">
+                                <label for="position">{{ 'MENU.PROFILES.WIZARD.POSITION' | translate }}</label>
+                                <input formControlName="position" class="form-control">           
+                            </div>
+                            <div class="from-group form-group">
+                                <label for="from">{{ 'MENU.PROFILES.WIZARD.FROM' | translate }}</label>
+                                <input type="date" formControlName="from_date" class="form-control">
+            
+                            </div>
+                            <div class="to-group form-group">
+                                <label for="to">{{ 'MENU.PROFILES.WIZARD.TO' | translate }}</label>
+                                <input type="date" formControlName="to_date" class="form-control">
+            
+                                <input type="checkbox" formControlName="currently_working" class="currentlywork-checkbox" (change)="currentlyWorkHere($event.target.checked, i)">
+                                <label for="currentlywork">{{ 'MENU.PROFILES.WIZARD.CURRENTLY_WORKING' | translate }}</label>
+                            </div>
+                            <div class="responabilities-group form-group">
+                                <label>{{ 'MENU.PROFILES.WIZARD.RESPONSABILITIES' | translate }}</label>
+                                <textarea cols="30" rows="3" class="form-control" formControlName="responsabilities"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="add-button-group form-group">
+                <button class="btn add-button" (click)="addExperience()">{{ 'MENU.PROFILES.WIZARD.ADD' | translate }}</button>
+                <button [disabled]="workExperienceForm.controls.experiences.length <= 1" class="btn delete-button" (click)="deleteExperience()">{{ 'MENU.PROFILES.WIZARD.DELETE' | translate }}</button>
+            </div>
+            <div class="experience-line"></div>
+            <div class="next-button-group form-group">
+                <a (click)="previousPage()">
+                    < {{ 'MENU.PROFILES.WIZARD.BACK' | translate }}</a>
+                        <button (click)="nextPage()" class="btn next-button">{{ 'MENU.PROFILES.WIZARD.NEXT' | translate }}</button>
+                        <a (click)="skip()">{{ 'MENU.PROFILES.WIZARD.SKIP' | translate }}</a>
+            </div>
+        </form>
+    </div>
+</div>

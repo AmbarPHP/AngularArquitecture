@@ -1,0 +1,58 @@
+<div class="col-xs-12 my-account-languages-container">
+    <div class="languages">
+        <div class="alert-container">
+            <alert></alert>
+        </div>
+        <div *ngFor="let language of candidateLanguages; index as i">
+            <div *ngIf="candidateLanguages_displayed[i].editView === false">
+                <h4>{{ 'MENU.PROFILES.WIZARD.LANGUAGE' | translate }}</h4>
+                <h4>{{language.name}}</h4>
+                <p class="gray-text">{{language.level}}</p>
+                <a class="edit-link" (click)="candidateLanguages_displayed[i].editView = true"><i class="fa fa-pencil" aria-hidden="true"></i>{{ 'MENU.PROFILES.WIZARD.EDIT' | translate }}</a>
+                <a (click)="deleteLanguage(language.id)"><i class="fa fa-trash-o" aria-hidden="true"></i>{{ 'MENU.PROFILES.WIZARD.DELETE' | translate }}</a>
+            </div>
+            <div *ngIf="candidateLanguages_displayed[i].editView === true">
+                <h4 class="language-title-edit">{{ 'MENU.PROFILES.WIZARD.LANGUAGE' | translate }}</h4>
+                <form #editLanguageform="ngForm" >
+                    <input type="text" id="id" name="id" [(ngModel)]="language.id" class="hidden">
+                    <div class="form-group language-name-group">
+                        <label for="name">{{ 'MENU.PROFILES.WIZARD.LANGUAGE_NAME' | translate }}</label>
+                        <input id="name" name="name" class="form-control" [(ngModel)]="language.name">                        
+                    </div>
+                    <div class="form-group level-group">
+                        <label for="level">Level</label>
+                        <select name="level" id="level" class="form-control" [(ngModel)]="language.level">
+                            <option value="0">{{ 'MENU.PROFILES.WIZARD.SELECT' | translate }}</option>
+                            <option value="1">{{ 'MENU.PROFILES.WIZARD.BASIC' | translate }}</option>
+                            <option value="2">{{ 'MENU.PROFILES.WIZARD.INTERMEDIATE' | translate }}</option>
+                            <option value="3">{{ 'MENU.PROFILES.WIZARD.ADVANCED' | translate }}</option>
+                            <option value="4">{{ 'MENU.PROFILES.WIZARD.NATIVE' | translate }}</option>
+                        </select>
+                    </div>
+                    <button [disabled]="editLanguageform.invalid" class="btn save-button" (click)="editLanguage(editLanguageform.value, i)">Save</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="add-languages">
+        <h4>{{ 'MENU.PROFILES.WIZARD.ADD_LANGUAGE' | translate }}</h4>
+        <form #form="ngForm" *ngFor="let candidateLanguages_info of candidateLanguages_infos">
+            <div class="form-group language-name-group">
+                <label for="name">{{ 'MENU.PROFILES.WIZARD.LANGUAGE_NAME' | translate }}</label>
+                <input id="name" name="name" class="form-control" [(ngModel)]="candidateLanguages_info.name">
+            </div>
+            <div class="form-group level-group">
+                <label for="level">{{ 'MENU.PROFILES.WIZARD.LEVEL' | translate }}</label>
+                <select name="level" id="level" class="form-control" [(ngModel)]="candidateLanguages_info.level">
+                    <option value="0">{{ 'MENU.PROFILES.WIZARD.SELECT' | translate }}</option>
+                    <option value="1">{{ 'MENU.PROFILES.WIZARD.BASIC' | translate }}</option>
+                    <option value="2">{{ 'MENU.PROFILES.WIZARD.INTERMEDIATE' | translate }}</option>
+                    <option value="3">{{ 'MENU.PROFILES.WIZARD.ADVANCED' | translate }}</option>
+                    <option value="4">{{ 'MENU.PROFILES.WIZARD.NATIVE' | translate }}</option>
+                </select>
+            </div>
+        </form>
+        <button class="btn add-button" (click)="addLanguage()">{{ 'MENU.PROFILES.WIZARD.ADD' | translate }}</button>
+    </div>
+    <button class="btn update-button" (click)="updateLanguages()" >{{ 'MENU.PROFILES.WIZARD.UPDATE_BUTTON' | translate }}</button>
+</div>

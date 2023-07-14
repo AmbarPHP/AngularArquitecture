@@ -1,0 +1,59 @@
+<div class="payment-information-container col-xs-12 col-sm-6 col-md-8">
+    <div class="payment-information">
+        <!--<div *ngIf="!formIsValid" class="errors-container">
+            <p><i class="fa fa-exclamation-circle" aria-hidden="true"></i> Please make sure you've filled in the credit card number, the month, and the year with the correct information.</p>
+        </div>-->
+        <h4>{{ 'MENU.PROFILES.CHECKOUT.PAYMENT_INFORMATION' | translate }}</h4>
+        <p>{{ 'MENU.PROFILES.CHECKOUT.SECURE_CARD' | translate }}</p>
+        <form id="payment-form" class="payment-information-form" [formGroup]="complexForm">
+            <input type="hidden" name="token_id" formControlName="token" [formControl]="complexForm.controls['token']" id="token_id">
+            <div class="form-group card-name-group" [ngClass]="{'has-error': nameHasError && complexForm.value.promocode.length < 6}">
+                <label class="control-label" for="nameoncard">{{ 'MENU.PROFILES.CHECKOUT.NAME' | translate }}</label>
+                <input [readonly]="complexForm.value.promocode.length > 6" type="text" class="form-control" id="nameoncard" placeholder="Enter" autocomplete="off" [formControl]="complexForm.controls['name']"
+                    formControlName="name" data-openpay-card="holder_name">
+                 <!-- <p *ngIf="nameHasError">Error</p>    -->
+            </div>
+            <div class="form-group card-number-group" [ngClass]="{'has-error': creditcardHasError && complexForm.value.promocode.length < 6 }">
+                <label class="control-label" for="cardnumber">{{ 'MENU.PROFILES.CHECKOUT.NUMBER' | translate }}</label>
+                <input [readonly]="complexForm.value.promocode.length > 6" type="text" class="form-control" id="cardnumber" placeholder="0000 0000 0000 0000" autocomplete="off" [formControl]="complexForm.controls['number']"
+                    formControlName="number" data-openpay-card="card_number" pattern="[0-9\s]*" credit-card>
+            </div>
+            <div class="form-group expiration-month-group" [ngClass]="{'has-error': expMonthHasError && complexForm.value.promocode.length < 6}">
+                <label class="control-label" for="expiritymonth">{{ 'MENU.PROFILES.CHECKOUT.EXP_MONTH' | translate }}</label>
+                <input [readonly]="complexForm.value.promocode.length > 6" type="text" class="form-control" id="expiritymonth" placeholder="MM" [formControl]="complexForm.controls['exp_month']"
+                    formControlName="exp_month" data-openpay-card="expiration_month" required minlength="2" maxlength="2" pattern="[0-9]*">
+            </div>
+            <div class="form-group expiration-year-group" [ngClass]="{'has-error': expYearHasError && complexForm.value.promocode.length < 6}">
+                <label class="control-label" for="expirityyear">{{ 'MENU.PROFILES.CHECKOUT.EXP_YEAR' | translate }}</label>
+                <input [readonly]="complexForm.value.promocode.length > 6" type="text" class="form-control" id="expirityyear" placeholder="YY" [formControl]="complexForm.controls['exp_year']"
+                    formControlName="exp_year" data-openpay-card="expiration_year" required minlength="2" maxlength="2" pattern="[0-9]*">
+            </div>
+            <div class="form-group cvv-group" [ngClass]="{'has-error': cvvHasError && complexForm.value.promocode.length < 6}">
+                <label class="control-label" for="cvc">CVC / CVV</label>
+                <input [readonly]="complexForm.value.promocode.length > 6" type="text" class="form-control" id="cvc" placeholder="3 or 4 digit number" autocomplete="off" [formControl]="complexForm.controls['cvv2']"
+                    formControlName="cvv2" data-openpay-card="cvv2" required minlength="3" maxlength="4" pattern="[0-9]*">
+            </div>
+            <div class="form-group code-group" [ngClass]="{'has-error': promocodeHasError}">
+                <label class="control-label" for="promocode">{{ 'MENU.PROFILES.CHECKOUT.I_HAVE' | translate }}</label>
+                <input type="text" class="form-control" id="promocode" placeholder="{{ 'MENU.PROFILES.CHECKOUT.TYPE_IN_PROMOCODE' | translate }}" autocomplete="off" [formControl]="complexForm.controls['promocode']"
+                    formControlName="promocode" data-openpay-card="promocode">
+            </div>
+            
+            <div class="form-group apply-group">
+                <button class="btn btn-apply" [disabled]="complexForm.value.promocode.length < 6" (click)="applyPromoCode()">Apply</button>
+            </div>
+            <div *ngIf="promocodeHasError" class="alert alert-danger">Codigo Invalido!</div>
+            <div class="form-group pay-group">
+                <button [disabled]="!complexForm.valid" (click)="paymentFormValidation(complexForm)" class="btn pay-button">Pay ${{total}}</button>
+            </div>
+            <div class="form-group">
+                <div class="secure-container">
+                    <i class="fa fa-lock" aria-hidden="true"></i>
+                    <p>{{ 'MENU.PROFILES.CHECKOUT.SECURE_CARD' | translate }}</p>
+                    <p>{{ 'MENU.PROFILES.CHECKOUT.OPENPAY_PAYMENTS' | translate }}</p>
+                </div>
+            </div><br>
+            <img style="width:20%" src="assets/images/openpay_logo.png"> 
+        </form>
+    </div>
+</div>

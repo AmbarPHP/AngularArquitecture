@@ -1,0 +1,28 @@
+// component css goes here
+
+.left-0 {
+    padding-left: 0px !important;
+}
+
+.country-filters {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.location-mobile {
+    width: 45%;
+    display: inline-block;
+    margin: 0;
+}
+
+@media screen and (min-width: 667px) {
+    .mobile {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 666px) {
+    .desktop {
+        display: none;
+    }
+}

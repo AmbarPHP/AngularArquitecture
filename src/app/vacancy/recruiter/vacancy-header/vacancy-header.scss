@@ -1,0 +1,75 @@
+.vacancy-header-container {
+    margin: 10px 0 10px 0;
+
+    h1 {
+        margin: 0;
+        display: inline-block;
+    }
+
+    .deselect-container {
+        float: right;
+
+        button {
+            margin-left: 10px;
+        }
+
+        .btn-delete {
+            width: 140px;
+            height: 40px;
+            color: #fff;
+            background-color: #f96a6e;
+            border-radius: 2px;
+        }
+
+        .btn-addnew {
+            width: 140px;
+            height: 40px;
+            color: #fff;
+            background-color: #58d490;
+            border-radius: 2px;
+        }
+    }
+    
+    .header-border {
+        margin-top: 20px;
+        border-bottom: 1px solid #eaeaea;
+    }
+
+    .clear-floats {
+        clear: both;
+    }
+}
+
+.ic-arrangement-card {
+    width: 30px;
+    height: 30px;
+    object-fit: contain;
+    content: url("/assets/images/ic-arrangement-cards.svg")
+}
+
+.ic-arrangement-list {
+    width: 30px;
+    height: 30px;
+    object-fit: contain;
+    content: url("/assets/images/ic-arrangement-list.svg")
+}
+
+.align-to-right {
+    text-align: right;
+}
+
+@media screen and (max-width: 666px) {
+    .deselect-container {
+        display: none;
+    }
+
+    .add-new-link {
+        display: block;
+    }
+}
+
+@media screen and (min-width: 667px){
+    .mobile {
+        display: none;
+    }
+}

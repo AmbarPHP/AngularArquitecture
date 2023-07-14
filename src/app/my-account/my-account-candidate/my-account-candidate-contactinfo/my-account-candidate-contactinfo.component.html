@@ -1,0 +1,40 @@
+<div class="col-xs-12 my-account-contactinfo-container">
+    <div class="contactinfo">
+        <form #form="ngForm" *ngIf="candidateContactInfo">
+            <h4>{{ 'MENU.PROFILES.WIZARD.CONTACT_INFO' | translate }}</h4>
+            <div class="icon"><i class="fa fa-envelope" aria-hidden="true"></i></div>
+            <div class="form-group email-group">
+                <label for="email">{{ 'MENU.PROFILES.WIZARD.EMAIL' | translate }}</label>
+                <input type="text" id="email" name="email" [(ngModel)]="candidateContactInfo.email" class="form-control">
+            </div>
+            <div class="icon"><i class="fa fa-phone" aria-hidden="true"></i></div>
+            <div class="form-group phone-group">
+                <label for="phone">{{ 'MENU.PROFILES.WIZARD.PHONE' | translate }}</label>
+                <input type="text" id="phone" name="phone" class="form-control" [(ngModel)]="candidateContactInfo.phone">
+            </div>
+            <br class="break-contact">
+            <div class="icon"><i class="fa fa-linkedin" aria-hidden="true"></i></div>
+            <div class="form-group linkedin-group">
+                <label for="linkedin_url">Linkedin</label>
+                <input type="text" id="linkedin_url" name="linkedin_url" class="form-control" [(ngModel)]="candidateContactInfo.linkedin_url">
+            </div>
+            <div class="icon"><i class="fa fa-facebook" aria-hidden="true"></i></div>
+            <div class="form-group facebook-group">
+                <label for="facebook_url">Facebook</label>
+                <input type="text" id="facebook_url" name="facebook_url" class="form-control" [(ngModel)]="candidateContactInfo.facebook_url">
+            </div>
+            <br class="break-contact">
+            <div class="icon"><i class="fa fa-github" aria-hidden="true"></i></div>
+            <div class="form-group github-group">
+                <label for="github_url">Github</label>
+                <input type="text" id="github_url" name="github_url" class="form-control" [(ngModel)]="candidateContactInfo.github_url">
+            </div>
+            <div class="icon"><i class="fa fa-skype" aria-hidden="true"></i></div>
+            <div class="form-group skype-group">
+                <label for="skype_url">Skype</label>
+                <input type="text" id="skype_url" name="skype_url" class="form-control" [(ngModel)]="candidateContactInfo.skype_url">
+            </div>
+            <button class="btn update-button" (click)="updateContact()">{{ 'MENU.PROFILES.WIZARD.UPDATE_BUTTON' | translate }}</button>
+        </form>
+    </div>
+</div>

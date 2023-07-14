@@ -1,0 +1,39 @@
+<div class="col-sm-3 left-filters-container">
+    <div class="col-sm-12">
+        <div class="left-filters-header">
+            <p class="filters-label-big pull-left">{{ 'MENU.PROFILES.FILTERS.FILTERS' | translate }}</p>
+            <a class="filters-label-small" (click)="filterMobile()">{{ 'MENU.PROFILES.FILTERS.FILTERS' | translate }}</a>
+            <a (click)="clearAll()" class="clear-all-filters pull-right">{{ 'MENU.PROFILES.FILTERS.REMOVE' | translate }}</a>
+            <!-- <a *ngIf="filters_mobile" (click)="clearAllMobile()" class="clear-all-mobile pull-right">Clear all</a> -->
+        </div>
+        <div class="left-filter-language form-group">
+            <label for="languageFilter">{{ 'MENU.PROFILES.FILTERS.LANGUAGE' | translate }}</label>
+            <select name="languageFilter" id="languageFilter" [(ngModel)]="languageFilter" (change)="languageFilterFunction($event.target.value)" class="form-control">
+                <option value=""></option>
+                <option *ngFor="let item of leftFilterLanguage" [value]="item.value">{{ item.label | translate }}</option>
+            </select>
+        </div>
+        <div class="left-filters-location form-group">
+            <label for="left-filters-state">{{ 'MENU.PROFILES.FILTERS.LOCATION' | translate }}</label>
+            <location-autocomplete
+                [locationStr]="location"
+                (sendLocationEvent)="getLocationEvent($event)">
+            </location-autocomplete>
+        </div>
+        <div class="left-filters-more form-group">
+            <label for="">{{ 'MENU.PROFILES.FILTERS.MORE_OPTIONS' | translate }}</label>
+            <br>
+            <input type="checkbox" [(ngModel)]="checkBoxFiltersStatus.hasEmail" (change)="$event.target.checked ? hasEmailSelected() : hasEmailNoSelected()"> {{ 'MENU.PROFILES.FILTERS.HAS_EMAIL' | translate }}
+            <br>
+            <input type="checkbox" [(ngModel)]="checkBoxFiltersStatus.hasPicture" (change)="$event.target.checked ? hasPictureSelected() : hasPictureNoSelected()"> {{ 'MENU.PROFILES.FILTERS.HAS_PHOTO' | translate }}
+            <br>
+            <input type="checkbox" [(ngModel)]="checkBoxFiltersStatus.hasPhone" (change)="$event.target.checked ? hasPhoneSelected() : hasPhoneNoSelected()"> {{ 'MENU.PROFILES.FILTERS.HAS_HOME' | translate }}
+            <br>
+            <input type="checkbox" [(ngModel)]="checkBoxFiltersStatus.zourcingProfile" (change)="$event.target.checked ? hasZourcingSelected() : hasZourcingNoSelected()"> {{ 'MENU.PROFILES.FILTERS.HAS_ZOURCING' | translate }}
+            <br>
+            <input type="checkbox" [(ngModel)]="checkBoxFiltersStatus.recommendedProfile" (change)="$event.target.checked ? hasRecommendedSelected() : hasRecommendedNoSelected()"> {{ 'MENU.PROFILES.FILTERS.HAS_RECOMMENDED' | translate }}
+            <br>
+            <input type="checkbox" [(ngModel)]="checkBoxFiltersStatus.hasResume" (change)="$event.target.checked ? hasResumeSelected() : hasResumeNoSelected()"> {{ 'MENU.PROFILES.FILTERS.HAS_RESUME' | translate }}
+        </div>
+    </div>
+</div>

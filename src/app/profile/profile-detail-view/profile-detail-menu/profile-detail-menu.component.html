@@ -1,0 +1,4 @@
+<ul>
+    <li [ngClass]="{ 'menu-selected': contactInfo === true }" class="menu-contact-info"><a (click)="contactInfoToggle()">{{ 'MENU.PROFILES.WIZARD.CONTACT_INFO' | translate }}</a></li>
+    <li [ngClass]="{ 'menu-selected': contactInfo === false }" class="menu-work-experience"><a (click)="contactInfoToggle()">{{ 'MENU.PROFILES.WIZARD.WORK_EXPERIENCE' | translate }}</a></li>
+</ul>

@@ -1,0 +1,131 @@
+.chat-box {
+    height: 600px;
+    overflow-y: scroll;
+}
+
+.list {
+    overflow-y: scroll
+}
+
+.chat-profile {
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.profile-box-wrapper{
+    background-color: white; 
+}
+
+.profile-box {
+    overflow-x: hidden;
+    overflow-y: scroll;
+    margin: 0;
+    padding: 0;
+    max-height: 750px;
+    background-color: white;
+}
+@media(max-device-width: 780px) {
+    .profile-box {
+        min-height: auto;
+    }
+}
+
+.profile-box-inner {
+    margin-left: 20px;
+    overflow-y: scroll;
+    max-height: 680px;
+    overflow-x: hidden;
+}
+
+.chat-box-input-wrapper{
+    width: 100%;
+    height: 100px;
+    background-color: white;
+    border: solid 1px #eaeaea;
+}
+
+.message-box {
+    border: solid 1px #eaeaea;
+    padding-left: 0px;
+}
+
+.chat-box-input-wrapper div {
+    margin-top: 30px;
+}
+
+.search {
+    width: 97%;
+    height: 40px;
+    font-family: HelveticaNeue;
+    margin-top: 30px ;
+    margin-right: 30px;
+    margin-bottom: 30px ;
+    font-size: 15px;
+    line-height: 0.53;
+    color: #9f9e9e;
+}
+
+.chat-box-wrapper {
+    margin-bottom: 30px;
+    margin-top: 30px;
+    margin-right: 10px;
+}
+
+.img-circle {
+    width: 60px;
+    height: 60px;
+}
+
+.message {
+    border-top: 1px;
+    border-bottom: 1px;
+    margin-top: 10px;
+    margin-bottom: 30px;
+}
+
+.send-btn {
+
+    border-radius: 2px;
+    background-color: #58a8fc;
+    width: 140px;
+    height: 40px;
+
+    font-family: HelveticaNeue;
+    font-size: 15px;
+    font-weight: 500;
+    line-height: 0.53;
+    text-align: center;
+    color: #ffffff;
+}
+
+.message-date {
+
+    font-family: HelveticaNeue;
+    font-size: 14px;
+    line-height: 0.57;
+    text-align: right;
+    color: #9f9e9e;
+}
+
+.message-author {
+    height: 15px;
+    font-family: HelveticaNeue;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 0.5;
+    color: #474747;
+}
+
+.message-message {
+
+    font-family: HelveticaNeue;
+    font-size: 15px;
+    color: #474747;
+}
+
+.zourcing-badge {
+    background-color: #58a8fc;
+    margin-bottom: 5px;
+}
+
+

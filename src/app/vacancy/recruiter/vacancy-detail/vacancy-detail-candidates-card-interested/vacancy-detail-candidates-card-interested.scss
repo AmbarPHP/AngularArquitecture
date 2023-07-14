@@ -1,0 +1,75 @@
+.candidate-card-container {
+    padding-left: 0px;
+}
+
+.candidate-card {
+    background-color: #fff;
+    border: 1px solid #eaeaea;
+    border-radius: 3px;
+    padding: 5px;
+    margin-bottom: 25px;
+
+    .candidate-match-container {
+        // border-top: 1px solid #eaeaea;
+        // border-bottom: 1px solid #eaeaea;
+        text-align: center;
+        margin-top: 15px;
+        color: #58a8fc;
+
+        p {
+            margin: 10px 0px;
+        }
+    }
+
+    .candidate-view-container {
+        text-align: center;
+        margin-top: 15px;
+
+        p {
+            margin: 0;
+        }
+    }
+}
+
+.cards-selected-bottom {
+    background-color: rgba(255, 255, 255, 0.5);
+    height: 80px;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    border-top: 1px solid #eaeaea;
+
+    .cards-selected-option {
+        margin-top: 10px;
+        .remove-btn {
+            width: 140px;
+            height: 40px;
+            background-color: #58d490;
+            color: #fff;
+            border-radius: 2px;
+        }
+    }
+
+}
+
+.cards-selected-bottom-1 {
+    z-index: 2;
+    background-color: #fff;
+}
+
+@media screen and (max-width: 666px) {
+    .candidate-card-container {
+        padding: 0;
+    }
+
+    .desktop {
+        display: none;
+    }
+}
+
+@media screen and (min-width: 667px) {
+    .mobile {
+        display: none;
+    }
+}

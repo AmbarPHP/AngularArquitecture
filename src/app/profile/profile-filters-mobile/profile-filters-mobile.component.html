@@ -1,0 +1,35 @@
+<form [formGroup]="mobileFiltersForm">
+    <div class="form-group">
+        <label for="languageFilter">{{ 'MENU.PROFILES.FILTERS.LANGUAGE' | translate }}</label>
+        <select id="languageFilter" class="form-control" formControlName="language">
+            <option value=""></option>
+            <option *ngFor="let item of leftFilterLanguage" [value]="item.value">{{ item.label | translate }}</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="left-filters-state">{{ 'MENU.PROFILES.FILTERS.LOCATION' | translate }}</label>
+        <location-autocomplete
+            [locationStr]="locationValue"
+            (sendLocationEvent)="getLocationEvent($event)"
+            (change)="locationChange($event.target.value)">
+        </location-autocomplete>
+    </div>
+    <div class="left-filters-more form-group">
+        <label for="">{{ 'MENU.PROFILES.FILTERS.MORE_OPTIONS' | translate }}</label>
+        <br>
+        <input type="checkbox" formControlName="emailCheckbox" (change)="$event.target.checked ? hasEmailSelected() : hasEmailNoSelected()"> {{ 'MENU.PROFILES.FILTERS.HAS_EMAIL' | translate }}
+        <br>
+        <input type="checkbox" formControlName="photoCheckbox" (change)="$event.target.checked ? hasPictureSelected() : hasPictureNoSelected()"> {{ 'MENU.PROFILES.FILTERS.HAS_PHOTO' | translate }}
+        <br>
+        <input type="checkbox" formControlName="phoneCheckbox" (change)="$event.target.checked ? hasPhoneSelected() : hasPhoneNoSelected()"> {{ 'MENU.PROFILES.FILTERS.HAS_HOME' | translate }}
+        <br>
+        <input type="checkbox" formControlName="zourcingCheckbox" (change)="$event.target.checked ? hasZourcingSelected() : hasZourcingNoSelected()"> {{ 'MENU.PROFILES.FILTERS.HAS_ZOURCING' | translate }}
+        <br>
+        <input type="checkbox" formControlName="recommendedCheckbox" (change)="$event.target.checked ? hasRecommendedSelected() : hasRecommendedNoSelected()"> {{ 'MENU.PROFILES.FILTERS.HAS_RECOMMENDED' | translate }}
+        <br>
+        <input type="checkbox" formControlName="resumeCheckbox" (change)="$event.target.checked ? hasResumeSelected() : hasResumeNoSelected()"> {{ 'MENU.PROFILES.FILTERS.HAS_RESUME' | translate }}
+    </div>
+    <div class="form-group">
+        <button type="button" class="btn apply-button" (click)="applyMobileFilters()">Apply</button>
+    </div>
+</form>

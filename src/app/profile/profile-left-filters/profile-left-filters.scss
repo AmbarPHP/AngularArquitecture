@@ -1,0 +1,78 @@
+.left-filters-container {
+    margin: 25px 0 0 0;
+    p {
+        margin: 0;
+    }
+    .col-sm-12 {
+        padding: 0;
+    }
+
+    .left-filters-header {
+        height: 30px;
+        border-bottom: 1px solid #eaeaea;
+    }
+    .left-filters-name {
+        margin-top: 15px;
+    }
+
+    .left-filters-location {
+        margin-top: 15px;
+    }
+
+    .left-filters-state {
+        width: 58%;
+    }
+
+    .country-dropdown {
+        width: 35%;
+    }
+
+    .years-dropdown {
+        width: 50%;
+    }
+    
+    .clear {
+        clear: both;
+    }
+}
+
+.search-by-id {
+
+    .input-group {
+        width: 100% !important;
+    }
+
+    .input-group-addon {
+        border: 1px solid #eaeaea;
+        color: #fff;
+        background-color: #ffb03e;
+        cursor: pointer;
+    }
+}
+
+.skill-badge {
+    background-color: #eaeaea;
+    color: #000;
+    padding: 7px 12px;
+    margin-top: 8px;
+    margin-right: 5px;
+}
+
+.remove-skill {
+    color: #000;
+    text-decoration: none;
+}
+
+@media screen and (max-width: 666px) {
+    .left-filters-location, .left-filter-years-experience, .left-filter-skills,
+    .left-filters-education, .left-filters-more, .filters-label-big, .clear-all-filters,
+    .left-filter-language {
+        display: none;
+    }
+}
+
+@media screen and (min-width: 667px) {
+    .filters-label-small, .clear-all-mobile{
+        display: none;
+    }
+}

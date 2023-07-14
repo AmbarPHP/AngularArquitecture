@@ -1,0 +1,55 @@
+<div class="profile-list-container">
+    <span *ngIf="items.new" class="badge last-bought-badge">{{ 'TALENT.LAST_BOUGHT_BADGE' | translate }}</span>
+    <div class="profile-list-item" [ngClass]="{'profile-list-item-bought': items.owns == true}">
+        <div class="profile-list-information">
+            <img class="profile-img-size img-circle" [src]="items.profile_picture" onError="this.src='assets/images/user.png';">
+            <div class="profile-list-name">
+                <p>{{ items.name }}</p>
+                <p>
+                    <span class="badge skill-badge" *ngFor="let skill of items.skills; let i=index"><span *ngIf="i<4 && skill != ''">{{ skill }}</span></span>
+                </p>
+                <p>{{ items.location }}</p>
+            </div>
+        </div>
+        <div class="profile-list-details">
+            <div class="profile-list-social">
+                <ul class="social-list">
+                    <li class="social-list-item" *ngIf="items.source === 'linkedin' || hasLinkedinInformation === true">
+                        <a [href]="items.url" target="_blank"><i class="fa fa-linkedin"></i></a>
+                    </li>
+                    <li class="social-list-item" *ngIf="items.source === 'facebook' || hasFacebookInformation === true">
+                        <a href="https://www.facebook.com/{{facebookUrl}}" target="_blank" pTooltip="Facebook: {{facebookUrl}}" escape="false" tooltipPosition="top"><i class="fa fa-facebook-f"></i></a>
+                    </li>
+                    <li class="social-list-item" *ngIf="items.source === 'github' || hasGithubInformation === true">
+                        <a href="https://github.com/search?q={{items.email}}&type=Users" target="_blank"><i class="fa fa-github"></i></a>
+                    </li>
+                    <li class="social-list-item" *ngIf="items.source === 'skype' || hasSkypeInformation === true">
+                        <a pTooltip="Skype: {{skypeUrl}}" escape="false" tooltipPosition="top"><i class="fa fa-skype"></i></a>
+                    </li>
+                    <li class="social-list-item" *ngIf="items.source === 'twitter' || hasTwitterInformation === true">
+                        <a href="https://twitter.com/{{usernameTwitter}}" target="_blank" pTooltip="Twitter: {{usernameTwitter}}" escape="false" tooltipPosition="top"><i class="fa fa-twitter"></i></a>
+                    </li>
+                    <li class="social-list-item" *ngIf="hasWebsiteInformation === true">
+                        <a href="http://{{websiteUrl}}" target="_blank"><i class="fa fa-link"></i></a>
+                    </li>
+                </ul>
+                <div class="contact-information-container">
+                    <p *ngIf="items.home || items.mobile">
+                        <i class="fa fa-phone"></i> {{items.home || items.mobile}}
+                    </p>
+                    <p *ngIf="items.email">
+                        <i class="fa fa-envelope-o"></i> {{items.email}}
+                    </p>
+                </div>
+            </div>
+            <div class="profile-list-more-details">
+                <a *ngIf="!items.owns" class="view-more-details-btn" [routerLink]="['/profiles', items.id]" target="_blank">View more details</a>
+                <a *ngIf="items.owns" class="view-more-details-btn-bought" [routerLink]="['/talent', items.id]" target="_blank">View more details</a>
+            </div>
+            <div class="profile-list-zource-profile">
+                <a *ngIf="items.source != null" (click)="sendInvite()">{{ 'TALENT.SEND_INVITATION_LINK' | translate }}</a>
+                <a *ngIf="items.source === null" [routerLink]="['/chat', items.id]">Chat</a>
+            </div>
+        </div>
+    </div>
+</div>

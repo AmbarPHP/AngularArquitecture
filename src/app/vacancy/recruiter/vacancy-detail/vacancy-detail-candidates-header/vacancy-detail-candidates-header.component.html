@@ -1,0 +1,29 @@
+<div class="vacancy-candidates-header desktop">
+    <div class="header-title">
+        <h1>{{ 'MENU.VACANCY_DETAILS.VACANCY_CANDIDATES_HEADER' | translate }}</h1>
+    </div>
+    <div *ngIf="userType === 'recruiter' && vacancy[0].is_owner" class="header-option">
+        <a *ngIf="optionSelected === 'bought'" (click)="deselectAllBought()">Deselect All({{boughtProfilesSelected.length}})</a>
+        <a *ngIf="optionSelected === 'interested'" (click)="deselectAllInterested()">Deselect All({{interestedProfilesSelected.length}})</a>
+        <a *ngIf="optionSelected === 'associated'" (click)="deselectAllAssociated()">Deselect All({{associatedProfilesSelected.length}})</a>
+        <button *ngIf="optionSelected === 'bought'" [disabled]="boughtProfilesSelected.length === 0" class="btn remove-vacancy-btn" (click)="removeApplicantBoughtFromVacancy(vacancy, boughtProfilesSelected)">Remove from Vacancy</button>
+        <button *ngIf="optionSelected === 'interested'" [disabled]="interestedProfilesSelected.length === 0" class="btn remove-vacancy-btn" (click)="removeApplicantInterestedFromVacancy(vacancy, interestedProfilesSelected)">Remove from Vacancy</button>
+        <button *ngIf="optionSelected === 'associated'" [disabled]="associatedProfilesSelected.length === 0" class="btn remove-vacancy-btn" (click)="removeApplicantAssociatedFromVacancy(vacancy, associatedProfilesSelected)">Remove from Vacancy</button>
+        <img [ngClass]="{'list-icon': listView === false, 'card-icon': listView === true}" (click)="changeView()">
+    </div>
+    <div class="clear-floats"></div>
+    <ul>
+        <li (click)="changeOption('bought')"><a [ngClass]="{'active-option': optionSelected === 'bought'}" class="color-option">{{ 'MENU.VACANCY_DETAILS.VACANCY_BOUGHT' | translate }}</a></li>
+        <li (click)="changeOption('interested')" class="interested"><a [ngClass]="{'active-option': optionSelected === 'interested'}" class="color-option">{{ 'MENU.VACANCY_DETAILS.VACANCY_INTERESTED' | translate }}</a></li>
+        <li (click)="changeOption('associated')" class="associated"><a [ngClass]="{'active-option': optionSelected === 'associated'}" class="color-option">{{ 'MENU.VACANCY_DETAILS.VACANCY_ASSOCIATED' | translate }}</a></li>
+    </ul>
+    <div class="clear-floats"></div>
+</div>
+
+<div class="vacancy-candidates-header mobile">
+    <select name="" id="" class="form-control" (change)="changeOption($event.target.value)">
+        <option value="bought">{{ 'MENU.VACANCY_DETAILS.VACANCY_BOUGHT' | translate }}</option>
+        <option value="interested">{{ 'MENU.VACANCY_DETAILS.VACANCY_INTERESTED' | translate }}</option>
+        <option value="associated">{{ 'MENU.VACANCY_DETAILS.VACANCY_ASSOCIATED' | translate }}</option>
+    </select>
+</div>

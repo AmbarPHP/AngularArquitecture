@@ -1,0 +1,92 @@
+.vacancy-candidates-header {
+
+    border-bottom: 1px solid #eaeaea;
+    margin-bottom: 25px;
+    
+    .list-icon {
+        width: 40px;
+        height: 45px;
+        object-fit: contain;
+        content: url("/assets/images/ic-arrangement-list.svg")
+    }
+
+    .card-icon {
+        width: 40px;
+        height: 45px;
+        object-fit: contain;
+        content: url("/assets/images/ic-arrangement-cards.svg")
+    }
+    
+    .header-title {
+        float: left;
+        
+        h1 {
+            margin: 0;
+        }
+    }
+    
+    .header-option {
+        float: right;
+
+        .remove-vacancy-btn {
+            background-color: #58d490;
+            color: #fff;
+            border-radius: 2px;
+        }
+    }
+    
+    .clear-floats {
+        clear: both;
+    }
+
+    ul {
+        padding: 0;
+        margin: 10px 0 0 0;
+        list-style: none;
+
+        li {
+            float: left;
+        }
+        
+        .interested {
+            margin-left: 20px;
+        }
+
+        .associated {
+            margin-left: 20px;
+        }
+        
+        .active-option {
+            border-bottom: 2px solid #58a8fc; 
+            color: #58a8fc !important;
+        }
+        
+        .color-option {
+            color: #8b8b8b;
+            text-decoration: none;
+        }
+    }
+
+}
+
+@media screen and (max-width: 666px) {
+    .desktop {
+        display: none;
+    }
+
+    .vacancy-candidates-header {
+        border-bottom: none;
+    }
+}
+
+@media screen and (min-width: 667px) {
+    .mobile {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 1023px) {
+    .list-icon, .card-icon {
+        display: none;
+    }
+}

@@ -1,0 +1,70 @@
+.imported-cards-container {
+    margin-top: 25px;
+}
+
+.imported-card-style {
+    background-color: #fff;
+    border: 1px solid #eaeaea;
+    border-radius: 2px;
+    padding: 5px;
+    margin-bottom: 20px;
+    height: 150px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    .group-name {
+        margin-bottom: 20px;
+
+        span {
+            background-color: #fff;
+            border-color: #eaeaea;
+        }
+
+        [disabled] {
+            background-color: #fff;
+            cursor: default;
+        }
+    }
+
+    .group-email {
+
+        span {
+            background-color: #fff;
+            border-color: #eaeaea;
+        }
+        
+        [disabled] {
+            background-color: #fff;
+            cursor: default;
+        }
+    }
+
+    .input-group {
+        width: 100% !important;
+
+
+        .input-group-addon {
+            
+            .fa-envelope {
+                width: 10px;
+                height: 14px;
+            }
+        }
+
+    }
+}
+
+.no-imported-contacts {
+    text-align: center;
+    margin: 200px 0px;
+
+    .import-contacts {
+        background-color: #58d490;
+        color: #fff;
+        border: none;
+        border-radius: 2px;
+        min-width: 140px;
+        height: 35px;
+    }
+}

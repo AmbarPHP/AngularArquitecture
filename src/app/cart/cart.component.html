@@ -1,0 +1,44 @@
+<p-growl [(value)]="msgs" life="5000"></p-growl>
+
+
+<credit-confirmation-modal
+[zourcedProfile]="zourcedProfile"
+[selectedProfiles]="itemArr">
+</credit-confirmation-modal>
+
+
+<div class="text-center" *ngIf="loading == true"><img class="loading-spinner"
+    src="assets/images/ring.svg"></div>
+
+<div *ngIf="pagedItems?.length > 0 && loading == false">
+    <div class="container-fluid">
+        <div class="row">
+            <pipeline-header [selectedProfiles]="selectedProfiles" [pagedItems]="pagedItems" (sendDeselectAllEvent)="getDeselectAll($event)" (sendRemoveFromCartEvent)="getRemoveFromCart()">
+
+            </pipeline-header>
+        </div>
+        <div class="row">
+            <pipeline-price [profiles]="profiles" [total]="totalPrice"></pipeline-price>
+            <div class="col-xs-12 card-view-container">
+                <pipeline-card-view *ngFor="let profile of pagedItems" [pagedItems]="profile" [savedSelectedProfiles]="savedSelectedProfiles"
+                    (sendSelectedProfilesEvent)="getSelectedProfiles($event)" (sendUnselectedProfilesEvent)="getUnselectedProfiles($event)">
+                </pipeline-card-view>
+            </div>
+        </div>
+        <div class="row">
+            <cart-pagination [pager]="pager" [total]="total" [profiles]="profiles" [pagedItems]="pagedItems" (sendPaginationEvent)="getPagination($event)">
+
+            </cart-pagination>
+        </div>
+    </div>
+
+
+
+</div>
+<div class="empty-wrapper" *ngIf="pagedItems?.length == 0 && loading == false">
+    <p class="empty">
+        {{ 'MENU.EMPTY.CART' | translate }}
+    </p>
+</div>
+
+<intro-login-modal (sendCloseModalEvent)="getCloseLoginModal()"></intro-login-modal>

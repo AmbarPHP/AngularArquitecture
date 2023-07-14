@@ -1,0 +1,105 @@
+.vacancy-list-card {
+    background-color: #fff;
+    border-radius: 3px;
+    border: 1px solid #eaeaea;
+    margin: 10px 0px;
+    height: 90px;
+    padding: 15px;
+
+    p {
+        margin: 0;
+    }
+
+    .vacancy-list-container {
+        display: flex;
+        justify-content: space-between;
+        
+        .vacancy-list-card-information {
+            display: flex;
+            align-items: center;
+    
+            .vacancy-information {
+                margin-left: 15px;
+
+                .vacancy-title {
+                    font-weight: bolder;
+                    font-size: 16px;
+                }
+
+                .gray-text {
+                    color: #a6a6a6;
+                }
+            }
+        }
+
+        .vacancy-secondary-information {
+            display: flex;
+            align-items: center;
+
+            .vacancy-share-container {
+                margin-right: 15px;
+
+                .share-twitter-btn {
+                    background-color: #00ACEE;
+                    color: #fff;
+                    width: 32px;
+                    height: 32px;
+                    border: none;
+                    border-radius: 2px;
+                    outline: none;
+                }
+        
+                .share-facebook-btn {
+                    background-color: #3B5998;
+                    color: #fff;
+                    width: 32px;
+                    height: 32px;
+                    border: none;
+                    border-radius: 2px;
+                    outline: none;
+                }
+            }
+
+            .interested-profiles {
+
+                .interested-profiles-list {
+                    margin: 0;
+                    padding: 0;
+                    list-style-type: 0;
+
+                    .interested-profiles-list-item {
+                        display: inline-block;
+                        margin-left: -10px;
+
+                        .profile-img-size {
+                            width: 50px;
+                            height: 50px;
+                        }
+                    }
+
+                    .more-images-btn {
+                        background-color: #a0c0ff;
+                        width: 50px;
+                        height: 50px;
+                        border: none;
+                        color: #fff;
+                        margin-left: 25px;
+                    }
+                }
+            }
+
+            .vertical-line {
+                border-left: 1px solid #eaeaea;
+                margin: 0 15px;
+                height: 100%;
+            }
+        }
+
+
+    }
+
+}
+
+.margin-right-to-fix {
+    margin-right: -15px;
+}

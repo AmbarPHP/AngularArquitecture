@@ -1,0 +1,308 @@
+<p-growl [value]="msgs"></p-growl>
+<div class="container-fluid">
+    <div class="text-center" *ngIf="loading === true">
+        <img class="loading-spinner" src="assets/images/ring.svg">
+    </div>
+    <div class="row desktop" *ngIf="loading === false">
+        <div class="col-xs-12 col-sm-3 vacancy-detail-view-card">
+            <vacancy-detail-view-card
+                [vacancy]="vacancy"
+                (sendDeleteVacancyEvent)="getDeleteVacancyModal($event)"
+                (sendEditVacancyEvent)="getEditVacancy($event)">
+            </vacancy-detail-view-card>
+        </div>
+        <div class="col-xs-12 col-sm-9 vacancy-detail-candidates">
+            <vacancy-detail-candidates-header
+                [vacancy]="vacancy"
+                [optionSelected]="optionSelected"
+                [interestedProfilesSelected]="interestedProfilesSelected"
+                [boughtProfilesSelected]="boughtProfilesSelected"
+                [associatedProfilesSelected]="associatedProfilesSelected"
+                [userType]="userType"
+                [listView]="listView"
+                (sendDeselectAllInterestedEvent)="getDeselectAllInterested($event)"
+                (sendDeselectAllBoughtEvent)="getDeselectAllBought($event)"
+                (sendDeselectAllAssociatedEvent)="getDeselectAllAssociated($event)"
+                (sendDeleteApplicantsInterestedEvent)="getDeleteInterestedApplicants($event)"
+                (sendDeleteApplicantsAssociatedEvent)="getDeleteAssociatedApplicants($event)"
+                (sendDeleteApplicantsBoughtEvent)="getDeleteBoughtApplicants($event)"
+                (sendBoughtEvent)="getBoughtEvent($event)"
+                (sendOptionSelectedEvent)="getOptionSelected($event)"
+                (sendChangeViewEvent)="getChangeView($event)"
+                selectedProfiles="selectedProfiles">
+            </vacancy-detail-candidates-header>
+            
+
+            <div class="text-center" *ngIf="laodingApplicants === true">
+                <img class="loading-spinner" src="assets/images/ring.svg">
+            </div>
+            <div *ngIf="optionSelected === 'bought' && laodingApplicants === false">
+                <div *ngIf="!listView">
+                    <vacancy-detail-candidates-card-bought
+                        [boughtProfilesSelected]="boughtProfilesSelected"
+                        [userType]="userType"
+                        [vacancy]="vacancy"
+                        [contactInformation]="contactInformation"
+                        (sendBoughtProfilesSelected)="getBoughtProfilesSelected($event)"
+                        (sendBoughtProfilesUnchecked)="getBoughtProfilesUnchecked($event)"
+                        *ngFor="let applicant of vacancy[0].owned_applicants"
+                        [applicant]="applicant">
+                    </vacancy-detail-candidates-card-bought>
+                </div>
+                <div *ngIf="listView">
+                    <vacancy-detail-candidates-list-bought class="display-list"
+                        [boughtProfilesSelected]="boughtProfilesSelected"
+                        (sendBoughtProfilesSelected)="getBoughtProfilesSelected($event)"
+                        (sendBoughtProfilesUnchecked)="getBoughtProfilesUnchecked($event)"
+                        *ngFor="let applicant of vacancy[0].owned_applicants"
+                        [applicant]="applicant">
+    
+                    </vacancy-detail-candidates-list-bought>
+                    <vacancy-detail-candidates-card-bought class="display-card"
+                        [boughtProfilesSelected]="boughtProfilesSelected"
+                        [userType]="userType"
+                        [vacancy]="vacancy"
+                        [contactInformation]="contactInformation"
+                        (sendBoughtProfilesSelected)="getBoughtProfilesSelected($event)"
+                        (sendBoughtProfilesUnchecked)="getBoughtProfilesUnchecked($event)"
+                        *ngFor="let applicant of vacancy[0].owned_applicants"
+                        [applicant]="applicant">
+                    </vacancy-detail-candidates-card-bought>
+                </div>
+                <h3 *ngIf="vacancy[0].owned_applicants.length === 0" class="empty">{{ 'MENU.VACANCY_DETAILS.VACANCY_NO_APPLY' | translate }}</h3>
+            </div>
+
+            <div *ngIf="optionSelected === 'interested' && laodingApplicants === false">
+                <div *ngIf="!listView">
+                    <vacancy-detail-candidates-card-interested
+                        [selectedProfiles]="selectedProfiles"
+                        [userType]="userType"
+                        [vacancy]="vacancy"
+                        [interestedProfilesSelected]="interestedProfilesSelected"
+                        (sendInterestedProfilesSelectedEvent)="getInterestedProfilesSelected($event)"
+                        (sendInterestedProfilesUncheckedEvent)="getInterestedProfilesUnchecked($event)"
+                        (sendBuyProfileEvent)="getBuyProfile($event)"
+                        *ngFor="let applicant of vacancy[0].applicants"
+                        [applicant]="applicant">
+                    </vacancy-detail-candidates-card-interested>   
+                </div>
+                <div *ngIf="listView">
+                    <vacancy-detail-candidates-list-interested class="display-list"
+                        [interestedProfilesSelected]="interestedProfilesSelected"
+                        (sendInterestedProfilesSelectedEvent)="getInterestedProfilesSelected($event)"
+                        (sendInterestedProfilesUncheckedEvent)="getInterestedProfilesUnchecked($event)"
+                        (sendBuyProfileEvent)="getBuyProfile($event)"
+                        *ngFor="let applicant of vacancy[0].applicants"
+                        [applicant]="applicant">
+
+                    </vacancy-detail-candidates-list-interested>
+                    <vacancy-detail-candidates-card-interested class="display-card"
+                        [selectedProfiles]="selectedProfiles"
+                        [userType]="userType"
+                        [vacancy]="vacancy"
+                        [interestedProfilesSelected]="interestedProfilesSelected"
+                        (sendInterestedProfilesSelectedEvent)="getInterestedProfilesSelected($event)"
+                        (sendInterestedProfilesUncheckedEvent)="getInterestedProfilesUnchecked($event)"
+                        (sendBuyProfileEvent)="getBuyProfile($event)"
+                        *ngFor="let applicant of vacancy[0].applicants"
+                        [applicant]="applicant">
+                    </vacancy-detail-candidates-card-interested>   
+                </div>
+                <h3 *ngIf="vacancy[0].applicants.length === 0" class="empty">{{ 'MENU.VACANCY_DETAILS.VACANCY_NO_APPLY' | translate }}</h3>         
+            </div>
+
+            <div *ngIf="optionSelected === 'associated' && laodingApplicants === false">
+                <div *ngIf="!listView">
+                    <vacancy-detail-candidates-card-associated
+                        [userType]="userType"
+                        [vacancy]="vacancy"
+                        [associatedProfilesSelected]="associatedProfilesSelected"
+                        (sendAssociatedProfilesSelected)="getAssociatedProfilesSelected($event)"
+                        (sendAssociatedProfilesUnchecked)="getAssociatedProfilesUnchecked($event)"
+                        (sendBuyProfileEvent)="getBuyProfile($event)"
+                        *ngFor="let applicant of vacancy[0].associates"
+                        [applicant]="applicant">
+                    </vacancy-detail-candidates-card-associated>   
+                </div>
+                <div *ngIf="listView">
+                    <vacancy-detail-candidates-list-associated class="display-list"
+                        [userType]="userType"
+                        [vacancy]="vacancy"
+                        [associatedProfilesSelected]="associatedProfilesSelected"
+                        (sendAssociatedProfilesSelected)="getAssociatedProfilesSelected($event)"
+                        (sendAssociatedProfilesUnchecked)="getAssociatedProfilesUnchecked($event)"
+                        (sendBuyProfileEvent)="getBuyProfile($event)"
+                        *ngFor="let applicant of vacancy[0].associates"
+                        [applicant]="applicant">
+                        
+                    </vacancy-detail-candidates-list-associated>
+                    <vacancy-detail-candidates-card-associated class="display-card"
+                        [userType]="userType"
+                        [vacancy]="vacancy"
+                        [associatedProfilesSelected]="associatedProfilesSelected"
+                        (sendAssociatedProfilesSelected)="getAssociatedProfilesSelected($event)"
+                        (sendAssociatedProfilesUnchecked)="getAssociatedProfilesUnchecked($event)"
+                        (sendBuyProfileEvent)="getBuyProfile($event)"
+                        *ngFor="let applicant of vacancy[0].associates"
+                        [applicant]="applicant">
+                    </vacancy-detail-candidates-card-associated>   
+                </div>
+                <h3 *ngIf="vacancy[0].associates.length === 0" class="empty">{{ 'MENU.VACANCY_DETAILS.VACANCY_NO_ASSOCIATED' | translate }}</h3>         
+            </div>
+        </div>
+    </div>
+
+    <div class="row mobile" *ngIf="loading === false">
+        <div class="col-xs-12 menu-mobile">
+            <vacancy-detail-header-mobile
+                [positionInfo]="positionInfo"
+                (sendPositionInfoEvent)="getPositionInfo($event)">  
+            </vacancy-detail-header-mobile>
+        </div>
+        <div class="col-xs-12 col-sm-3 vacancy-detail-view-card" *ngIf="positionInfo">
+            <vacancy-detail-view-card
+                [vacancy]="vacancy"
+                (sendDeleteVacancyEvent)="getDeleteVacancyModal($event)"
+                (sendEditVacancyEvent)="getEditVacancy($event)">
+            </vacancy-detail-view-card>
+        </div>
+        <div class="col-xs-12 col-sm-9 vacancy-detail-candidates" *ngIf="!positionInfo">
+            <vacancy-detail-candidates-header
+                [vacancy]="vacancy"
+                [optionSelected]="optionSelected"
+                [interestedProfilesSelected]="interestedProfilesSelected"
+                [boughtProfilesSelected]="boughtProfilesSelected"
+                [associatedProfilesSelected]="associatedProfilesSelected"
+                [userType]="userType"
+                [listView]="listView"
+                (sendDeselectAllInterestedEvent)="getDeselectAllInterested($event)"
+                (sendDeselectAllBoughtEvent)="getDeselectAllBought($event)"
+                (sendDeleteApplicantsInterestedEvent)="getDeleteInterestedApplicants($event)"
+                (sendDeleteApplicantsBoughtEvent)="getDeleteBoughtApplicants($event)"
+                (sendBoughtEvent)="getBoughtEvent($event)"
+                (sendOptionSelectedEvent)="getOptionSelected($event)"
+                (sendChangeViewEvent)="getChangeView($event)"
+                selectedProfiles="selectedProfiles">  
+            </vacancy-detail-candidates-header>
+            
+            <!-- <vacancy-detail-candidates-card [selectedProfiles]="selectedProfiles" *ngFor="let applicant of vacancy[0].applicants" [applicant]="applicant">
+            </vacancy-detail-candidates-card> -->
+            <div *ngIf="optionSelected === 'bought'">
+                <vacancy-detail-candidates-card-bought class="display-card"
+                [boughtProfilesSelected]="boughtProfilesSelected"
+                [userType]="userType"
+                [vacancy]="vacancy"
+                [contactInformation]="contactInformation"
+                (sendBoughtProfilesSelected)="getBoughtProfilesSelected($event)"
+                (sendBoughtProfilesUnchecked)="getBoughtProfilesUnchecked($event)"
+                (sendDeselectAllBoughtEvent)="getDeselectAllBought($event)"
+                (sendDeleteBoughtApplicantsEvent)="getDeleteBoughtApplicants($event)"
+                *ngFor="let applicant of vacancy[0].owned_applicants"
+                [applicant]="applicant">
+            </vacancy-detail-candidates-card-bought>
+            <h3 *ngIf="vacancy[0].owned_applicants.length == 0" class="empty">{{ 'MENU.VACANCY_DETAILS.VACANCY_NO_APPLY' | translate }}</h3>            
+            </div>
+            <div *ngIf="optionSelected === 'interested'">
+                <vacancy-detail-candidates-card-interested
+                    [selectedProfiles]="selectedProfiles"
+                    [userType]="userType"
+                    [vacancy]="vacancy"
+                    [interestedProfilesSelected]="interestedProfilesSelected"
+                    (sendInterestedProfilesSelectedEvent)="getInterestedProfilesSelected($event)"
+                    (sendInterestedProfilesUncheckedEvent)="getInterestedProfilesUnchecked($event)"
+                    (sendBuyProfileEvent)="getBuyProfile($event)"
+                    (sendDeselectAllInterestedEvent)="getDeselectAllInterested($event)"
+                    (sendDeleteApplicantsInterestedEvent)="getDeleteInterestedApplicants($event)"
+                    *ngFor="let applicant of vacancy[0].applicants"
+                    [applicant]="applicant">
+                </vacancy-detail-candidates-card-interested>   
+                <h3 *ngIf="vacancy[0].applicants.length == 0" class="empty">{{ 'MENU.VACANCY_DETAILS.VACANCY_NO_APPLY' | translate }}</h3>
+            </div>
+            <div *ngIf="optionSelected === 'associated'">
+                <vacancy-detail-candidates-card-associated class="display-card"
+                    [associatedProfilesSelected]="associatedProfilesSelected"
+                    [userType]="userType"
+                    [vacancy]="vacancy"
+                    [associatedProfilesSelected]="associatedProfilesSelected"
+                    (sendAssociatedProfilesSelected)="getAssociatedProfilesSelected($event)"
+                    (sendAssociatedProfilesUnchecked)="getAssociatedProfilesUnchecked($event)"
+                    (sendDeselectAllAssociatedEvent)="getDeselectAllAssociated($event)"
+                    (sendDeleteApplicantsAssociatedEvent)="getDeleteAssociatedApplicants($event)"
+                    (sendBuyProfileEvent)="getBuyProfile($event)"
+                    *ngFor="let applicant of vacancy[0].associates"
+                    [applicant]="applicant">
+                </vacancy-detail-candidates-card-associated>
+                <h3 *ngIf="vacancy[0].associates.length === 0" class="empty">{{ 'MENU.VACANCY_DETAILS.VACANCY_NO_ASSOCIATED' | translate }}</h3>           
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal-backdrop" [style.display]="showDeleteApplicantsInterestedModal ? 'block' : 'none'" id="deleteApplicantsInterestedModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="vertical-alignment-helper">
+        <div class="modal-dialog vertical-align-center" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="showDeleteApplicantsInterestedModal = false"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Delete Applicants from Vacancy</h4>
+                </div>
+                <div class="modal-body">
+                    Do you want to delete the selected applicants from this Position?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-delete pull-left" (click)="deleteInterestedApplicants(interestedProfilesToBeRemoved)">Delete</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal-backdrop" [style.display]="showDeleteApplicantsBoughtModal ? 'block' : 'none'" id="deleteApplicantsBoughtModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="vertical-alignment-helper">
+        <div class="modal-dialog vertical-align-center" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="showDeleteApplicantsBoughtModal = false"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Delete Applicants from Vacancy</h4>
+                </div>
+                <div class="modal-body">
+                    Do you want to delete the selected applicants from this Position?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-delete pull-left" (click)="deleteBoughtApplicants(boughtProfilesToBeRemoved)">Delete</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal-backdrop" [style.display]="showDeleteApplicantsAssociatedModal ? 'block' : 'none'" id="deleteApplicantsAssociatedModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="vertical-alignment-helper">
+            <div class="modal-dialog vertical-align-center" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="showDeleteApplicantsAssociatedModal = false"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="myModalLabel">Delete Applicants from Vacancy</h4>
+                    </div>
+                    <div class="modal-body">
+                        Do you want to delete the selected applicants from this Position?
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-delete pull-left" (click)="deleteAssociatedApplicants(associatedProfilesToBeRemoved)">Delete</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<vacancy-detail-edit-modal
+    *ngIf="loading === false"
+    [vacancy]="vacancy"
+    (sendVacancyEditedEvent)="getVacancyEdited($event)">
+
+</vacancy-detail-edit-modal>
+
+<delete-vacancy-modal
+    [vacancyToBeDeleted]="vacancyToBeDeleted"
+    (sendDeleteVacancyConfirmationEvent)="deleteVacancy($event)">
+</delete-vacancy-modal>

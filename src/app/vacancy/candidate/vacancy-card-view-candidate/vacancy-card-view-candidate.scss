@@ -1,0 +1,67 @@
+.vacancy-card-container {
+    margin-bottom: 15px;
+}
+.vacancy-card {
+    height: 335px;
+    background-color: #fff;
+    border: 1px solid #eaeaea;
+    border-radius: 3px;
+    margin-right: 20px;
+    padding-top: 20px;
+
+    .vacancy-description-container {
+
+        .img-container  {
+            float: left;
+            
+            .card-img {
+                width: 60px;
+                height: 60px;
+            }
+            
+        }
+        
+        
+        .vacancy-description {
+            min-height: 270px;
+
+            .color-gray {
+                color: #9f9e9e;
+            }
+            
+            p, h4 {
+                margin: 0;
+            }
+        }
+
+        .clear-floats {
+            clear: both;
+        }
+    }
+
+    .vacancy-line {
+        border-bottom: 1px solid #eaeaea;
+    }
+
+    .full-position {
+        margin-top: 10px;
+        text-align: center;
+    }
+}
+
+@media screen and (min-width: 810px) and (max-width: 1023px) {
+    .vacancy-description {
+        padding-left: 0;
+    }
+}
+
+@media screen and (max-width: 666px) {
+    .vacancy-card-container {
+        padding-left: 0px;
+        padding-right: 0px;
+    }
+
+    .vacancy-card {
+        margin-right: 0px;
+    }
+}

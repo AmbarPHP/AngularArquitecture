@@ -1,0 +1,8 @@
+<div class="contact-container">
+    <p *ngIf="profile.home || profile.mobile">
+        <i class="fa fa-phone"></i> {{profile.home || profile.mobile}}
+    </p>
+    <p *ngIf="profile.email">
+        <i class="fa fa-envelope-o"></i> {{profile.email}}
+    </p>
+</div>

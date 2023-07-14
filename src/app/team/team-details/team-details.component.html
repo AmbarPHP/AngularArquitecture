@@ -1,0 +1,69 @@
+<div class="container-fluid">
+    <div class="row team-details-row">
+        <div class="col-xs-12 col-sm-3">
+            <div class="bio-detail-card">
+                <p class="back-link"><a [routerLink]="['/team']">< back</a></p>
+                <div class="bio-img-container">
+                    <img class="bio-img" [src]="profile.image">
+                </div>
+                <p>{{ profile.name }}</p>
+                <p>{{ profile.position }}</p>
+                <p>{{ profile.location }}</p>
+                <div class="website-container">
+                    <button class="btn website-btn" [disabled]="!profile.website">Website</button>
+                </div>
+                <div class="social-container">
+                    <h4>Redes sociales</h4>
+                    <ul class="social-list">
+                        <li class="social-item">
+                            <i class="fa fa-linkedin" *ngIf="!profile.linkedin"></i>
+                            <a target="_blank" href="{{ profile.linkedin }}"><i class="fa fa-linkedin active-social" *ngIf="profile.linkedin"></i></a>
+                        </li>
+                        <li class="social-item">
+                            <i class="fa fa-facebook-f" *ngIf="!profile.facebook"></i>
+                            <a target="_blank" href="{{ profile.facebook }}"><i class="fa fa-facebook-f active-social" *ngIf="profile.facebook"></i></a>
+                        </li>
+                        <li class="social-item">
+                            <i class="fa fa-github" *ngIf="!profile.github"></i>
+                            <a target="_blank" href="{{ profile.github }}"><i class="fa fa-github active-social" *ngIf="profile.github"></i></a>
+                        </li>
+                        <li class="social-item">
+                            <i class="fa fa-skype" *ngIf="!profile.skype"></i>
+                            <a target="_blank" href="{{ profile.skype }}"><i class="fa fa-skype active-social" *ngIf="profile.skype"></i></a>
+                        </li>
+                        <li class="social-item">
+                            <i class="fa fa-twitter" *ngIf="!profile.twitter"></i>
+                            <a target="_blank" href="{{ profile.twitter }}"><i class="fa fa-twitter active-social" *ngIf="profile.twitter"></i></a>
+                        </li>
+                    </ul>
+                    <div class="clear-floats"></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-6">
+            <div class="bio-green-description">
+                <p>{{ profile.greenDescription }}</p>
+            </div>
+            <div class="bio-work-experience">
+                <h4>Work Experience</h4>
+                <div class="work-experience" *ngFor="let workexperience of profile.workexperience">
+                    <p>{{ workexperience.title }}</p>
+                    <p>{{ workexperience.description }}</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-3">
+            <div class="zourcing-members-card">
+                <div class="members-title">
+                    <h4>Zourcing Members</h4>
+                </div>
+                <div class="zourcing-member-container" *ngFor="let zourcingMember of zourcingMembers">
+                    <img class="zourcing-member-image" [src]="zourcingMember.image">
+                    <p><a [routerLink]="['/team', zourcingMember.id]">{{ zourcingMember.name }}</a></p>
+                    <p>{{ zourcingMember.position }}</p>
+                    <p>{{ zourcingMember.location }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,119 @@
+.my-account-information-container {
+    background-color: #fff;
+    border: 1px solid #eaeaea;
+    border-radius: 3px;
+    margin-bottom: 15px;
+
+    .personal-information {
+        border-bottom: 1px solid #eaeaea;
+        padding-bottom: 10px;
+    }
+
+    .recruiter-information-error {
+        border: 1px solid #f96a6e;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        margin-top: 10px;
+
+        p {
+            margin: 0;
+        }
+
+        .fa-exclamation-circle {
+            margin: 0px 5px;
+            color: #f96a6e;
+        }
+    }
+
+    .recruiter-information-success {
+        
+        border: 1px solid #58d490;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        margin-top: 10px;
+
+        p {
+            margin: 0;
+        }
+
+        .fa-exclamation-circle {
+            margin: 0px 5px;
+            color: #58d490;
+        }
+    }
+
+    h4 {
+        margin: 20px 0 0 0;
+    }
+
+    .img-container {
+        margin-top: 30px;
+
+        .profile-img-size {
+            width: 70px;
+            height: 70px;
+        }
+
+        .edit-photo {
+            margin-left: 10px;
+        }
+    }
+
+    .first-name-group, .company-name-group {
+        margin-top: 15px;
+    }
+
+    .update-button {
+        width: 140px;
+        height: 40px;
+        background-color: #58a8fc;
+        color: #fff;
+        border-radius: 2px;
+        margin-bottom: 15px;
+    }
+
+    .share-twitter-btn {
+        background-color: #00ACEE;
+        color: #fff;
+        width: 32px;
+        height: 32px;
+        border: none;
+        border-radius: 2px;
+        outline: none;
+    }
+
+    .share-facebook-btn {
+        background-color: #3B5998;
+        color: #fff;
+        width: 32px;
+        height: 32px;
+        border: none;
+        border-radius: 2px;
+        outline: none;
+    }
+
+}
+
+@media screen and (min-width: 667px) {
+    .my-account-information-container {
+        .form-group {
+            width: 30%;
+            display: inline-block;
+        }
+        .last-name-group {
+            margin-left: 20px;
+        }
+
+        .company-name-group {
+            display: block;
+        }
+
+        .reference-code-group {
+            display: block;
+        }
+
+        .share-code-group {
+            display: block;
+        }
+    }
+}

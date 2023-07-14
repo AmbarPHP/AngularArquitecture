@@ -1,0 +1,58 @@
+<div class="col-xs-12 col-sm-6 col-md-4 candidate-card-container">
+    <div class="col-xs-12 candidate-card">
+        <div class="col-xs-12 card-checkbox">
+            <input (click)="selectProfile(applicant)"type="checkbox" class="pull-right">
+        </div>
+        <!-- <div class="clear-floats"></div> -->
+        <div class="col-xs-12 candidate-main-information">
+            <div class="candidate-container">
+                <img class="profile-img-size img-circle card-img candidate-img" onError="this.src='assets/images/user.png';">
+            </div>
+            <div class="col-xs-8 candidate-information">
+                <p class="candidate-name">{{applicant.name}}</p>
+                <p>{{applicant.email}}</p>
+                <p>{{applicant.location}}</p>
+            </div>
+        </div>
+        <div class="col-xs-12 candidate-button-container">
+            <button class="btn candidate-btn">Chat</button>
+        </div>
+        <div class="col-xs-12 candidate-contact-container">
+            <p><i class="fa fa-phone" aria-hidden="true"></i> {{applicant.phone}}</p>
+            <p><i class="fa fa-envelope-o" aria-hidden="true"></i> {{applicant.email}}</p>
+        </div>
+        <div class="col-xs-12 col-sm-12 social-container">
+            <div class="col-xs-3 col-sm-2">
+                <i class="fa fa-linkedin"></i>
+            </div>
+            <div class="col-xs-3 col-sm-2">
+                <i class="fa fa-facebook-f"></i>
+            </div>
+            <div class="col-xs-3 col-sm-2">
+                <i class="fa fa-github"></i>
+            </div>
+            <div class="col-xs-3 col-sm-2">
+                <i class="fa fa-skype"></i>
+            </div>
+            <div class="col-xs-3 col-sm-2">
+                <i class="fa fa-twitter"></i>
+            </div>
+            <div class="col-xs-3 col-sm-2">
+                <i class="fa fa-link"></i>
+            </div>
+        </div>
+        <div class="col-xs-12 candidate-match-container">
+            <p>100% match</p>
+        </div>
+        <div class="col-xs-12 candidate-view-container">
+            <p>
+                <a [routerLink]="['/talent', applicant.id]" class="buy-profile-button">View more details</a> 
+            </p>
+        </div>
+    </div>
+</div>
+
+<div class="col-xs-12 cards-selected-bottom mobile">
+    <a>Deselect All()</a>
+    <button class="btn remove-btn" click="removeVacancies()">Remove</button>
+</div>

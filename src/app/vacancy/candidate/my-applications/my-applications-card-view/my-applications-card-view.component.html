@@ -1,0 +1,40 @@
+<div class="row">
+    <div class="col-xs-12">
+        <div class="no-applications" *ngIf="applications.length === 0">
+            <h3>You currently don’t have any applications.</h3>
+            <p>Start looking for jobs now.</p>
+            <button [routerLink]="['/vacancies-candidate']" class="btn btn-search">Search</button>
+        </div>
+        <div class="applications-not-found" *ngIf="(applications | vacancyFilter: term).length === 0 && applications.length > 0">
+            <h3>Applications not Found</h3>
+            <button class="btn btn-clear" (click)="clearTerm()">Clear Filter</button>
+        </div>
+        <div *ngIf="applications.length > 0">
+            <div *ngFor="let application of applications | vacancyFilter: term" class="col-xs-12 col-sm-3 my-applications-card-container">
+                <div class="col-xs-12 my-applications-card">
+                    <div class="checkbox-container">
+                        <input type="checkbox" class="card-checkbox" [checked]="getCheckBoxesChecked(application.id)" (change)="notInterestedFunction($event.target.checked, application.id)">
+                        <div class="clear-floats"></div>
+                    </div>
+                    <div class="my-applications-description-container">
+                        <div class="col-xs-2 col-sm-4 col-md-3 col-lg-2 img-container">
+                            <img class="img-circle card-img" src="assets/images/user.png" >
+                        </div>
+                        <div class="col-xs-10 col-sm-8 col-md-9 col-lg-10 my-applications-description">
+                            <h4>{{application.posting_title}}</h4>
+                            <p class="color-gray">{{application.country}}</p>
+                            <p class="color-gray">IT Ready</p>
+                            <p class="color-gray">San Diego, California</p>
+                        </div>
+                        <div class="col-xs-12 button-container">
+                            <button class="btn btn-chat" (click)="sendEmailFunction(application.id)">Email</button>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 full-vacancy-container">
+                        <a [routerLink]="['/vacancies-candidate', application.id]">{{ 'MENU.VACANCIES_CANDIDATE.MY_APPLICATIONS.VIEW_FULL_VACANCY' | translate }}</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

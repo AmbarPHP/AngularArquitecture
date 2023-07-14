@@ -1,0 +1,69 @@
+<div class="profile-box-wrapper">
+    <div class="col-md-3 profile-box">
+        <div class="profile-box-inner">
+            <div class="search-box-wrapper">
+                <input class="form-control search" [(ngModel)]="filterString" placeholder="{{ 'MENU.PROFILES.MESSAGES.SEARCH' | translate }}">
+            </div>
+            <div class="chat-profile" *ngFor='let profile of (profiles | filter: filterString) '>
+                <div class="row">
+                    <a (click)="conversationChange(profile)">
+                        <div class="col-md-3">
+                            <img class="img-responsive img-circle" src="{{profile.profile_picture}}" onError="this.src='assets/images/user.png';">
+                        </div>
+                        <div class="col-md-9">
+                            <div>{{profile.name}}</div>
+                            <div class="profile-subtitle">{{profile.skills || profile.profile_skills[0].pd_skill}}</div>
+                            <div *ngIf="profile.source === null" class="badge zourcing-badge">Zourcing</div>
+                        </div>
+                    </a>
+                </div>
+                <hr>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-9 message-box">
+        <form id="chatform" [formGroup]="messageForm">
+
+            <div id="chat" class="chat-box list" #list [scrollTop]="list.scrollHeight">
+                <div class="text-center" *ngIf="loading == true">
+                    <img class="loading-spinner" src="assets/images/ring.svg">
+                </div>
+
+                <div class="empty-wrapper" *ngIf="messages.length == 0">
+                    <div class="empty">
+                        {{ 'MENU.PROFILES.MESSAGES.EMPTY' | translate }}
+                    </div>
+                </div>
+
+                <div *ngIf="loading == false">
+                    <div *ngFor="let m of messages" class="col-md-12 message">
+                        <div class="col-md-1">
+                            <img class="img-responsive img-circle" src="{{m.profile_picture}}" onError="this.src='assets/images/user.png';">
+                        </div>
+                        <div class="col-md-11">
+                            <div class="message-date">{{m.formatted_timestamp}}</div>
+                            <div class="message-author">{{m.author_name}}</div>
+                            <div class="message-message">{{m.message}}</div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+            <div class="chat-box-input-wrapper">
+                <div class="chat-box-controls">
+                    <div class="col-md-8">
+                        <input id="message" type="text" [(ngModel)]="messageForm.message" [formControl]="messageForm.controls['message']" formControlName="message"
+                            placeholder="{{ 'MENU.PROFILES.MESSAGES.SEND_MESSAGE_PLACEHOLDER' | translate }}" class="form-control">
+                    </div>
+                    <div class="col-md-4">
+                        <button (click)="send(messageForm)" [disabled]="((!messageForm.valid) && (!loading))" type="submit" id="go" class="btn send-btn">{{ 'MENU.PROFILES.MESSAGES.SEND_BUTTON' | translate }}
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+    </div>
+</div>

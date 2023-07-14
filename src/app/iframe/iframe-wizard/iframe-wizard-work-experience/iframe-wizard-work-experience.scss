@@ -1,0 +1,202 @@
+.work-experience {
+    margin-top: 25px;
+}
+
+.work-experience-container {
+    background-color: #fff;
+    border: 1px solid #eaeaea;
+    border-radius: 3px;
+    padding-top: 15px;
+
+    h4 {
+        margin: 0;
+    }
+}
+
+.no-experience-group {
+    margin-top: 10px;
+}
+
+.currentlywork-checkbox {
+    margin-top: 10px;
+}
+
+.add-button {
+    width: 140px;
+    height: 40px;
+    background-color: #58d490;
+    color: #fff;
+    border-radius: 2px;
+}
+
+.experience-line {
+    height: 1px;
+    border-bottom: 1px solid #eaeaea;
+}
+
+.next-button-group {
+    margin-top: 20px;
+
+    .next-button {
+        width: 140px;
+        height: 40px;
+        background-color: #58a8fc;
+        color: #fff;
+        border-radius: 2px;
+        margin-left: 20px;
+    }
+}
+
+.hidden {
+    display: none;
+}
+
+.responabilities-group {
+    width: 72%;
+}
+
+.candidate-skills {
+    margin-top: 25px;
+    padding-left: 0;
+    }
+    
+    .candidate-skills-container {
+        background-color: #fff;
+        border: 1px solid #eaeaea;
+        padding-top: 15px;
+    
+        h4 {
+            margin: 0;
+        }
+    }
+    
+    .skill-name-group {
+        margin-top: 10px;
+    }
+    
+    .add-button {
+        width: 140px;
+        height: 40px;
+        background-color: #58d490;
+        color: #fff;
+        border-radius: 2px;
+    }
+    
+    .skills-line {
+        height: 1px;
+        border-bottom: 1px solid #eaeaea;
+    }
+    
+    .next-button-group {
+        margin-top: 20px;
+    
+        .next-button {
+            width: 140px;
+            height: 40px;
+            background-color: #58a8fc;
+            color: #fff;
+            border-radius: 2px;
+            margin-left: 20px;
+        }
+    }
+    
+    .hidden {
+        display: none;
+    }
+    
+    @media screen and (min-width: 667px) {
+        .skill-name-group, .years-experience-group {
+            display: inline-block;
+            width: 35%;
+        }
+    
+        .years-experience-group {
+            margin-left: 10px;
+        }
+    }
+
+// Languages
+.candidate-languages {
+    margin-top: 25px;
+    padding-left: 0;
+    margin-bottom: 20px;
+}
+
+.candidate-languages-container {
+    background-color: #fff;
+    border: 1px solid #eaeaea;
+    padding-top: 15px;
+
+    h4 {
+        margin: 0;
+    }
+}
+
+.language-name-group {
+    margin-top: 10px;
+}
+
+.add-button {
+    width: 140px;
+    height: 40px;
+    background-color: #58d490;
+    color: #fff;
+    border-radius: 2px;
+}
+
+.languages-line {
+    height: 1px;
+    border-bottom: 1px solid #eaeaea;
+}
+
+.next-button-group {
+    margin-top: 20px;
+
+    .next-button {
+        width: 140px;
+        height: 40px;
+        background-color: #58a8fc;
+        color: #fff;
+        border-radius: 2px;
+        margin-left: 20px;
+    }
+}
+
+@media screen and (min-width: 667px) {
+    .language-name-group, .level-group {
+        display: inline-block;
+        width: 35%;
+    }
+
+    .level-group {
+        margin-left: 10px;
+    }
+}
+
+@media screen and (min-width: 667px) {
+    .company-name-group, .location-group, .position-group, .from-group {
+        display: inline-block;
+        width: 35%;
+    }
+
+    .location-group, .from-group {
+        margin-left: 10px;
+    }
+
+    .to-group {
+        display: inline-block;
+        width: 25%;
+        margin-left: 10px;
+        vertical-align: top;
+    }
+}
+
+@media screen and (min-width: 982px) {
+    .from-group {
+        width: 18%;
+    }
+
+    .to-group {
+        width: 16%;
+    }
+}

@@ -1,0 +1,78 @@
+<div class="modal fade" tabindex="-1" role="dialog" id="importContactsModal">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">{{'MENU.IMPORT_CONTACTS' | translate}}</h4>
+            </div>
+            <div class="modal-body">
+                <p class="import-from">Import from:</p>
+                <div class="row">
+                    <div class="first-icon-margin image-container image-center mouse-hover" id="gmailbutton" (click)="apiClick()">
+                        <img src="assets/images/gmail-icon.png" class="image-size" alt="">
+                    </div>
+                    <div class="image-container image-center mouse-hover" (click)="microsoftLogin()">
+                        <img src="assets/images/outlook-icon.png" class="image-size" alt="">
+                    </div>
+                    <!-- <div class="image-container image-center">
+                        <img src="assets/images/email-icon.png" class="image-size" alt="">
+                    </div> -->
+                    <div class="image-container image-center mouse-hover" (click)="importByDocument()">
+                        <img src="assets/images/file-document.jpg" class="image-size" alt="">
+                    </div>
+                    <!-- <div class="image-container image-center">
+                        <img src="assets/images/linkedin-icon.png" class="image-size" alt="">
+                    </div> -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" tabindex="-1" role="dialog" id="confirmationContactModal">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+        <div class="modal-body">
+            <h3>Contactos encontrados</h3>    
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-primary pull-left" (click)="goToImportContacts()">Ir a lista de contactos</button>
+            <button type="button" class="btn btn-default" data-dismiss="modal" (click)="cancelImportContacts()">Cancelar</button>
+        </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" tabindex="-1" role="dialog" id="contactsNotFound">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+        <div class="modal-body">
+            <h3>No se encontraron usuarios</h3>    
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Cerrar</button>
+        </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" tabindex="-1" role="dialog" id="importByDocument">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+        <div class="modal-body">
+            <h3>Subir Archivo con contactos:</h3>
+            <div class="alert alert-danger" *ngIf="fileErrorMessage">{{ fileErrorMessage }}</div>
+            <div class="alert alert-danger" *ngIf="fileSuccesMessage">{{ fileSuccesMessage }}></div>
+            <input type="file" (change)="contactsChange($event)" id="add_contacts" style="display:none;">
+            <button type="button" class="btn browse-btn" onclick="document.getElementById('add_contacts').click();">
+                Browse
+                <i class="fa fa-paperclip"></i>
+            </button>
+            <br>
+            <button class="btn submit-file-btn" (click)="submitContactsFile()">
+                Submit
+            </button>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Cerrar</button>
+        </div>
+        </div>
+    </div>
+</div>

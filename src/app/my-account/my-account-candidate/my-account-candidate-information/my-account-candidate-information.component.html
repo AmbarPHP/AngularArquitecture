@@ -1,0 +1,64 @@
+<p-growl [(value)]="msgs" life="5000"></p-growl>
+<div class="col-xs-12 my-account-information-container">
+    <div class="alert-container">
+        <alert></alert>
+    </div>
+    <div class="personal-information">
+        <form (ngSubmit)="updatePersonalInformation(form.value)" #form="ngForm" *ngIf="personalInformation">
+            <h4>{{ 'MENU.PROFILES.WIZARD.PERSONAL_INFORMATION' | translate }}</h4>
+            <div class="img-container">
+                <img class="profile-img-size img-circle card-img" [src]="profile_image"
+                onError="this.src='assets/images/user.png';">
+                <input type="file" (change)="fileChange($event)" id="add_photo" name="add_photo" ngModel style="display:none;">
+                <button type="button" class="btn btn-info" onclick="document.getElementById('add_photo').click();">
+                    {{ 'MENU.PROFILES.WIZARD.UPLOAD_PHOTO' | translate }}
+                    <i class="fa fa-paperclip"></i>
+                </button>
+                <!-- <a class="edit-photo">{{ 'MENU.PROFILES.WIZARD.EDIT_PHOTO' | translate }}</a> -->
+            </div>
+            <div class="form-group first-name-group">
+                <label for="firstName">{{ 'MENU.PROFILES.WIZARD.FIRST_NAME' | translate }}</label>
+                <input type="text" id="first_name" name="first_name" class="form-control" [(ngModel)]="personalInformation.first_name" required>
+            </div>
+            <div class="form-group last-name-group">
+                <label for="lastName">{{ 'MENU.PROFILES.WIZARD.LAST_NAME' | translate }}</label>
+                <input type="text" id="last_name" name="last_name" class="form-control" [(ngModel)]="personalInformation.last_name" required>
+            </div>
+            <div class="form-group country-group">
+                <label for="country">{{ 'MENU.PROFILES.WIZARD.COUNTRY' | translate }}</label>
+                <select name="country" id="country" class="form-control" [(ngModel)]="personalInformation.country" (change)="getStates($event.target.value)" required>
+                    <option value=""></option>
+                    <option *ngFor="let country of countries" [value]="country.clave">{{country.name}}</option>
+                </select>
+            </div>
+            <div class="form-group state-group">
+                    <label for="state">{{ 'MENU.PROFILES.WIZARD.STATE' | translate }}</label>
+                    <select name="state" id="state" class="form-control" [(ngModel)]="personalInformation.state" (change)="getCities($event.target.value)" required>
+                        <option value=""></option>
+                        <option *ngFor="let state of states" [value]="state.key">{{state.name}}</option>
+                    </select>
+                </div>
+            <div class="form-group city-group">
+                <label for="city">{{ 'MENU.PROFILES.WIZARD.CITY' | translate }}</label>
+                <select name="city" id="city" class="form-control" [(ngModel)]="personalInformation.city" required>
+                    <option value=""></option>
+                    <option *ngFor="let city of cities" [value]="city.clave">{{city.name}}</option>
+                </select>
+            </div>
+            <div class="form-group professional-title-group">
+                <label for="title">{{ 'MENU.PROFILES.WIZARD.PROFESSIONAL_TITLE' | translate }}</label>
+                <input type="text" id="title" name="title" class="form-control" [(ngModel)]="personalInformation.title" required>
+            </div>
+            <div class="form-group resume-group">
+                <label for="resume">{{ 'MENU.PROFILES.WIZARD.UPLOAD_RESUME' | translate }}</label>
+                <br>
+                <input type="file" (change)="resumeChange($event)" id="add_resume" name="add_resume" style="display:none;">
+                <button type="button" class="btn btn-info" onclick="document.getElementById('add_resume').click();">
+                    Browse
+                    <i class="fa fa-paperclip"></i>
+                </button>
+            </div>
+            <button [disabled]="form.invalid" type="submit" class="btn update-button">{{ 'MENU.PROFILES.WIZARD.UPDATE_BUTTON' | translate }}</button>
+        </form>
+    </div>
+</div>

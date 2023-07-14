@@ -1,0 +1,65 @@
+<div class="container-fluid">
+    <vacancy-header
+        [cardsSelected]="cardsSelected"
+        (eventDeselectAll)="getDeselectAll($event)"
+        (eventvacancyListView)="getVacancyListView($event)"
+        (sendSuccessSubmitEvent)="getSendSuccessSubmitEvent($event)"
+        (sendDeleteVacanciesEvent)="getDeleteVacancies($event)">
+    </vacancy-header>
+
+    <vacancy-filters
+        [searchByTitle]="searchByTitle"
+        (sendVacancyTerm)="getFilterString($event)"
+        (sendSearchTerm)="getSearchString($event)"
+        (sendSearchTermMobile)="getSearchStringMobile($event)"
+        (sendCountryFilterEvent)="getSearchFilters($event)"
+        (sendStateFilterEvent)="getStateFilter($event)">
+    </vacancy-filters>
+
+    <div class="text-center" *ngIf="loading === true">
+        <img class="loading-spinner" src="assets/images/ring.svg">
+    </div>
+    <div *ngIf="loading === false && pagedItems.length > 0">
+        <vacancy-card-view
+            *ngIf="!vacancyListView"
+            [filterString]="filterString"        
+            [cardsSelected]="cardsSelected"
+            [vacanciesView]="vacancies"
+            [pagedItems]="pagedItems"
+            [userType]="userType"
+            (eventCardsSelected)="getCardsSelected($event)"
+            (sendSelectedCardEvent)="getSelectedCardEvent($event)"
+            (sendUnselectedCardEvent)="getUnselectedCardEvent($event)">
+        </vacancy-card-view>
+    
+        <vacancy-list-view
+            *ngIf="vacancyListView"
+            [filterString]="filterString"
+            [cardsSelected]="cardsSelected"
+            [pagedItems]="pagedItems"
+            (eventCardsSelected)="getCardsSelected($event)"
+            (sendSelectedCardEvent)="getSelectedCardEvent($event)"
+            (sendUnselectedCardEvent)="getUnselectedCardEvent($event)">
+        </vacancy-list-view>
+    
+        <vacancy-pagination
+            [pagination]="pagination"
+            [vacancies]="vacancies"
+            [pagedItems]="pagedItems"
+            (pagedItemsEmmiter)="getPagedItems($event)">
+        </vacancy-pagination>
+    </div>
+    <div *ngIf="loading === false && pagedItems.length === 0" class="no-items-div">
+        <h3>{{ 'MENU.VACANCIES.NO_VACANCIES' | translate }}</h3>
+        <p>{{ 'MENU.VACANCIES.START_VACANCIES' | translate }}</p>
+        <button class="btn add-new-btn" data-toggle="modal" data-target="#addVacancyModal">{{ 'MENU.VACANCIES.ADD_NEW_BUTTON' | translate }}</button>
+    </div>
+
+    <vacancy-add-modal></vacancy-add-modal>
+        <!--<p-dataTable [value]="vacancies" [rows]="10" [paginator]="true" [loading]="loading">
+            <p-column field="id" header="Id"></p-column>
+            <p-column field="posting_title" header="Título"></p-column>
+            <p-column field="total_work_experience_in_it" header="Años Experiencia"></p-column>
+            <p-column field="created_time" header="Fecha"></p-column>
+        </p-dataTable>-->
+</div>

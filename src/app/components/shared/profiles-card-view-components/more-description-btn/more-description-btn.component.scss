@@ -1,0 +1,45 @@
+.profile-button-container {
+    margin-top: 10px;
+
+    .buy-profile-button-container {
+        text-align: center;
+
+        .buy-profile-button {
+            background-color: #ffb03e;
+            color: #fff;
+            border: none;
+            border-radius: 2px;
+            min-width: 140px;
+            padding: 10px;
+            text-decoration: none;
+        }
+
+        .buy-profile-button-bought {
+            background-color: #58d490;
+            color: #fff;
+            border: none;
+            border-radius: 2px;
+            min-width: 140px;
+            padding: 10px;
+            text-decoration: none;
+        }
+
+        .preview-profile-button-owned {
+            background-color: #58d490;
+            color: #fff;
+            border: none;
+            border-radius: 2px;
+            min-width: 36px;
+            height: 36px;
+        }
+        
+        .preview-profile-button-not-owned {
+            background-color: #ffb03e;
+            color: #fff;
+            border: none;
+            border-radius: 2px;
+            min-width: 36px;
+            height: 36px;
+        }
+    }
+}

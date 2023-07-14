@@ -1,0 +1,32 @@
+<div class="col-xs-12 col-sm-12 col-main-filter">
+    <div class="input-group main-filter-div desktop">
+        <input type="text" class="form-control" #searchProfilesInput [value]="term" (keyup.enter)="searchProfiles(searchProfilesInput.value)">
+        <div class="input-group-addon" (click)="searchProfiles(searchProfilesInput.value)"><span class="glyphicon glyphicon-search"></span></div>
+        <div class="input-group-btn">
+            <button type="button" class="btn sort-by-btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ 'MENU.PROFILES.SORT BY' | translate }} <span class="caret"></span></button>
+            <ul class="dropdown-menu dropdown-menu-right">
+                <li><a href="#" (click)="searchOrderBy('match', $event);" [ngClass]="{'selected': orderSelected === 'match'}">{{ 'MENU.PROFILES.SORT_BY.MATCH' | translate }}</a></li>
+                <li><a href="#" (click)="searchOrderBy('location', $event);" [ngClass]="{'selected': orderSelected === 'location'}">{{ 'MENU.PROFILES.SORT_BY.LOCATION' | translate }}</a></li>
+                <li><a href="#" (click)="searchOrderBy('skills', $event);" [ngClass]="{'selected': orderSelected === 'skills'}">{{ 'MENU.PROFILES.SORT_BY.SKILLS' | translate }}</a></li>
+            </ul>
+        </div>
+        <!-- <span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span> -->
+    </div>
+    <!-- <div class="form-group input-group has-feedback">
+        <input type="text" class="form-control" #searchProfilesInput (keyup.enter)="searchProfiles(searchProfilesInput.value)">
+        <span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>
+        <div class="input-group-btn">
+            <button type="button" class="btn sort-by-btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ 'MENU.PROFILES.SORT BY' | translate }} <span class="caret"></span></button>
+            <ul class="dropdown-menu dropdown-menu-right">
+                <li><a href="#">Match</a></li>
+                <li><a href="#">Location</a></li>
+                <li><a href="#">Skills</a></li>
+            </ul>
+        </div>
+    </div> -->
+    <img class="list-icon" [ngClass]="{'ic-arrangement-card': profileListView, 'ic-arrangement-list': !profileListView}"
+    (click)="profileListViewToogle()" alt="">
+    <div class="results-found-container" *ngIf="_profileService.showResults">
+        <p class="pull-right">{{ 'PROFILES_FOUND' | translate }} {{ _profileService.profilesCount }}</p>
+    </div>
+</div>

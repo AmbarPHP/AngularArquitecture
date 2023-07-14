@@ -1,0 +1,42 @@
+<div class="modal fade" tabindex="-1" role="dialog" id="feedbackModal">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+        <div class="modal-body">
+            <form [formGroup]="feedbackForm">
+                <div class="form-group" *ngIf="_authService.isLoggedIn() == false">
+                    <label>Nombre:</label>
+                    <input type="text" class="form-control" formControlName="name" >
+                </div>
+                <div class="form-group" *ngIf="_authService.isLoggedIn() == false">
+                    <label>Email:</label>
+                    <input type="email" class="form-control" formControlName="email" >
+                </div>
+
+                <div class="form-group">
+           
+                    <br>
+                    <textarea class="form-control" formControlName="looking_for" placeholder="Déjanos tu comentario personal..."></textarea>
+                </div>
+            </form>
+
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-primary pull-left" (click)="createFeedback()">Enviar Feedback</button>
+            <button class="btn btn-default pull-right" (click)="closeFeedbackModal()">Cancelar</button>
+        </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" tabindex="-1" role="dialog" id="feedbackSuccessModal">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="modal-body-container">
+                    <h2>Feedback enviado!</h2>
+                    <span><i class="fa fa-check-circle"></i></span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

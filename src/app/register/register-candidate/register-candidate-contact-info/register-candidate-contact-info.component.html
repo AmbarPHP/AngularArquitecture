@@ -1,0 +1,67 @@
+<div class="col-xs-12 contact-info">
+    <div class="col-xs-12 contact-info-container">
+        <h4>{{ 'MENU.PROFILES.WIZARD.CONTACT_INFO' | translate }}</h4>
+        <p>{{ 'MENU.PROFILES.WIZARD.NEED_PROVIDE' | translate }}</p>
+        <form [formGroup]="contactForm" *ngIf="!loading">
+            <div class="email-group form-group" [ngClass]="{'has-error': emailHasError}">
+                <div class="icon-container">
+                    <i class="fa fa-envelope"></i>
+                </div>
+                <div class="group-container">
+                    <label for="email" class="control-label">{{ 'MENU.PROFILES.WIZARD.EMAIL' | translate }} <span class="red-star">*</span></label>
+                    <input type="text" class="email-input form-control" formControlName="email" placeholder="Enter">
+                </div>
+            </div>
+            <div class="phone-group form-group" [ngClass]="{'has-error': phoneHasError}">
+                <div class="icon-container">
+                    <i class="fa fa-phone"></i>
+                </div>
+                <div class="group-container">
+                    <label for="phone" class="control-label">{{ 'MENU.PROFILES.WIZARD.PHONE' | translate }} <span class="red-star">*</span></label>
+                    <input type="text" class="phone-input form-control" formControlName="phone" placeholder="Enter">
+                </div>
+            </div>
+            <div class="linkedin-group form-group">
+                <div class="icon-container">
+                    <i class="fa fa-linkedin"></i>
+                </div>
+                <div class="group-container">
+                    <label for="linkedin_url">Linkedin</label>
+                    <input type="text" class="linkedin-input form-control" formControlName="linkedin_url" placeholder="Enter" >
+                </div>
+            </div>
+            <div class="facebook-group form-group">
+                <div class="icon-container">
+                    <i class="fa fa-facebook-f"></i>
+                </div>
+                <div class="group-container">
+                    <label for="facebook_url">Facebook</label>
+                    <input type="text" class="facebook-input form-control" formControlName="facebook_url" placeholder="Enter" >
+                </div>
+            </div>
+            <div class="github-group form-group">
+                <div class="icon-container">
+                    <i class="fa fa-github"></i>
+                </div>
+                <div class="group-container">
+                    <label for="github">Github</label>
+                    <input type="text" class="github-input form-control" formControlName="github_url" placeholder="Enter">
+                </div>
+            </div>
+            <div class="skype-group form-group">
+                <div class="icon-container">
+                    <i class="fa fa-skype"></i>
+                </div>
+                <div class="group-container">
+                    <label for="skype_url">Skype</label>
+                    <input type="text" class="skype-input form-control" formControlName="skype_url" placeholder="Enter">
+                </div>
+            </div>
+            <div class="next-button-group form-group">
+                <a (click)="previousPage()">< {{ 'MENU.PROFILES.WIZARD.BACK' | translate }}</a>
+                <button type="submit" (click)="nextPage()" [disabled]="!contactForm.valid" class="btn next-button">{{ 'MENU.PROFILES.WIZARD.NEXT' | translate }}</button>
+                <a (click)="skip()">{{ 'MENU.PROFILES.WIZARD.SKIP' | translate }}</a>
+            </div>
+        </form>
+    </div>
+</div>

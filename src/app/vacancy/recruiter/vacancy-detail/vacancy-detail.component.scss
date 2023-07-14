@@ -1,0 +1,68 @@
+// component css goes here
+
+.vacancy-detail-view-card {
+    margin-top: 30px;
+}
+
+.vacancy-detail-candidates {
+    margin-top: 30px;
+}
+
+.menu-mobile {
+    margin-top: 20px;
+    border-bottom: 1px solid #eaeaea;
+}
+
+.vertical-alignment-helper {
+    display:table;
+    height: 100%;
+    width: 100%;
+}
+.vertical-align-center {
+    /* To center vertically */
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.modal-content {
+    /* Bootstrap sets the size of the modal in the modal-dialog class, we need to inherit it */
+    width:inherit;
+    height:inherit;
+    /* To center horizontally */
+    margin: 0 auto;
+}
+
+.modal-backdrop {
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.btn-delete {
+    background-color: #f96a6e;
+    color: #fff;
+    width: 140px;
+    height: 40px;
+    border-radius: 2px;
+}
+@media screen and (min-width: 667px) {
+    .mobile {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 666px) {
+    .desktop {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 1023px) {
+    .display-list {
+        display: none;
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    .display-card {
+        display: none;
+    }
+}

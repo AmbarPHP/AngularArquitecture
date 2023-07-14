@@ -1,0 +1,255 @@
+.row {
+    padding: 0px 15px;
+}
+
+.fondo {
+    background-color: #ff6a00;
+}
+
+.vacancy-list-card-table {
+    background-color: #fff;
+    border-radius: 3px;
+    border: 1px solid #eaeaea;
+    margin-bottom: 15px;
+    padding-left: 0px;
+    padding-right: 0px;
+    height: 90px;
+    display: table;
+    width: 100%;
+}
+
+.profile-img-size {
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+}
+
+.vacancy-list-card-information {
+
+    vertical-align: inherit;
+
+    p {
+        margin: 0;
+    }
+}
+
+.vacancy-image {
+    margin-right: 10px;
+}
+
+.vacancy-image, .vacancy-list-card-information, .vacancy-list-card-view {
+    display: inline-block;
+}
+
+// .vacancy-image, .vacancy-list-card-information {
+//     float: left;
+// }
+
+// .vacancy-list-card-view {
+//     float: right;
+// }
+
+body {
+    background-color: #ff6a00
+}
+
+.clear-floats {
+    clear: both;
+}
+
+.vacancy-table-cell {
+    display: table-cell;
+    vertical-align: middle;
+    height: 90px;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.view-vacancy {
+    float: right;
+    margin-top: 15px;
+}
+
+.iframe-table {
+    .thead {
+        background-color: #eee;
+    }
+    .tbody {
+        background-color: #fff;
+    }
+}
+
+#vacancyModal {
+
+    .modal-header {
+        padding: 5px 15px;
+        border-bottom: none;
+        background-color: #353a44;
+        color: #fff;
+        height: 200px;
+    
+        .close {
+            color: #fff;
+        }
+    
+        .vacancy-title {
+            margin-top: 60px;
+    
+            h3 {
+                color: #fff;
+            }
+        }
+    }
+}
+
+
+.modalTitle {
+    border-bottom: 1px solid #eaeaea;
+}
+
+.pTitle {
+    background-color: #f4f4f4;
+    padding: 10px 20px;
+}
+
+.red-star {
+    color: red;
+}
+
+.personal-form {
+    .form-control {
+        width: 50%;
+    }
+}
+
+.phone-group, .facebook-group, .linkedin-group, .skype-group, .github-group, .twitter-group {
+    display: inline-block;
+    width: 40%;
+
+    .form-control {
+        width: 90%;
+    }
+}
+
+.apply-div {
+    margin: 20px 0;
+}
+
+.buttons-footer {
+    text-align: center;
+    margin: 50px 0;
+}
+
+.apply-now-btn {
+    background-color: #53bc57;
+    color: #fff;
+    border-radius: 2px;
+    padding: 10px 30px;
+    margin-right: 10px;
+}
+
+.cancel-btn {
+    background-color: #e8e8e8;
+    color: #7d858d;
+    border-radius: 2px;
+    padding: 10px 30px;
+}
+
+
+.skill-set, .job-information {
+    float: left;
+}
+
+.skill-set {
+
+    h4 {
+        margin-bottom: 25px;
+    }
+
+    width: 60%;
+    border-top: 1px solid #f6f6f6;
+    border-bottom: 1px solid #f6f6f6;
+    margin-right: 5%;
+}
+
+.job-information {
+
+    h4 {
+        margin-bottom: 25px;
+    }
+
+    width: 35%;
+    background-color: #fafafa;
+    padding: 0 10px;
+}
+
+.clearfloats {
+    clear: both;
+}
+
+.job-section {
+    margin-bottom: 25px;
+
+    p {
+        margin: 0;
+        margin-bottom: 3px;
+    }
+}
+
+.resume-group {
+    float: left;
+}
+
+.first-name-group, .how-know-group {
+    display: inline-block;
+}
+
+.first-name-group {
+    width: 50%;
+    margin-right: 10px;
+    
+    .first-name-input {
+        width: 100%;
+    }
+}
+
+.how-know-group {
+    width: 40%;
+    
+    .how-know-input {
+        width: 100%;
+    }
+}
+
+.information-group {
+    margin-left: 30px;
+    float: left;
+    width: 350px;
+}
+
+.title-left {
+    float: left;
+}
+
+
+.input-right {
+    float: right;
+    width: 30%;
+    margin-top: 20px;
+}
+
+.clear-both {
+    clear: both;
+}
+// .information-group {
+
+//     p {
+//         display: inline-block;
+//     }
+// }
+
+@media screen and (min-width: 1028px) {
+    .information-group {
+        width: 500px;
+    }
+}

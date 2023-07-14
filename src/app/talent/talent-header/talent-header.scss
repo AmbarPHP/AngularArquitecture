@@ -1,0 +1,79 @@
+.h1-container {
+    h1 {
+        margin: 0;
+    }
+}
+
+.col-header {
+    margin: 10px 0 0 0;
+}
+
+.header-bottom-margin {
+    border-bottom: 1px solid #eaeaea;
+    min-height: 60px;
+}
+
+.ic-arrangement-list {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+    content: url("/assets/images/ic-arrangement-list.svg")
+}
+
+.ic-arrangement-card {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+    content: url("/assets/images/ic-arrangement-cards.svg")
+}
+
+.talent-ul-views {
+    margin: 0;
+    padding: 0;
+}
+
+.talent-ul-views li {
+    list-style: none;
+    float: left;
+    margin-right: 25px;
+    color: #8b8b8b;
+}
+
+.option-selected {
+    border-bottom: 3px solid #58a8fc;
+    color: #58a8fc !important;
+}
+
+.clear-floats {
+    clear: both;
+}
+
+.mouse-hover {
+    cursor: pointer;
+}
+
+@media screen and (max-width: 666px) {
+    .talent-ul-views {
+        display: none;
+    }
+
+    .talent-dropdown-views {
+        margin-top: 25px;
+        margin-bottom: 25px;
+        width: 100%;
+        border: 1px solid #eaeaea;
+        box-shadow: none;
+    }
+}
+
+@media screen and (min-width: 667px) {
+    .talent-dropdown-views {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 1023px) {
+    .list-icon {
+        display: none;
+    }
+}

@@ -1,0 +1,8 @@
+<div class="profile-button-container">
+    <div class="buy-profile-button-container">
+        <a *ngIf="profile.owns == false" [routerLink]="['/profiles', profile.id]" target="_blank" class="buy-profile-button">{{ 'MENU.PROFILES.FILTERS.VIEW_MORE_DETAILS' | translate }}</a>
+        <a *ngIf="profile.owns == true" [routerLink]="['/talent', profile.id]" target="_blank" class="buy-profile-button-bought">{{ 'MENU.PROFILES.FILTERS.VIEW_MORE_DETAILS' | translate }}</a>
+        <button *ngIf="profile.owns == true" class="preview-profile-button-owned preview-icon" data-container="body"><i class="fa fa-eye" aria-hidden="true"></i></button>
+        <button *ngIf="profile.owns == false" class="preview-profile-button-not-owned preview-icon" data-container="body"><i class="fa fa-eye" aria-hidden="true"></i></button>
+    </div>
+</div>

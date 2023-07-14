@@ -1,0 +1,24 @@
+<div class="signup-container">
+    <div class="signup-card">
+        <div class="form-container">
+            <div class="alert alert-danger" *ngIf="signupError">
+                {{ signupErrorMessage }}
+            </div>
+            <form [formGroup]="signupForm" (ngSubmit)="signup(signupForm.value)">
+                <!-- {{signupForm.value | json}} -->
+                <div class="form-group">
+                    <label for="">Email:</label>
+                    <input type="text" class="form-control" formControlName="username">
+                </div>
+                <div class="form-group">
+                    <label for="">Password:</label>
+                    <input type="password" class="form-control" formControlName="password">
+                </div>
+                <div class="form-group">
+                    <button type="submit" [disabled]="!signupForm.valid" class="btn signup-btn">Signup</button>
+                </div>
+                <!-- {{ profileData | json }} -->
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,81 @@
+.talent-list-view-container {
+    background-color: #fff;
+    border: 1px solid #eaeaea;
+    border-radius: 3px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+    margin-bottom: 15px;
+}
+
+.profile-img-size {
+    width: 60px;
+    height: 60px;
+    margin-left: 5px;
+}
+
+
+.talent-list-description {
+    p {
+        margin: 0;
+    }
+    .description-skills, .description-location {
+        color: #9f9e9e;
+        font-size: 14px
+    }
+}
+
+.talent-list-social {
+    padding-left: 0;
+    padding-right: 0;
+    i {
+        color: #9f9e9e;
+        font-size: 18px;
+    }
+
+    .social-source {
+        color: #a0c0ff;
+    }
+
+    .fa-phone {
+        color: #9f9e9e;
+    }
+
+    .fa-envelope-o {
+        color: #9f9e9e;
+    }
+
+    .talent-email {
+        color: #9f9e9e;
+        display: inline-block;
+    }
+
+    .talent-mobile {
+        color: #9f9e9e;
+        display: inline-block;
+    }
+
+}
+
+.talent-list-chat {
+    text-align: right;
+    margin-top: 10px;
+    .chat-button {
+        background-color: #ffb03e;
+        color: #fff;
+        border: 0;
+        width: 140px;
+        border-radius: 2px;
+        height: 40px;
+    }
+}
+
+.talent-list-full {
+    // padding-left: 0;
+    margin-top: 20px;
+    text-align: right;
+}
+
+.badge-zourcing {
+    background-color: rgba(0, 100, 245, 0.56) !important;
+}

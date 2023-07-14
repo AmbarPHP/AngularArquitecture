@@ -1,0 +1,67 @@
+<div class="profile-list-container">
+    <div class="profile-list-item" [ngClass]="{'profile-list-item-bought': pagedItems.owns == true}">
+        <div class="profile-list-information">
+            <input type="checkbox" [checked]="getCheckBoxesSaved(pagedItems.id)" (change)="$event.target.checked ? checkCard(pagedItems.id) : uncheckCard(pagedItems.id)">
+            <img class="profile-img-size img-circle" [src]="pagedItems.profile_picture" onError="this.src='assets/images/user.png';">
+            <div class="profile-list-name">
+                <p>{{ pagedItems.name }}</p>
+                <p>{{pagedItems.pd_position | slice:0:35}}</p>
+                <p>
+                    <span class="badge skill-badge" *ngFor="let skill of pagedItems?.skills; let i = index"><span *ngIf="i<4 && skill != ''">{{skill}}</span></span>
+                </p>
+                <p>{{ pagedItems.location }}</p>
+            </div>
+        </div>
+        <div class="profile-list-details">
+            <div class="profile-list-social">
+                <ul class="social-list">
+                    <li class="social-list-item" *ngIf="pagedItems.source === 'linkedin' || hasLinkedinInformation === true">
+                        <i class="fa fa-linkedin"></i>
+                    </li>
+                    <li class="social-list-item" *ngIf="pagedItems.source === 'facebook' || hasFacebookInformation === true">
+                        <i class="fa fa-facebook-f"></i>
+                    </li>
+                    <li class="social-list-item" *ngIf="pagedItems.source === 'github' || hasGithubInformation === true">
+                        <i class="fa fa-github"></i>
+                    </li>
+                    <li class="social-list-item" *ngIf="pagedItems.source === 'skype' || hasSkypeInformation === true">
+                        <i class="fa fa-skype"></i>
+                    </li>
+                    <li class="social-list-item" *ngIf="pagedItems.source === 'twitter' || hasTwitterInformation === true">
+                        <i class="fa fa-twitter"></i>
+                    </li>
+                    <li class="social-list-item" *ngIf="hasWebsiteInformation === true">
+                        <i class="fa fa-link"></i>
+                    </li>
+                </ul>
+                <div class="contact-information-container">
+                    <p *ngIf="pagedItems.home || pagedItems.mobile">
+                        <i class="fa fa-phone"></i> {{pagedItems.home || pagedItems.mobile}}
+                    </p>
+                    <p *ngIf="pagedItems.email">
+                        <i class="fa fa-envelope-o"></i> {{pagedItems.email}}
+                    </p>
+                </div>
+            </div>
+            <div class="profile-list-more-details">
+                <a *ngIf="!pagedItems.owns" class="view-more-details-btn" [routerLink]="['/profiles', pagedItems.id]" target="_blank">View more details</a>
+                <a *ngIf="pagedItems.owns" class="view-more-details-btn-bought" [routerLink]="['/talent', pagedItems.id]" target="_blank">View more details</a>
+                <button *ngIf="pagedItems.owns" class="preview-profile-button-owned preview-icon" data-container="body"><i class="fa fa-eye" aria-hidden="true"></i></button>
+                <button *ngIf="!pagedItems.owns" class="preview-profile-button-not-owned preview-icon" data-container="body"><i class="fa fa-eye" aria-hidden="true"></i></button>
+                <!-- <p>{{ pagedItems.match_percent }}%</p> -->
+                <ngb-rating [(rate)]="pagedItems.match" [starTemplate]="t" [readonly]="true" max="5" class="ngb-rating" ></ngb-rating>
+                <ul class="tags-list">
+                    <li *ngIf="pagedItems.source === null" class="tags-list-item"><img class="zourcing-logo"></li>
+                    <li *ngIf="pagedItems.recommended === true" class="tags-list-item start-item"><i class="fa fa-star" aria-hidden="true"></i></li>
+                    <li *ngIf="getAttachments" class="tags-list-item clip-item"><i class="fa fa-paperclip" aria-hidden="true"></i></li>
+                </ul>
+            </div>
+            <div class="profile-list-zource-profile">
+                <a *ngIf="!pagedItems.owns" (click)="buyProfile(pagedItems.id)">Zource profile</a>
+                <p *ngIf="pagedItems.owns" class="zourced">
+                    Zourced
+                </p>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,39 @@
+<div class="container-fluid">
+    <div class="row">
+        <register-candidate-header
+            [activeStep]="activeStep">
+        </register-candidate-header>
+        <register-candidate-personal
+            *ngIf="activeStep === 1"
+            (sendNextPageEvent)="activeStep = $event">
+        </register-candidate-personal>
+        <register-candidate-studies
+            *ngIf="activeStep === 2"
+            (sendNextPageEvent)="activeStep = $event"
+            (sendPreviousPageEvent)="activeStep = $event"
+            (sendSkipEvent)="getSkipEvent($event)">
+        </register-candidate-studies>
+        <register-candidate-work-experience
+            *ngIf="activeStep === 3"
+            (sendNextPageEvent)="activeStep = $event"
+            (sendPreviousPageEvent)="activeStep = $event"
+            (sendSkipEvent)="getSkipEvent($event)">
+        </register-candidate-work-experience>
+        <register-candidate-skills
+            *ngIf="activeStep === 4"
+            (sendNextPageEvent)="activeStep = $event"
+            (sendPreviousPageEvent)="activeStep = $event"
+            (sendSkipEvent)="getSkipEvent($event)">
+        </register-candidate-skills>
+        <register-candidate-languages
+            *ngIf="activeStep === 5"
+            (sendNextPageEvent)="activeStep = $event"
+            (sendPreviousPageEvent)="activeStep = $event"
+            (sendSkipEvent)="getSkipEvent($event)">
+        </register-candidate-languages>
+        <register-candidate-contact-info
+            *ngIf="activeStep === 6"
+            (sendPreviousPageEvent)="activeStep = $event">
+        </register-candidate-contact-info>
+    </div>
+</div>

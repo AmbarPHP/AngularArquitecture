@@ -1,0 +1,4 @@
+<div class="intro-search-position input-group">
+    <ng2-completer (keyup.enter)="search()" [placeholder]="'HOME.AUTOCOMPLETE_LANDING.PLACEHOLDER' | translate" [(ngModel)]="searchStr" [inputClass]="'form-control'"  [datasource]="dataService" [minSearchLength]="0"></ng2-completer>
+    <div (click)="search()" class="input-group-addon btn-search-position">{{ 'HOME.AUTOCOMPLETE_LANDING.SEARCH_BUTTON' | translate }}</div>
+</div>

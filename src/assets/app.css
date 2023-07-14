@@ -1,0 +1,586 @@
+﻿@font-face {
+    font-family: 'HelveticaNeue';
+    src: url('fonts/HelveticaNeue.eot');
+    src: url('fonts/HelveticaNeue.woff2') format('woff2'),
+    url('fonts/HelveticaNeue.woff') format('woff'),
+    url('fonts/HelveticaNeue.ttf') format('truetype'),
+    url('fonts/HelveticaNeue.eot?#iefix') format('embedded-opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'HelveticaNeue-Bold';
+    src: url('fonts/HelveticaNeue-Bold.eot');
+    src: url('fonts/HelveticaNeue-Bold.woff2') format('woff2'),
+    url('fonts/HelveticaNeue-Bold.woff') format('woff'),
+    url('fonts/HelveticaNeue-Bold.ttf') format('truetype'),
+    url('fonts/HelveticaNeue-Bold.eot?#iefix') format('embedded-opentype');
+    font-weight: 400;
+    font-style: all;
+}
+
+@font-face {
+    font-family: 'HelveticaNeue-CondensedBold';
+    src: url('fonts/HelveticaNeue-CondensedBold.eot');
+    src: url('fonts/HelveticaNeue-CondensedBold.woff2') format('woff2'),
+    url('fonts/HelveticaNeue-CondensedBold.woff') format('woff'),
+    url('fonts/HelveticaNeue-CondensedBold.ttf') format('truetype'),
+    url('fonts/HelveticaNeue-CondensedBold.eot?#iefix') format('embedded-opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+    /* background-color: rgba(0, 100, 245, 0.04) !important; */
+    background-color: #f8fafe !important;
+    font-family: "HelveticaNeue", Helvetica, Arial, sans-serif;
+    color: #3c3c3c;
+}
+
+html {
+    height: 100%;
+}
+
+a {
+    cursor: pointer;
+    color: rgba(0, 100, 245, 0.56);
+}
+
+.icons-footer a {
+    color: white;
+}
+
+.icons-footer a :hover {
+    color:#0077B5;
+}
+
+.icons-footer .social {
+    font-size: 21px;
+    padding-right: 10px;
+}
+
+.icons-footer .social  {
+    color: white;
+}
+
+
+
+dropdown {
+    background-color: #ffffff;
+	border: solid 1px #eaeaea;
+}
+
+.pagination>li>a {
+    color: rgba(0, 100, 245, 0.56) !important;
+}
+
+.pagination>li>a:active, .pagination>li>a:focus, .pagination>li>a:hover {
+    background-color: rgba(0, 100, 245, 0.56) !important;
+    color: white !important;
+    border-color: white;
+}
+
+
+.pagination>.active>a {
+    z-index: 3;
+    color: rgba(0, 100, 245, 0.56) !important;
+    cursor: default;
+    background-color: white;
+    border-color: #9f9f9f;
+}
+
+p {
+    margin-top: 2%;
+    margin-bottom: 2%;
+    font-family: "HelveticaNeue", Helvetica, Arial, sans-serif;
+    word-wrap: break-word;
+}
+
+hr {
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+h3 {
+    font-family: "HelveticaNeue", Helvetica, Arial, sans-serif;
+    font-size: 25px;
+    font-weight: 300;
+    line-height: 0.32;
+    color: #1f3357;
+}
+
+.user-bar-name {
+    margin-top: 10px;
+}
+
+input, select {
+	background-color: #ffffff;
+	border: solid 1px #c6c6c6;
+    border-radius: 0 !important;
+}
+
+.heading, .heading > * {
+    padding-left: 0px;
+}
+
+.buy-btn {
+    margin-top: 14px;
+    border-radius: 2px;
+    width: 136px;
+    height: 40px;
+    margin-left: 25%;
+    padding-left: 10px;
+    padding-right: 10px;
+    background-color: #ffb03e;
+    color: white;
+}
+
+.chat-btn {
+    margin-top: 14px;
+    border-radius: 2px;
+    width: 136px;
+    height: 40px;
+    margin-left: 25%;
+    padding-left: 10px;
+    padding-right: 10px;
+    background-color: #58d490;
+    color: white;
+}
+
+.buy-btn:hover {
+    background-color: #ffcf81;
+    color: white;
+}
+
+.chat-btn:hover {
+    background-color: #9ad4b8;
+    color: white;
+}
+
+button:active, button:focus{
+    color: white !important;
+}
+
+.zource-btn {
+    border-radius: 2px;
+    width: 136px;
+    height: 40px;
+    margin-top: 1%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 10px;
+    padding-right: 10px;
+    background-color: #58a8fc;
+    color: white;
+}
+
+.zource-btn:hover {
+    background-color: rgba(88, 168, 252, 0.58);
+    color: white;
+}
+
+.help-block {
+    font-size: 12px;
+}
+
+.ui-chkbox-box.ui-state-active, .ui-radiobutton-box.ui-state-active {
+    border: 1px solid #70d387 !important;
+    background: #70d387 !important;
+    color: #FFFFFF !important;
+}
+
+.ui-widget-header .ui-button, .ui-widget-content .ui-button, .ui-button {
+    border: 0px solid #c6c6c6 !important;
+    color: #FFFFFF;
+    background: #70d387;
+    -webkit-transition: background-color .2s;
+    -moz-transition: background-color .2s;
+    transition: background-color .2s;
+}
+
+.navbar-default {
+    background-color: white !important;
+    border-color: white;
+    border-bottom-color: rgba(159, 159, 159, 0.35) !important;
+}
+
+.navbar-brand {
+    padding-top: 5px;
+    margin-top: 10px;
+}
+
+.navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:focus, .navbar-default .navbar-nav > .active > a:hover {
+    color: rgba(0, 100, 245, 0.56);
+    background-color: white;
+    font-weight: 700;
+}
+
+.jumbotron {
+    background-color: inherit;
+}
+
+.btn-facebook {
+    border-color: #2d5073;
+    background-color: #3b5998;
+    color: white;
+}
+
+.btn-facebook:hover {
+    border-color: #428abf;
+    background-color: #4b77c6;
+    color: white;
+}
+
+.btn-linkedin {
+    border-color: #0077B5;
+    background-color: #0077B5;
+    color: white;
+}
+
+.btn-linkedin:hover {
+    border-color: #0077B5;
+    background-color: #0077B5;
+    color: white;
+}
+
+div.circle-avatar {
+    /* make it responsive */
+    max-width: 100%;
+    width: 100%;
+    height: auto;
+    display: block;
+    /* div height to be the same as width*/
+    padding-top: 100%;
+
+    /* make it a cirkle */
+    border-radius: 50%;
+
+    /* Centering on image`s center*/
+    background-position-y: center;
+    background-position-x: center;
+    background-repeat: no-repeat;
+
+    /* it makes the clue thing, takes smaller dimention to fill div */
+    background-size: cover;
+
+    /* it is optional, for making this div centered in parent*/
+    margin: 0 auto;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.top-10 {
+    margin-top: 10%;
+}
+
+.top-5 {
+    margin-top: 5%;
+}
+
+.top-2 {
+    margin-top: 2%;
+}
+
+fieldset.scheduler-border {
+    border: 1px groove #ddd !important;
+    padding: 0 1.4em 1.4em 1.4em !important;
+    margin: 0 0 1.5em 0 !important;
+    -webkit-box-shadow: 0px 0px 0px 0px #000;
+    box-shadow: 0px 0px 0px 0px #000;
+}
+
+legend.scheduler-border {
+    font-size: 1.2em !important;
+    font-weight: bold !important;
+    text-align: left !important;
+    width: auto;
+    padding: 0 10px;
+    border-bottom: none;
+}
+
+.lm-SalaryGraph .lm-SalaryGraph-average-value {
+    font-size: 30px;
+    font-weight: 400;
+    margin-bottom: 20px;
+    margin-top: 75px;
+}
+
+.list-group li {
+    list-style: none;
+}
+
+.panel-info, .panel-rating, .panel-more1 {
+    float: left;
+    margin: 0 10px;
+}
+
+.user-img {
+    margin-left: 30%;
+    width: 100px;
+    height: 100px;
+}
+
+.space-text {
+    margin-left: 15%;
+    color: #525252;
+}
+
+.example-card {
+    width: 300px;
+    height: 330px;
+}
+
+.navbar-links {
+    margin-top: 10px;
+}
+
+.navbar-custom {
+    margin-top: 15px;
+}
+
+.navbar {
+    margin-bottom: 0 !important;
+}
+
+.navbar-nav li {
+    color: rgba(119, 119, 119, 0.71) !important;
+}
+
+.navbar-nav li > a {
+    padding-top: 0px;
+}
+
+.navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:focus, .navbar-default .navbar-nav > .open > a:hover {
+    background-color: white;
+}
+
+.navbar-nav > li > a.profile-image {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.profile-image {
+    width: 40px;
+    height: 40px;
+}
+
+@media (min-width: 1200px) {
+    .container {
+        min-width: 1400px !important;
+    }
+}
+
+.login-link {
+    margin: 15px;
+}
+
+.language-select {
+    margin-top: 5px;
+    margin-left: 10px;
+}
+
+.welcome {
+    margin-top: 20%;
+    margin-bottom: 20%;
+    font-size: 30px;
+}
+
+.zource-badge {
+    margin-left: 2px;
+    display: inline-block !important;
+    background-color: #ffb03e;
+    width: 8px;
+    height: 8px;
+    padding: 5px 4px !important;
+}
+
+.ng2-tag-input__text-input {
+
+    background-color: rgba(0, 100, 245, 0) !important;
+
+}
+
+.ng2-tag-input {
+    border-bottom: 1px solid #efefef !important;
+    width: 95% !important;
+}
+
+.empty-wrapper {
+    text-align: center;
+    margin-top: 10%;
+    min-height: 800px;
+}
+
+.loading-spinner {
+    margin-bottom: 600px;
+}
+
+.empty {
+    min-height: 800px;
+    font-size: 20px;
+    font-weight: 500;
+    text-align: center;
+    color: #474747;
+}
+
+.completer-dropdown{
+    margin-top: 30px !important;
+}
+
+
+.intro-search-position {
+  width: 50%;
+  margin-top: 40px;
+}
+
+.input-group {
+    width: 50% !important;
+}
+
+.intro-search-position input {
+  min-width: 230px;  /* 254 */
+}
+
+.btn-search-position {
+  cursor: pointer;
+  border-color: #58a8fc;
+  background-color: #58a8fc;
+  color: #fff;
+  font-family: HelveticaNeue;
+}
+
+.btn-search-position:hover {
+    cursor: pointer;
+    border-color: #a0cffd;
+    background-color: #9fcfff;
+    color: #fff;
+    font-family: HelveticaNeue;
+  }
+
+/* Let's get this party started */
+::-webkit-scrollbar {
+    width: 12px;
+}
+ 
+/* Track */
+::-webkit-scrollbar-track {
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    background: rgb(220, 220, 220); 
+}
+::-webkit-scrollbar-thumb:window-inactive {
+	background: rgb(220, 220, 220); 
+}
+
+.form-control {
+    border: 1px solid #eaeaea;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+
+.intro-bottom-logos {
+    margin-top: 160px;
+  }
+  
+  .logos-container {
+    width: 284px;
+    margin: 0 auto;
+  }
+  
+
+  .intro-pre-footer {
+
+    padding-right: 10%;
+    padding-left: 10%;
+    /*position: absolute;
+    bottom: 0px;*/
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#1e2c46+0,2c3442+100 */
+    background: #1e2c46; /* Old browsers */
+    display: flex;
+    height: 180px;
+    justify-content: space-between;
+    border-top: 1px solid #fff;
+    color: #fff;
+    align-items: center;
+  }
+
+  
+  .intro-pre-footer li {
+    list-style-type: none;
+  }
+
+  .intro-pre-footer .header {
+    font-size: 14px; 
+    color: #58a8fc;
+  }
+
+
+  .intro-footer {
+    /*position: absolute;
+    bottom: 0px;*/
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#1e2c46+0,2c3442+100 */
+    padding-left: 5%;
+    padding-right:5%;
+    background: #1e2c46; /* Old browsers */
+    background: -moz-linear-gradient(top, #1e2c46 0%, #2c3442 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(top, #1e2c46 0%,#2c3442 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom, #1e2c46 0%,#2c3442 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1e2c46', endColorstr='#2c3442',GradientType=0 ); /* IE6-9 */
+    display: flex;
+    justify-content: space-between;
+    border-top: 1px solid #fff;
+    color: #fff;
+    align-items: center;
+  }
+  
+  .about-footer {
+    display: inline-block;
+    padding-left: 20px;
+    margin-left: 20px;
+    border-left: 1px solid #fff;
+  }
+  
+  .no-applicants {
+    text-align: center;
+    font-size: 16px;
+}
+
+.btn-twitter {
+    margin-left: 35%;
+    padding: 10px 10px !important;
+    font-size: 12px !important;
+    background: #00ACEE;
+    border-radius: 0;
+    color: #fff;
+    border-width: 1px;
+    border-style: solid;
+  }
+  .btn-twitter:link, .btn-twitter:visited {
+    color: #fff; 
+  }
+  .btn-twitter:active, .btn-twitter:hover {
+    background: #0075a2;
+    color: #fff; 
+  }
+
+/* Add break lines to tooltip's content */
+.ui-tooltip .ui-tooltip-text {
+    white-space: pre-line !important; 
+}
+
+.memberships-link {
+    height: 1.5em;
+    background-color: #58a8fc;
+    color: #fff !important;
+    border-radius: 10px;
+}
+

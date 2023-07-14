@@ -1,0 +1,57 @@
+.import-from {
+    text-align: center;
+    margin-top: 0;
+}
+
+.image-center {
+    text-align: center;
+}
+
+.image-container {
+    // width: 19%; This width will be used when we have the 5 import contact methods displayed in html
+    width: 32%;
+    display: inline-block;
+}
+
+.image-size {
+    width: 50px;
+    height: 50px;
+}
+
+.mouse-hover {
+    cursor: pointer;
+}
+
+.browse-btn {
+    background-color: #ffb03e;
+    color: #fff;
+    border-radius: 2px;
+    width: 140px;
+    height: 40px;
+    margin-top: 30px;
+    margin-bottom: 20px;
+}
+
+.submit-file-btn {
+    background-color: #58a8fc;
+    color: #fff;
+    border-radius: 2px;
+    width: 140px;
+    height: 40px;
+}
+
+@media screen and (max-width: 666px) {
+    .image-size {
+        width: 45px;
+        height: 45px;
+    }
+
+    .image-container {
+        // width: 12.6%; This width will be used when we have the 5 import contact methods displayed in html
+        width: 31.6%;
+    }
+
+    .first-icon-margin {
+        margin-left: 10px;
+    }
+}

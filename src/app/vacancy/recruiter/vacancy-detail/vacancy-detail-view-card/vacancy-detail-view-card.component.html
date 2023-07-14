@@ -1,0 +1,57 @@
+<p-growl [(value)]="msgs" life="5000"></p-growl>
+<div class="col-xs-12 vacancy-detail-view-card">
+    <div class="go-back">
+        <a [routerLink]="['/vacancies']">< {{ 'MENU.VACANCY_DETAILS.VACANCY_BACK' | translate }}</a>
+    </div>
+    <div class="vacancy-status">
+        <h4>{{ 'MENU.VACANCY_DETAILS.VACANCY_STATUS' | translate }}</h4>
+        <p>{{vacancy[0].status_name}}</p>
+    </div>
+    <div class="vacancy-main-detail">
+        <h4>{{vacancy[0].posting_title}}</h4>
+        <p class="vacancy-description">{{vacancy[0].job_description}}</p>
+        <p class="vacancy-description">{{vacancy[0].country}}, {{vacancy[0].state}}, {{vacancy[0].city}}</p>
+        <p class="vacancy-description vacancy-date">{{ 'MENU.VACANCY_DETAILS.VACANCY_DATE_CREATED' | translate }} {{vacancy[0].created_time | date: 'MM'}}</p>
+    </div>
+    <div *ngIf="currentUser.type == 'recruiter' && vacancy[0].is_owner" class="vacancy-edit">
+        <p><button (click)="vacancyDelete(vacancy[0])" class="btn delete-btn">{{ 'MENU.VACANCY_DETAILS.VACANCY_DELETE_BUTTON' | translate }}</button></p>
+        <p><button (click)="vacancyEdit(vacancy[0])" class="btn edit-btn">{{ 'MENU.VACANCY_DETAILS.VACANCY_EDIT_BUTTON' | translate }}</button></p>
+    </div>
+    <div class="vacancy-position-details">
+        <h4>{{ 'MENU.VACANCY_DETAILS.VACANCY_POSITION_DETAILS' | translate }}</h4>
+        <div class="table-class">
+            <p class="to-left">{{ 'MENU.VACANCY_DETAILS.VACANCY_SALARY' | translate }}</p>
+            <p class="to-right">{{vacancy[0].salary | number:'1.2-2'}} {{vacancy[0].currency}}</p>
+            <p class="clear-floats"></p>
+        </div>
+        <div class="table-class">
+            <p class="to-left">{{ 'MENU.VACANCY_DETAILS.VACANCY_EXPERIENCE' | translate }}</p>
+            <p class="to-right">{{vacancy[0].yoe | number}} {{ vacancy[0].yoe > 1 ? 'years' : 'year' }}</p>
+            <p class="clear-floats"></p>
+        </div>
+        <div class="table-class">
+            <p class="to-left">{{ 'MENU.VACANCY_DETAILS.VACANCY_EMP_TERM' | translate }}</p>
+            <p class="to-right">{{vacancy[0].employment_term}}</p>
+            <p class="clear-floats"></p>
+        </div>
+        <div class="table-class">
+            <p class="to-left">{{ 'MENU.VACANCY_DETAILS.VACANCY_LANGUAGES' | translate }}</p>
+            <p class="to-right language-class" *ngFor="let language of vacancy[0].languages; let i = index">{{language.name}}({{language.level_name}})<span *ngIf="i > 0">,&nbsp;</span></p>
+            <p class="clear-floats"></p>
+        </div>
+        <div class="table-class">
+            <p class="to-left">{{ 'MENU.VACANCY_DETAILS.VACANCY_DEGREE' | translate }}</p>
+            <p class="to-right">{{vacancy[0].education_name}}</p>
+            <p class="clear-floats"></p>
+        </div>
+    </div>
+    <div class="vacancy-skills">
+        <h4>{{ 'MENU.VACANCY_DETAILS.VACANCY_SKILLS' | translate }}</h4>
+        <span *ngFor="let skill of vacancy[0].skills" class="badge skill-badge"><p>{{skill.pd_skill}}</p></span>
+    </div>
+    <div class="vacancy-comments">
+        <h4>{{ 'MENU.VACANCY_DETAILS.VACANCY_COMMENTS' | translate }}</h4>
+        <p>{{vacancy[0].comments}}</p>
+    </div>
+</div>
+

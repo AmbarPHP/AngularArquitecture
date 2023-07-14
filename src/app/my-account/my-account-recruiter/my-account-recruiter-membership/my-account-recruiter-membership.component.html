@@ -1,0 +1,43 @@
+<div class="membership-container" *ngIf="memberships">
+    <div class="membership-options-container col-xs-12">
+        <div class="membership-options">
+            <span class="membership-badge" (click)="annuallyStateToggle(true)" [ngClass]="{'membership-badge-active': annuallyState}">{{ 'MY_ACCOUNT_RECRUITER.MEMBERSHIP.ANUALLY' | translate }}</span>
+            <span class="membership-badge" (click)="annuallyStateToggle(false)" [ngClass]="{'membership-badge-active': !annuallyState}">{{ 'MY_ACCOUNT_RECRUITER.MEMBERSHIP.MONTHLY' | translate }}</span>
+        </div>
+    </div>
+    <div class="anually-container" *ngIf="annuallyState">
+        <div class="col-xs-12 save-money">
+            <p>(Save 25%)</p>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-3" *ngFor="let membership of memberships[0]; let i = index">
+            <div class="membership-card" [ngClass]="{'membership-card-recommended': membership.name == 'Professional'}" *ngIf="membership.term == 'a'">
+                <div class="membership-card-body">
+                    <p class="membership-name">{{ membership.name }}</p>
+                    <p class="price-p"><span class="dollar-sign">$</span><span class="membership-price">{{ membership.price}}</span> <span class="membership-currency" *ngIf="membership.name != 'Individual'">mxn/month</span> <span class="membership-currency" *ngIf="membership.name == 'Individual'">mxn</span></p>
+                </div>
+                <div class="membership-zourced-profiles">
+                    <p>{{ membership.granted_profiles }}  {{ 'MY_ACCOUNT_RECRUITER.MEMBERSHIP.ZOURCED_PROFILES' | translate }}</p>
+                </div>
+                <div *ngIf="membership.name != 'Free'" class="membership-card-footer">
+                    <button class="membership-buy-btn" (click)="checkoutMembership(membership.pk)">{{ 'MY_ACCOUNT_RECRUITER.MEMBERSHIP.GET_PLAN' | translate }}</button>
+                </div> 
+            </div>
+        </div>
+    </div>
+    <div class="monthly-container" *ngIf="!annuallyState">
+        <div class="col-xs-12 col-sm-6 col-md-3" *ngFor="let membership of memberships[0]; let i = index">
+            <div class="membership-card" [ngClass]="{'membership-card-recommended': membership.name == 'Professional'}" *ngIf="membership.term == 'm'">
+                <div class="membership-card-body">
+                    <p class="membership-name">{{ membership.name }}</p>
+                    <p class="price-p"><span class="dollar-sign">$</span><span class="membership-price">{{ membership.price}}</span> <span class="membership-currency" *ngIf="membership.name != 'Individual'">mxn/month</span> <span class="membership-currency" *ngIf="membership.name == 'Individual'">mxn</span></p>
+                </div>
+                <div class="membership-zourced-profiles">
+                    <p>{{ membership.granted_profiles }}  {{ 'MY_ACCOUNT_RECRUITER.MEMBERSHIP.ZOURCED_PROFILES' | translate }}</p>
+                </div>
+                <div *ngIf="membership.name != 'Free'" class="membership-card-footer">
+                    <button class="membership-buy-btn" (click)="checkoutMembership(membership.pk)">{{ 'MY_ACCOUNT_RECRUITER.MEMBERSHIP.GET_PLAN' | translate }}</button>
+                </div> 
+            </div>
+        </div>
+    </div>
+</div>

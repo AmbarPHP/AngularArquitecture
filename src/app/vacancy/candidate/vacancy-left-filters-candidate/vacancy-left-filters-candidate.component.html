@@ -1,0 +1,46 @@
+<div class="vacancy-left-filters-container">
+    <div class="vacancy-left-filters-header">
+        <h5 class="desktop">{{ 'MENU.VACANCIES_CANDIDATE.LEFT_FILTERS.FILTERS' | translate }}</h5>
+        <a class="mobile" (click)="changeFiltersMobile()"><h5>{{ 'MENU.VACANCIES_CANDIDATE.LEFT_FILTERS.FILTERS' | translate }}</h5></a>
+        <a class="clear-all" (click)="clearAll()">{{ 'MENU.VACANCIES_CANDIDATE.LEFT_FILTERS.CLEAR_ALL' | translate }}</a>
+        <div class="clear-floats"></div>
+    </div>
+    <div class="vacancy-left-filters-body" [ngClass]="{'mobile': filtersMobile === true, 'desktop': filtersMobile === false}">
+        <div class="form-group">
+            <label for="companyName">{{ 'MENU.VACANCIES_CANDIDATE.LEFT_FILTERS.COMPANY' | translate }}</label>
+            <input type="text" class="form-control" name="companyName" id="companyName" [ngModel]="companyName" (ngModelChange)="valuechange($event)"  placeholder="Enter Company Name">
+        </div>
+        <div class="form-group">
+            <label for="location" class="location-label">{{ 'MENU.VACANCIES_CANDIDATE.LEFT_FILTERS.LOCATION' | translate }}</label>
+            <select name="country" id="country" class="country-select form-control" (change)="getStates($event.target.value)">
+                <option value="">{{ 'MENU.VACANCIES_CANDIDATE.LEFT_FILTERS.SELECT_COUNTRY' | translate }}</option>
+                <option *ngFor="let country of countries" [value]="country.country_id">{{ country.name }}</option>
+            </select>
+            <select name="state" id="state" class="state-select form-control" (change)="getState($event.target.value)">
+                <option value="">{{ 'MENU.VACANCIES_CANDIDATE.LEFT_FILTERS.SELECT_STATE' | translate }}</option>
+                <option *ngFor="let state of states" [value]="state.state_id">{{ state.name }}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="salaryRange">{{ 'MENU.VACANCIES_CANDIDATE.LEFT_FILTERS.SALARY_RANGE' | translate }}</label>
+            <select name="salaryRange" id="salaryRange" class="form-control" (change)="getSalaryRange($event.target.value)">
+                <option value="">{{ 'MENU.VACANCIES_CANDIDATE.LEFT_FILTERS.SELECT_A_RANGE' | translate }}</option>
+                <option *ngFor="let salaryRange of salaryRanges" [value]="salaryRange.value">{{ salaryRange.name }}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="dateVacancy">{{ 'MENU.VACANCIES_CANDIDATE.LEFT_FILTERS.DATE_OF_JOB' | translate }}</label>
+            <select name="dateVacancy" id="dateVacancy" class="form-control" (change)="getDateOfJobs($event.target.value)">
+                <option value="">{{ 'MENU.VACANCIES_CANDIDATE.LEFT_FILTERS.SELECT_AN_OPTION' | translate }}</option>
+                <option *ngFor="let dateOfJob of dateOfJobs" [value]="dateOfJob.value">{{ dateOfJob.name }}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="contractType">{{ 'MENU.VACANCIES_CANDIDATE.LEFT_FILTERS.CONTRACT_TYPE' | translate }}</label>
+            <select name="contractType" id="contractType" class="form-control" (change)="getContractType($event.target.value)">
+                <option value="">{{ 'MENU.VACANCIES_CANDIDATE.LEFT_FILTERS.SELECT_A_CONTRACT' | translate }}</option>
+                <option *ngFor="let contractType of contractTypes" [value]="contractType.value">{{ contractType.name }}</option>
+            </select>
+        </div>
+    </div>
+</div>

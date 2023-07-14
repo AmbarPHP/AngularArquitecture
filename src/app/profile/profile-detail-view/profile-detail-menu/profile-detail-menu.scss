@@ -1,0 +1,32 @@
+ul {
+    padding: 0;
+    margin: 0;
+    margin: 0 auto;
+    width: 244px;
+
+    li {
+        list-style: none;
+        float: left;
+
+        a {
+            text-decoration: none;
+            color: #bababa;
+        }
+    }
+
+    .menu-contact-info {
+        padding: 0 10px 0 10px;
+    }
+
+    .menu-work-experience {
+        padding: 0 10px 0 10px;
+        margin-left: 20px;
+    }
+
+    .menu-selected {
+        border-bottom: 2px solid #58a8fc;
+        a {
+            color: #58a8fc;
+        }
+    }
+}

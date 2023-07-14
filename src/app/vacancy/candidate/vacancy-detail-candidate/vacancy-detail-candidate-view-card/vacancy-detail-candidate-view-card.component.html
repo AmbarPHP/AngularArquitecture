@@ -1,0 +1,27 @@
+<div class="col-xs-12 vacancy-detail-view-card">
+    <div class="go-back">
+        <a [routerLink]="['/vacancies-candidate']">< back</a>
+    </div>
+    <div class="vacancy-main-detail">
+        <div class="img-container">
+            <img class="card-image-size img-circle card-img" src="assets/images/user.png" >
+        </div>
+        <h4>{{vacancy[0].posting_title}}</h4>
+        <p class="vacancy-description">{{vacancy[0].job_description}}</p>
+        <!-- <p class="vacancy-description">IT Ready</p> -->
+        <p class="vacancy-description">{{vacancy[0].country}}, {{vacancy[0].city}}</p>
+        <p class="vacancy-description vacancy-date">Posted on {{vacancy[0].created_time | date: 'MM'}}</p>
+    </div>
+    <div class="vacancy-edit">
+        <p *ngIf="!isApplicant"><button class="btn apply-btn" (click)="applyForJob(vacancy[0].id)">Apply for this Job</button></p>
+        <p *ngIf="isApplicant"><button class="btn not-interested-btn" (click)="notInterested(vacancy[0].id)">Not Interested</button></p>
+    </div>
+    <div class="vacancy-posted-by">
+        <h4>Posted by</h4>
+        <div class="posted-by-container">
+            <img class="card-image-size img-circle card-img" src="assets/images/user.png" >
+            <p>{{vacancy[0].created_by}}</p>
+        </div>
+    </div>
+
+</div>

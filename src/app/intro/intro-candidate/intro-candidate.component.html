@@ -1,0 +1,36 @@
+<!-- 1. Add latest jQuery and fancyBox files -->
+
+<div class="intro-container-candidate container-fluid">
+    <div class="intro-logo">
+        <!-- <img src="assets/images/intro/img-home-logo/img-home-logo.png" class="img-home-logo"> -->
+    </div>
+    <div class="intro-title">
+        <h1>{{ 'MENU.PROFILES.LANDING_CANDIDATE.HEADER_1' | translate }}  </h1>
+    </div>
+
+    <div class="intro-message">
+        <!-- <p>{{ 'MENU.PROFILES.LANDING_CANDIDATE.HEADER_2' | translate }}</p> -->
+    </div>
+    <intro-autocomplete [type]="type"></intro-autocomplete>
+    <div class="intro-get-started">
+        <button class="btn-coming-soon" data-toggle="modal" data-target="#comingSoonModal">{{ 'MENU.PROFILES.LANDING.LET_ME_KNOW' | translate }}</button>
+        <button class="btn-get-started" data-toggle="modal" data-target="#signupModal">{{ 'MENU.PROFILES.LANDING.GET_STARTED' | translate }}</button>
+        <a data-fancybox href="assets/video/zourcing.com-1.mp4">
+            <div class="intro-how-works">
+                <img class="img-ic-play" src="assets/images/intro/ic-play/ic-play.png"> See how it works
+            </div>
+        </a>
+    </div>
+    <div class="intro-bottom-logos">
+        <div class="logos-container">
+            <!-- <img src="assets/images/intro/img-badge-apple/img-badge-apple.png" alt="">
+            <img src="assets/images/intro/img-badge-android/img-badge-android.png" alt=""> -->
+        </div>
+    </div>
+</div>
+
+<coming-soon-modal></coming-soon-modal>
+
+<intro-login-modal (sendCloseModalEvent)="getCloseLoginModal()"></intro-login-modal>
+
+<forgot-password-modal></forgot-password-modal>

@@ -1,0 +1,24 @@
+.profile-detail-menu {
+    border-bottom: 1px solid #eaeaea;
+    margin-top: 20px;
+}
+
+.profile-detail {
+    margin-top: 30px;
+}
+
+@media screen and (min-width: 667px) {
+    .profile-detail-menu {
+        display: none;
+    }
+
+    .mobile {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 666px) {
+    .desktop {
+        display: none;
+    }
+}

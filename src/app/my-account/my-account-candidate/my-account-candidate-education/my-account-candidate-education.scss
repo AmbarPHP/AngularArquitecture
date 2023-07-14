@@ -1,0 +1,96 @@
+.my-account-education-container {
+    background-color: #fff;
+    border: 1px solid #eaeaea;
+    border-radius: 3px;
+    margin-bottom: 15px;
+
+    .alert-container {
+        margin-top: 20px;
+    }
+
+    .education {
+        padding-bottom: 10px;
+        border-bottom: 1px solid #eaeaea;
+        
+        p {
+            margin: 0;
+        }
+
+        .edit-link {
+            margin-right: 10px;
+        }
+
+        .gray-text {
+            color: #bababa;
+        }
+        
+        .fa-pencil, .fa-trash-o {
+            margin-right: 5px;
+        }
+    }
+
+    h4 {
+        margin: 20px 0 0 0;
+    }
+
+
+    .add-education {
+        
+        border-bottom: 1px solid #eaeaea;
+
+        .education-name-group {
+            margin-top: 15px;
+        }
+
+        .add-button {
+            width: 140px;
+            height: 40px;
+            background-color: #58d490;
+            color: #fff;
+            border-radius: 2px;
+            margin-bottom: 15px;
+            display: block;
+        }
+    }
+
+    .update-button {
+        width: 140px;
+        height: 40px;
+        background-color: #58a8fc;
+        color: #fff;
+        border-radius: 2px;
+        margin-bottom: 15px;
+        display: block;
+        margin-top: 15px;
+    }
+
+    .hide {
+        display: none;
+    }
+
+    .education-title-edit-view {
+        margin-bottom: 20px;
+    }
+
+    .education-save-button {
+        width: 140px;
+        height: 40px;
+        background-color: #58d490;
+        color: #fff;
+        border-radius: 2px;
+        margin-bottom: 15px;
+        display: block;
+    }
+}
+
+@media screen and (min-width: 667px) {
+    .my-account-education-container {
+        .form-group {
+            width: 35%;
+            display: inline-block;
+        }
+        .school-group, .year-of-completion-group {
+            margin-left: 20px;
+        }
+    }
+}

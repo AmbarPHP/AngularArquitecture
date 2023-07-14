@@ -1,0 +1,99 @@
+
+.payment-information {
+    background-color: #fff;
+    border: 1px solid #eaeaea;
+    border-radius: 3px;
+    padding-left: 15px;
+    padding-right: 15px;
+
+    p {
+        margin: 0;
+    }
+}
+
+.payment-information-form {
+    margin-top: 30px;
+} 
+
+.pay-button {
+    color: #fff;
+    width: 140px;
+    height: 40px;
+    background-color: #58d490;
+    border: none;
+    border-radius: 2px;
+}
+
+.secure-container {
+    color: #9f9e9e;
+
+    p {
+        display: inline-block;
+    }
+}
+
+.errors-container {
+    border: 1px solid #f96a6e;
+    margin-top: 15px;
+    padding-left: 10px;
+
+    p {
+        margin: 0;
+        // display: inline-block;
+    }
+
+    i {
+        color: #f96a6e;
+    }
+
+}
+
+.btn-apply {
+    background-color: #58d490;
+    border: none;
+    border-radius: 2px;
+    color: #fff;
+}
+
+@media screen and (min-width: 667px) {
+    .payment-information-container {
+        float: right;
+    }
+
+    .payment-information {
+        
+        .form-group {
+            display: inline-block;
+        }
+        
+        .card-name-group, .card-number-group {
+            width: 40%;
+        }
+
+        .card-number-group {
+            margin-left: 10px;
+        }
+
+        .expiration-month-group, .expiration-year-group, .cvv-group {
+            width: 20%;
+        }
+
+        .code-group, .apply-group{
+            width: 40%;
+        }
+
+        .expiration-year-group, .cvv-group {
+            margin-left: 10px;
+        }
+
+        .pay-group {
+            display: block;
+        }
+    }
+}
+
+@media screen and (max-width: 666px) {
+    .expiration-month-group, .expiration-year-group, .cvv-group, .code-group {
+        width: 50%;
+    }
+}

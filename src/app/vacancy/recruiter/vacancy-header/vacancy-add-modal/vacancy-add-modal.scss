@@ -1,0 +1,138 @@
+.salary-group {
+        
+    .salary-input {
+        width: 45%;
+    }
+
+    .currency-select {
+        width: 45%;
+    }
+}
+
+.yoe-group {
+    width: 45%;
+
+    .yoe-input {
+        width: 100%;
+    }
+}
+
+.education-group {
+    width: 45%;
+
+    .education-dropdown {
+        width: 100%;
+    }
+}
+
+.language-group {
+    
+    .language-input {
+        width: 45%;
+    }
+
+    .language-level {
+        width: 37%;
+    }
+
+}
+
+.plus-icon {
+    margin-right: 5px;
+}
+
+.comments-group {
+    margin-top: 15px;
+}
+
+.add-language-link {
+    margin-bottom: 15px;
+}
+
+.btn-save-vacancy {
+    background-color: #58a8fc;
+    color: #fff;
+    width: 140px;
+    height: 40px;
+    border-radius: 2px;
+}
+
+.btn-delete-skill {
+    background-color: #f96a6e;
+    color: #fff;
+    border-radius: 2px;
+}
+
+.status-group {
+    width: 45%;
+}
+
+@media screen and (min-width: 667px) {
+    .group-title {
+        display: inline-block;
+        width: 45%;
+    }
+
+    .group-position {
+        display: inline-block;
+        width: 45%;
+        
+    }
+
+    .group-type {
+        display: inline-block;
+        width: 45%;
+    }
+
+    .country-group {
+        display: inline-block;
+        width: 45%;
+        
+    }
+
+    .state-group {
+        display: inline-block;
+        width: 45%;
+    }
+
+    .city-group {
+        display: inline-block;
+        width: 45%;
+                
+    }
+}
+
+.red-star {
+    color: red;
+}
+
+option {
+    span.red-star {
+        color: red;
+    }
+}
+
+.from-group-language-container {
+    margin-bottom: 0px;
+}
+
+.language-form-group, .language-level-group {
+    width: 45%;
+    display: inline-block;
+}
+
+.language-level-group {
+    .language-level {
+        width: 80%;
+        display: inline-block;
+    }
+}
+
+.skill-group {
+    width: 50%;
+
+    .skill-input {
+        width: 80%;
+        display: inline-block;
+    }
+}

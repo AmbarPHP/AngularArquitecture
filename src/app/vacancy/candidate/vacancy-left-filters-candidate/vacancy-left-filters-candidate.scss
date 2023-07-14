@@ -1,0 +1,44 @@
+.vacancy-left-filters-container {
+
+    .vacancy-left-filters-header {
+
+        border-bottom: 1px solid #eaeaea;
+        margin-bottom: 20px;
+        
+        h5 {
+            margin: 0;
+            float: left;
+        }
+
+        .clear-all {
+            float: right;
+        }
+
+        .clear-floats {
+            clear: both;
+        }
+    }
+
+    .vacancy-left-filters-body {
+        .location-label {
+            display: block;
+        }
+
+        .country-select, .state-select {
+            display: inline-block;
+            width: 45%;
+        }
+    }
+}
+
+@media screen and (max-width: 666px) {
+    .desktop {
+        display: none;
+    }
+}
+
+@media screen and (min-width: 667px) {
+    .mobile {
+        display: none;
+    }
+}

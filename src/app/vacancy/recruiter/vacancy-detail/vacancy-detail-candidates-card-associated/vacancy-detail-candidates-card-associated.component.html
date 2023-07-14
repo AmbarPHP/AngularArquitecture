@@ -1,0 +1,55 @@
+<div class="col-xs-12 col-sm-6 col-md-4 candidate-card-container">
+    <div class="candidate-card">
+        <div class="card-checkbox">
+            <input *ngIf="userType === 'recruiter' && vacancy[0].is_owner" [checked]="getCheckBoxesSaved(applicant.id)" (change)="$event.target.checked ? checkProfile(applicant.id) : uncheckProfile(applicant.id)" type="checkbox" class="pull-right">
+        </div>
+
+        <profile-description
+            [profile]="applicant">
+        </profile-description>
+
+        <more-description-btn
+            [profile]="applicant">
+        </more-description-btn>
+
+        <contact-phone-email
+            [profile]="applicant">
+        </contact-phone-email>
+
+        <social-icons
+            [profileSource]="applicant.source"
+            [contactInformation]="applicant.contact_information"
+            [profile]="applicant">
+        </social-icons>
+
+        <div class="candidate-match-container">
+            <ngb-rating [(rate)]="applicant.match" [starTemplate]="t" [readonly]="true" max="5"></ngb-rating>
+
+            <!-- <circle-progress
+                [percent]="applicant.match"
+                [radius]="25"
+                [outerStrokeWidth]="4"
+                [innerStrokeWidth]="2"
+                [outerStrokeColor]="getOuterStrokeColor()"
+                [innerStrokeColor]="getInnerStrokeColor()"
+                [titleFontSize]="12">
+            </circle-progress> -->
+        </div>
+        <div class="candidate-view-container">
+            <p *ngIf="applicant.owns === false">
+                <a (click)="buyProfile(applicant.id)" class="buy-profile-button">Zource profile</a> 
+            </p>
+            <p *ngIf="applicant.owns === true">
+                <a *ngIf="applicant.source != null" (click)="sendInvite(applicant.id)">Send Invitation</a>
+                <a *ngIf="applicant.source === null" [routerLink]="['/chat', items.id]">Chat</a>
+            </p>
+        </div>
+    </div>
+</div>
+
+<div class="cards-selected-bottom mobile" [ngClass]="{'cards-selected-bottom-1': vacancy[0].associates.length === 1}">
+    <div class="cards-selected-option">
+        <a (click)="deselectAllMobile()" class="deselect-mobile pull-left">Deselect All({{associatedProfilesSelected.length}})</a>
+        <button class="btn remove-btn pull-right" [disabled]="associatedProfilesSelected.length === 0" (click)="removeApplicantAssociatedFromVacancy(vacancy, associatedProfilesSelected)">Remove</button>
+    </div>
+</div>

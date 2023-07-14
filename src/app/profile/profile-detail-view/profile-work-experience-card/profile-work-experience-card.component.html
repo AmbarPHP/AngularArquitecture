@@ -1,0 +1,42 @@
+
+
+<div class="col-xs-12 col-sm-6 profile-work-experience-card" pTooltip="" tooltipPosition="bottom" tooltipEvent="focus">
+    <div class="col-xs-12 monthly-avarage">
+        <p *ngIf="profile?.estimated_salary != 0">{{ 'MENU.PROFILE_SALARIES.MONTHLY_AVG' | translate }}</p>
+        <p pTooltip="Los valores de los salarios son aproximados.
+        Todos los datos son publicados por usuarios de Love Mondays,
+        aunque las empresas no necesariamente respaldan ni están de acuerdo con los valores que se muestran.
+        No se publican salarios anteriores a 2014.
+         Los salarios de 2014 a 2016 se corrigen de acuerdo al promedio de inflación." escape="false" tooltipPosition="top" *ngIf="profile?.estimated_salary != 0"class="avarage"><a pTooltip="Enter your username" tooltipPosition="top" class="fa fa-information"></a>${{profile?.estimated_salary}} MXN</p>
+        <p *ngIf="profile?.estimated_salary != 0">{{ 'MENU.PROFILE_SALARIES.SOURCE' | translate }} <a href="http://lovemondays.com">Lovemondays.com</a></p>
+        <p *ngIf="profile?.estimated_salary == 0">{{ 'MENU.PROFILE_SALARIES.SORRY' | translate }}</p>
+    </div>
+    <div class="col-xs-12 work-experience-card">
+        <h4>{{ 'PROFILE_DETAILS.WORK_EXPERIENCE_TITLE' | translate }}</h4>
+        <div class="col-xs-12 work-experience-details" *ngFor="let profileExperience of profile?.details">
+             <p *ngIf="profileExperience" class="work-experience-position">{{profileExperience.pd_position}}</p> 
+            @
+            <h4 class="work-experience-title">{{profileExperience.pd_place}}</h4>
+            <p class="work-experience-date">{{profileExperience.pd_exp_range}}</p>
+            <p class="work-experience-location">{{profileExperience.pd_responsabilities}}</p>
+
+        </div>
+    </div>
+    <div class="col-xs-12 work-experience-skills">
+        <h4>{{ 'PROFILE_DETAILS.SKILLS_TITLE' | translate }}</h4>
+        <span class="badge" *ngFor="let skill of profile?.profile_skills">{{skill.pd_skill}}</span>
+    </div>
+    <div class="col-xs-12 work-experience-education">
+        <h4>{{ 'PROFILE_DETAILS.EDUCATION_TITLE' | translate }}</h4>
+        <h4 class="work-experience-collage">{{profile?.education}}</h4>
+
+    </div>
+    <div class="col-xs-12 work-experience-languages" *ngIf="languages.length > 0">
+        <h4 class="language-title">{{ 'PROFILE_DETAILS.LANGUAGES_TITLE' | translate }}</h4>
+        <span class="badge language-badge" *ngFor="let language of languages">{{language.pd_achievement}}</span>
+    </div>
+    <div class="col-xs-12 work-experience-projects" *ngIf="projects.length > 0">
+        <h4 class="language-title">{{ 'PROFILE_DETAILS.PROJECTS_TITLE' | translate }}</h4>
+        <span class="badge project-badge" *ngFor="let project of projects">{{project.pd_achievement}}</span>
+    </div>
+</div>

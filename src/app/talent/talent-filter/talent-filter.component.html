@@ -1,0 +1,13 @@
+<div class="col-xs-12">
+    <div class="talent-filter-sm">
+        <div class="input-group">
+            <input type="text" class="form-control talent-filter-input" #talentSearchMobile placeholder="{{ 'MENU.PROFILES.SEARCH_POSITIONS_TALENT' | translate }}">
+            <div class="input-group-addon" (click)="getTalentSearchValue(talentSearchMobile.value)"><span class="glyphicon glyphicon-search"></span></div>
+        </div>
+    </div>
+     <div class="talent-filter-md">
+        <div class="input-group">
+            <input type="text" class="form-control group-input" #talentSearch (keyup.enter)="getTalentSearchValue(talentSearch.value)" placeholder="{{ 'MENU.PROFILES.SEARCH_POSITIONS_TALENT' | translate }}">
+        </div>
+    </div> 
+</div>

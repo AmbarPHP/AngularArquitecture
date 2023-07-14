@@ -1,0 +1,63 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="text-center" *ngIf="loading === true">
+            <img class="loading-spinner" src="assets/images/ring.svg">
+        </div>
+        <div *ngIf="isRecruiter">
+            <div class="col-xs-12 my-account-header">
+                <h1>Account</h1>
+                <my-account-recruiter-header
+                    [myAccountRecruiterState]="myAccountRecruiterState"
+                    [membershipState]="membershipState"
+                    (changeMyAccountRecruiterStateEvent)="getMyAccountRecruiterStateEvent($event)"
+                    (changeMembershipStateEvent)="getMembershipStateEvent()">
+                </my-account-recruiter-header>
+            </div>
+            <div class="col-xs-12 my-account-information">
+                <my-account-recruiter-information
+                    *ngIf="myAccountRecruiterState == 'information' && !membershipState"
+                    (sendLoading)="getLoading($event)">
+                </my-account-recruiter-information>
+                <my-account-recruiter-preferences
+                    *ngIf="myAccountRecruiterState == 'preferences' && !membershipState"
+                    [changePasswordError]="changePasswordError"
+                    [changePasswordSuccess]="changePasswordSuccess"
+                    (sendChangePasswordEvent)="getChangePassword($event)">
+
+                </my-account-recruiter-preferences>
+            </div>
+            <my-account-recruiter-membership
+                *ngIf="membershipState"
+                [memberships]="memberships">
+            </my-account-recruiter-membership>
+            <my-account-recruiter-payment-method
+                *ngIf="myAccountRecruiterState == 'payment' && !membershipState">
+            </my-account-recruiter-payment-method>
+        </div>
+        <div *ngIf="!isRecruiter && loading === false">
+            <div class="col-xs-12 my-account-header">
+                <h1>Account</h1>
+                <my-account-candidate-header
+                    [candidateMenuSelected]="candidateMenuSelected"
+                    (sendCandidateMenuSelectedEvent)="candidateMenuSelected = $event">
+
+                </my-account-candidate-header>
+            </div>
+            <div class="col-xs-12 my-account-information">
+                <my-account-candidate-information
+                    *ngIf="candidateMenuSelected === 'information'">
+                </my-account-candidate-information>
+                <my-account-candidate-education
+                    *ngIf="candidateMenuSelected === 'education'">
+                </my-account-candidate-education>
+                <my-account-candidate-workexperience 
+                    *ngIf="candidateMenuSelected === 'experience'">
+                </my-account-candidate-workexperience>
+                <my-account-candidate-skills *ngIf="candidateMenuSelected === 'skills'"></my-account-candidate-skills>
+                <my-account-candidate-languages *ngIf="candidateMenuSelected === 'languages'"></my-account-candidate-languages>
+                <my-account-candidate-contactinfo *ngIf="candidateMenuSelected === 'contactInfo'"></my-account-candidate-contactinfo>
+                <my-account-candidate-preferences *ngIf="candidateMenuSelected === 'preferences'"></my-account-candidate-preferences>
+            </div>
+        </div>
+    </div>
+</div>

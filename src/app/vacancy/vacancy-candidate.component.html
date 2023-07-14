@@ -1,0 +1,64 @@
+<div class="container-fluid">
+    <vacancy-header-candidate
+        [vacancyListView]="vacancyListView"
+        (sendVacancyListViewEvent)="getVacancyListView($event)">
+        
+    </vacancy-header-candidate>
+
+    <vacancy-top-filters-candidate
+        [searchByTitle]="searchByTitle"
+        (sendSearchByTitleEvent)="getSearchByTitle($event)">
+        
+    </vacancy-top-filters-candidate>
+
+    <div class="row">
+        <div *ngIf="!vacancyListView" class="col-xs-12 col-sm-3 vacancies-left-filters-container">
+            <vacancy-left-filters-candidate
+                [countries]="countries"
+                (sendCountryEvent)="getCountry($event)"
+                (sendStateEvent)="getState($event)"
+                (sendSalaryRangeEvent)="getSalaryRange($event)"
+                (sendDateOfJobsEvent)="getDateOfJobs($event)"
+                (sendContractTypeEvent)="getContractType($event)"
+                (sendCompanyNameEvent)="getCompanyName($event)"
+                (sendClearAllEvent)="getClearAll()">
+                
+            </vacancy-left-filters-candidate>
+        </div>
+        <div class="text-center" *ngIf="loading === true">
+            <img class="loading-spinner" src="assets/images/ring.svg">
+        </div>
+
+        <div class="col-xs-12 col-sm-9 vacancies-card-view-container" *ngIf="loading === false && !vacancyListView">
+            <vacancy-card-view-candidate
+                [pagedItems]="pagedItems">
+                
+            </vacancy-card-view-candidate>
+        </div>
+        <div *ngIf="loading === false && vacancyListView" class="col-xs-12 vacancies-list-view-container">
+            <vacancy-list-view-candidate
+                class="desktop"
+                [pagedItems]="pagedItems">
+
+            </vacancy-list-view-candidate>
+            <vacancy-card-view-candidate
+                class="mobile"
+                [pagedItems]="pagedItems">
+            </vacancy-card-view-candidate>
+        </div>
+    </div>
+    <div class="row" *ngIf="loading === false">
+        <vacancy-pagination-candidate
+            [pagination]="pagination"
+            [vacancies]="vacancies"
+            [pagedItems]="pagedItems"
+            (pagedItemsEmmiter)="getPagedItems($event)">
+        </vacancy-pagination-candidate>
+    </div>
+
+    <div class="hidden" [innerHTML]="jsonLD"></div>
+
+    <script type="application/ld+json" [innerHTML]="jsonLD"></script>
+
+</div>
+

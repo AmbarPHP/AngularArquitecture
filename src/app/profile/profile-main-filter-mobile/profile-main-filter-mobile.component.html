@@ -1,0 +1,14 @@
+<div class="col-xs-12">
+    <div class="main-filter-mobile mobile">
+        <div class="input-group">
+            <input type="text" class="form-control" #searchProfilesInputMobile (keyup.enter)="searchProfiles(searchProfilesInputMobile.value)" [value]="termMobile.value">
+            <div class="input-group-addon" (click)="searchProfiles(searchProfilesInputMobile.value)"><span class="glyphicon glyphicon-search"></span></div>
+        </div>
+        <select class="sort-by-select form-control" (change)="searchOrderBy($event.target.value)" [(ngModel)]="orderSelected">
+            <option value="">{{ 'MENU.PROFILES.SORT BY' | translate }}</option>
+            <option value="match">{{ 'MENU.PROFILES.SORT_BY.MATCH' | translate }}</option>
+            <option value="location">{{ 'MENU.PROFILES.SORT_BY.LOCATION' | translate }}</option>
+            <option value="skills">{{ 'MENU.PROFILES.SORT_BY.SKILLS' | translate }}</option>
+        </select>
+    </div> 
+</div>

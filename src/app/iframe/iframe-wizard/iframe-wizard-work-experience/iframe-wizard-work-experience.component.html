@@ -1,0 +1,112 @@
+<p-growl [(value)]="msgs" life="5000"></p-growl>
+<div class="col-xs-12 work-experience">
+    <div class="col-xs-12 work-experience-container">
+        <h4>Work Experience</h4>
+        <form [formGroup]="form" *ngIf="!loadingWorkExperience">
+            <div *ngIf="!noWorkExperience">
+                <div class="form-fields" formArrayName="workExperience" *ngFor="let work of form.controls.workExperience.controls; let i = index">
+                    <div [formGroupName]="i">
+                        <div *ngIf="i < 1" class="no-experience-group form-group">
+                            <input formControlName='no_work_experience' (change)="changeNoWorkExperience(i)" type="checkbox" id="no_work_experience" name="no_work_experience">
+                            <label for="noexperience">{{ 'MENU.PROFILES.WIZARD.NO_WORK_EXPERIENCE' | translate }}</label>
+                        </div>
+                        <div class="company-name-group form-group">
+                            <label for="companyname">{{ 'MENU.PROFILES.WIZARD.COMPANY_NAME' | translate }}</label>
+                            <input formControlName='name' type="text" class="company-name-input form-control" id="name" name="name" placeholder="Enter (required)">
+                        </div>
+                        <div class="location-group form-group">
+                            <label for="location">{{ 'MENU.PROFILES.WIZARD.LOCATION' | translate }}</label>
+                            <input formControlName='location' type="text" class="location-input form-control" id="location" name="location" placeholder="Enter (required)">
+                        </div>
+                        <div class="position-group form-group">
+                            <label for="position">{{ 'MENU.PROFILES.WIZARD.POSITION' | translate }}</label>
+                            <input formControlName='position' name="position" id="position" class="form-control">           
+                        </div>
+                        <div class="from-group form-group">
+                            <label for="from">{{ 'MENU.PROFILES.WIZARD.FROM' | translate }}</label>
+                            <input type="date" formControlName='from_date' name="from_date" id="from_date" class="form-control">
+        
+                        </div>
+                        <div class="to-group form-group">
+                            <label for="to">{{ 'MENU.PROFILES.WIZARD.TO' | translate }}</label>
+                            <input type="date" formControlName='to_date' name="to_date" id="to_date" class="form-control">
+        
+                            <input type="checkbox" id="currently_working" name="currently_working" (change)="changeCurrentlyWorking(i)" formControlName='currently_working' class="currentlywork-checkbox">
+                            <label for="currentlywork">I currently work here.</label>
+                        </div>
+                        <div class="responabilities-group form-group">
+                            <label>Responsabilities</label>
+                            <textarea name="responsability" id="responsability" cols="30" rows="3" formControlName='responsabilities' class="form-control" placeholder="Enter responsabilities"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+        <div class="add-button-group form-group">
+            <button class="btn add-button" (click)="addWorkExperience()">{{ 'MENU.PROFILES.WIZARD.ADD' | translate }}</button>
+        </div>
+        <div class="experience-line"></div>
+        <!-- Skills -->
+        <div class="col-xs-12 candidate-skills">
+            <h4>Skills</h4>
+            <form [formGroup]="skillsForm" *ngIf="!loadingSkills">
+                <div formArrayName="skills" *ngFor="let skill of skillsForm.controls.skills.controls; let i = index">
+                    <div [formGroupName]="i">
+                        <div class="skill-name-group form-group">
+                            <label for="skillname">Skill Name</label>
+                            <input formControlName='name' type="text" class="skill-name-input form-control" id="name" name="name" placeholder="Enter">
+                        </div>
+                        <div class="years-experience-group form-group">
+                            <label for="yoe">Years of Experience</label>
+                            <select formControlName='yoe' name="yoe" id="yoe" class="form-control">
+                                <option value="">Select years</option>
+                                <option value="1">1 Years</option>
+                                <option value="2">2 Years</option>
+                                <option value="3">3 Years</option>
+                                <option value="4">4 Years</option>
+                                <option value="5">5 Years</option>
+                            </select>
+                        </div>
+                    </div> 
+                </div>
+            </form>
+            <div class="add-button-group form-group">
+                <button class="btn add-button" (click)="addSkill()">Add</button>
+            </div>
+            <div class="skills-line"></div>
+        </div>
+        <!-- Languages -->
+        <div class="col-xs-12 candidate-languages">
+            <h4>Languages</h4>
+            <form [formGroup]="languagesForm" *ngIf="!loadingLanguages">
+                <div formArrayName="languages" *ngFor="let language of languagesForm.controls.languages.controls; let i = index">
+                    <div [formGroupName]="i">
+                        <div class="language-name-group form-group">
+                            <label for="languagename">Language Name</label>
+                            <input id="name" name="name" class="form-control" formControlName='name'>
+                        </div>
+                        <div class="level-group form-group">
+                            <label for="level">Level</label>
+                            <select formControlName='level' id="level" name="level" class="form-control">
+                                <option value="0">Select</option>
+                                <option value="1">Basic</option>
+                                <option value="2">Intermediate</option>
+                                <option value="3">Advanced</option>
+                                <option value="4">Native</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            <div class="add-button-group form-group">
+                <button class="btn add-button" (click)="addLanguage()">Add</button>
+            </div>
+            <div class="languages-line"></div>
+        </div>
+        <div class="next-button-group form-group">
+            <a (click)="previousPage()">
+                < back</a>
+                    <button (click)="apply()" class="btn next-button">Apply</button>
+        </div>
+    </div>
+</div>

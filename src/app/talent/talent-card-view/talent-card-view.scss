@@ -1,0 +1,51 @@
+.card-container {
+    margin-bottom: 20px;
+}
+
+.profile-card-container {
+    background-color: #fff;
+    border: 1px solid #eaeaea;
+    height: 355px;
+    padding: 0 5px;
+}
+
+.contact-container {
+    height: 70px;
+    margin-top: 10px;
+    text-align: center;
+    color: #9f9e9e;
+
+    p {
+        margin: 0;
+    }
+}
+
+.more-details-container {
+    margin-top: 10px;
+    text-align: center;
+}
+
+.description-location, .description-job {
+    font-size: 14px;
+    color: #9f9e9e;
+}
+
+.last-bought-badge {
+    position: absolute;
+    top: -8px;
+    left: 25px;
+    background-color: #58d490;
+    color: #fff;
+}
+
+.popover {
+    max-width: 500px !important;
+}
+
+@media screen and (min-width: 667px) and (max-width: 730px) {
+    .social-container {
+        .social-item {
+            width: 14%;
+        }
+    }
+}

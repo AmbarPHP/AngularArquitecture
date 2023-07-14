@@ -1,0 +1,37 @@
+<div class="vacancy-details">
+    <h4>Position Details</h4>
+    <div class="salary">
+        <p class="pull-left width-first-column">Salary</p>
+        <p class="pull-left color-gray">{{vacancy[0].salary | number:'1.2-2'}} {{vacancy[0].currency}}</p>
+        <div class="clear-floats"></div>
+    </div>
+    <div class="experience">
+        <p class="pull-left width-first-column">Experience</p>
+        <p class="pull-left color-gray">{{vacancy[0].yoe | number}} {{ vacancy[0].yoe > 1 ? 'years' : 'year' }}</p>
+        <div class="clear-floats"></div>
+    </div>
+    <div class="languages">
+        <p class="pull-left width-first-column">Languages</p>
+        <p class="pull-left color-gray" *ngFor="let language of vacancy[0].languages; let i = index"><span *ngIf="i > 0">, </span> {{language.name}}</p>
+        <div class="clear-floats"></div>
+    </div>
+    <div class="degree">
+        <p class="pull-left width-first-column">Degree</p>
+        <p class="pull-left color-gray">{{vacancy[0].education_name}}</p>
+        <div class="clear-floats"></div>
+    </div>
+</div>
+
+<div class="vacancy-skills">
+    <h4>Skills</h4>
+    <span class="badge badge-skills" *ngFor="let skill of vacancy[0].skills">{{skill.pd_skill}}</span>
+    <!-- <span class="badge badge-skills">Interaction Design <span class="year-bold">3 yoe</span></span>
+    <span class="badge badge-skills">Interaction Design <span class="year-bold">3 yoe</span></span>
+    <span class="badge badge-skills">Interaction Design <span class="year-bold">3 yoe</span></span>
+    <span class="badge badge-skills">Interaction Design <span class="year-bold">3 yoe</span></span> -->
+</div>
+
+<div class="vacancy-comments">
+    <h4>Comments</h4>
+    <p>{{vacancy[0].comments}}</p>
+</div>
